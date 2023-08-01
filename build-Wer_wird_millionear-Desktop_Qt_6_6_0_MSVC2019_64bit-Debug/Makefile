@@ -208,6 +208,7 @@ Makefile: ..\Wer_wird_millionear1\Wer_wird_millionear.pro D:\Qt\6.6.0\msvc2019_6
 		D:\Qt\6.6.0\msvc2019_64\mkspecs\features\qt_config.prf \
 		D:\Qt\6.6.0\msvc2019_64\mkspecs\win32-msvc\qmake.conf \
 		D:\Qt\6.6.0\msvc2019_64\mkspecs\features\spec_post.prf \
+		.qmake.stash \
 		D:\Qt\6.6.0\msvc2019_64\mkspecs\features\exclusive_builds.prf \
 		D:\Qt\6.6.0\msvc2019_64\mkspecs\common\msvc-version.conf \
 		D:\Qt\6.6.0\msvc2019_64\mkspecs\features\toolchain.prf \
@@ -237,12 +238,13 @@ Makefile: ..\Wer_wird_millionear1\Wer_wird_millionear.pro D:\Qt\6.6.0\msvc2019_6
 		..\Wer_wird_millionear1\Wer_wird_millionear.pro \
 		D:\Qt\6.6.0\msvc2019_64\lib\Qt6Widgets.prl \
 		D:\Qt\6.6.0\msvc2019_64\lib\Qt6Gui.prl \
+		D:\Qt\6.6.0\msvc2019_64\lib\Qt6Sql.prl \
 		D:\Qt\6.6.0\msvc2019_64\lib\Qt6Core.prl \
 		D:\Qt\6.6.0\msvc2019_64\lib\Qt6EntryPoint.prl \
-		.qmake.stash \
 		D:\Qt\6.6.0\msvc2019_64\mkspecs\features\build_pass.prf \
 		D:\Qt\6.6.0\msvc2019_64\lib\Qt6Widgetsd.prl \
 		D:\Qt\6.6.0\msvc2019_64\lib\Qt6Guid.prl \
+		D:\Qt\6.6.0\msvc2019_64\lib\Qt6Sqld.prl \
 		D:\Qt\6.6.0\msvc2019_64\lib\Qt6Cored.prl \
 		D:\Qt\6.6.0\msvc2019_64\lib\Qt6EntryPointd.prl
 	$(QMAKE) -o Makefile ..\Wer_wird_millionear1\Wer_wird_millionear.pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -370,6 +372,7 @@ D:\Qt\6.6.0\msvc2019_64\mkspecs\features\qt_functions.prf:
 D:\Qt\6.6.0\msvc2019_64\mkspecs\features\qt_config.prf:
 D:\Qt\6.6.0\msvc2019_64\mkspecs\win32-msvc\qmake.conf:
 D:\Qt\6.6.0\msvc2019_64\mkspecs\features\spec_post.prf:
+.qmake.stash:
 D:\Qt\6.6.0\msvc2019_64\mkspecs\features\exclusive_builds.prf:
 D:\Qt\6.6.0\msvc2019_64\mkspecs\common\msvc-version.conf:
 D:\Qt\6.6.0\msvc2019_64\mkspecs\features\toolchain.prf:
@@ -399,12 +402,13 @@ D:\Qt\6.6.0\msvc2019_64\mkspecs\features\lex.prf:
 ..\Wer_wird_millionear1\Wer_wird_millionear.pro:
 D:\Qt\6.6.0\msvc2019_64\lib\Qt6Widgets.prl:
 D:\Qt\6.6.0\msvc2019_64\lib\Qt6Gui.prl:
+D:\Qt\6.6.0\msvc2019_64\lib\Qt6Sql.prl:
 D:\Qt\6.6.0\msvc2019_64\lib\Qt6Core.prl:
 D:\Qt\6.6.0\msvc2019_64\lib\Qt6EntryPoint.prl:
-.qmake.stash:
 D:\Qt\6.6.0\msvc2019_64\mkspecs\features\build_pass.prf:
 D:\Qt\6.6.0\msvc2019_64\lib\Qt6Widgetsd.prl:
 D:\Qt\6.6.0\msvc2019_64\lib\Qt6Guid.prl:
+D:\Qt\6.6.0\msvc2019_64\lib\Qt6Sqld.prl:
 D:\Qt\6.6.0\msvc2019_64\lib\Qt6Cored.prl:
 D:\Qt\6.6.0\msvc2019_64\lib\Qt6EntryPointd.prl:
 qmake: FORCE
