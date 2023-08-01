@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -13,13 +13,15 @@ SOURCES += \
     Question.cpp \
     main.cpp \
     mainwindow.cpp \
-    player.cpp
+    player.cpp \
+    test.cpp
 
 HEADERS += \
     GameSession.h \
     Question.h \
     mainwindow.h \
-    player.h
+    player.h \
+    test.h
 
 FORMS += \
     mainwindow.ui
