@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
     w.show();
     //creating database connection
      QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
-     db.setDatabaseName("Driver={MySQL ODBC 8.1 Unicode Driver};SERVER=localhost;DATABASE=werwirdmillionaer;USER=youeusername;PASSWORD=yourpassword;");
+     db.setDatabaseName("Driver={MySQL ODBC 8.1 Unicode Driver};SERVER=localhost;DATABASE=werwirdmillionaer;USER=rama;PASSWORD=12345;");
      if(db.open())
      {
         cout << "Database connected" << endl;
