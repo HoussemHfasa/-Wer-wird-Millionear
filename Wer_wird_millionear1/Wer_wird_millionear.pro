@@ -21,6 +21,7 @@ HEADERS += \
     Question.h \
     mainwindow.h \
     player.h \
+    player.h \
     test.h
 
 FORMS += \
