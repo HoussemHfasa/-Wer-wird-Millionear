@@ -8,6 +8,30 @@
 #include <iostream>
 using namespace  std;
 
+#include <iostream>
+#include "Player.h"
+
+void testPlayerClass() {
+    // Erstelle einen Spieler mit dem Namen "Max Mustermann"
+    Player spieler("Max Mustermann");
+
+    // Überprüfe, ob der Spieler erfolgreich erstellt wurde
+    std::cout << "Spielername: " << spieler.getNickname() << std::endl;
+    std::cout << "Highscore: " << spieler.getBestScore() << std::endl;
+    std::cout << "Aktueller Score: " << spieler.getCurrentScore() << std::endl;
+    std::cout << "Lifelines: " << spieler.getLifelines() << std::endl;
+
+    // Aktualisiere den Score des Spielers
+    spieler.updateScore(1000);
+    std::cout << "Aktualisierter Highscore: " << spieler.getBestScore() << std::endl;
+    std::cout << "Aktualisierter Score: " << spieler.getCurrentScore() << std::endl;
+
+    // Verwende eine Lifeline
+    spieler.useLifeline();
+    std::cout << "Verbleibende Lifelines: " << spieler.getLifelines() << std::endl;
+}
+
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -52,5 +76,8 @@ int main(int argc, char *argv[])
      }
      cout <<query.value(0).toInt()<<endl;
 
-    return a.exec();
+     testPlayerClass();
+
+     return a.exec();
+
 }

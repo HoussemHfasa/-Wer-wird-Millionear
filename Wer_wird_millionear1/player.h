@@ -6,9 +6,10 @@
 
 class Player {
 public:
-    Player(const std::string& nickname, int bestScore = 0, int currentScore = 0, int lifelines = 3);
-
+   Player(const std::string& nickname);
+   void addToDatabase();
     // Methoden zur Abfrage von Informationen
+
     std::string getNickname() const;
     int getBestScore() const;
     int getCurrentScore() const;
@@ -19,6 +20,8 @@ public:
     void useLifeline();
 
 private:
+    int id;
+    int generateID(); // Hilfsmethode zur Generierung der ID
     std::string nickname;
     int bestScore;
     int currentScore;
@@ -27,4 +30,3 @@ private:
 
 #endif // PLAYER_H
 
-#endif // PLAYER_H

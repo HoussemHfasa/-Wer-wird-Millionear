@@ -22,7 +22,7 @@ void MainWindow::on_pushButton_clicked()
 {
     //creating database connection
     QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
-    db.setDatabaseName("Driver={MySQL ODBC 8.1 Unicode Driver};SERVER=localhost;DATABASE=werwirdmillionaer;USER=root;PASSWORD=Houssem123.;");
+    db.setDatabaseName("Driver={MySQL ODBC 8.1 Unicode Driver};SERVER=localhost;DATABASE=werwirdmillionaer;USER=rama;PASSWORD=12345;");
 
     if(db.open())
     {
