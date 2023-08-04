@@ -840,7 +840,10 @@ release/main.o: ../Wer_wird_millionear1/main.cpp ../Wer_wird_millionear1/mainwin
 		D:/qt/6.6.0/mingw_64/include/QtGui/qguiapplication.h \
 		D:/qt/6.6.0/mingw_64/include/QtGui/qinputmethod.h \
 		D:/qt/6.6.0/mingw_64/include/QtGui/qguiapplication_platform.h \
-		../Wer_wird_millionear1/Player.h
+		D:/qt/6.6.0/mingw_64/include/QtCore/QDir \
+		D:/qt/6.6.0/mingw_64/include/QtCore/QFile \
+		D:/qt/6.6.0/mingw_64/include/QtCore/QProcessEnvironment \
+		../Wer_wird_millionear1/player.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\Wer_wird_millionear1\main.cpp
 
 release/mainwindow.o: ../Wer_wird_millionear1/mainwindow.cpp ../Wer_wird_millionear1/mainwindow.h \
