@@ -4,10 +4,14 @@
 #include <QtSql/QSqlQuery>
 
 #include <QApplication>
+#include <QDir>
+#include <QFile>
+#include <QProcessEnvironment>
 
 #include <iostream>
 using namespace  std;
 
+<<<<<<< HEAD
 #include <iostream>
 #include "Player.h"
 
@@ -29,6 +33,25 @@ void testPlayerClass() {
     // Verwende eine Lifeline
     spieler.useLifeline();
     std::cout << "Verbleibende Lifelines: " << spieler.getLifelines() << std::endl;
+=======
+void loadEnvVars() {
+
+    QFile envFile(".env");
+    if(!envFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qWarning() << ".env file not found";
+        return;
+    }
+
+    QTextStream in(&envFile);
+    while(!in.atEnd()) {
+        QString line = in.readLine();
+        auto parts = line.split("=");
+        if(parts.size() == 2) {
+            qputenv(parts[0].toUtf8(), parts[1].toUtf8());
+        }
+    }
+    envFile.close();
+>>>>>>> Houssem
 }
 
 
@@ -38,8 +61,11 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
     //creating database connection
-     QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
-     db.setDatabaseName("Driver={MySQL ODBC 8.1 Unicode Driver};SERVER=localhost;DATABASE=werwirdmillionaer;USER=rama;PASSWORD=12345;");
+    qDebug() << QDir::currentPath();
+    loadEnvVars();
+    QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
+    QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+    db.setDatabaseName("Driver={MySQL ODBC 8.1 Unicode Driver};SERVER="+ env.value("DB_HOST")+";DATABASE="+env.value("DB_NAME")+";USER=" + env.value("DB_USER") + ";PASSWORD=" + env.value("DB_PASS") + ";");
      if(db.open())
      {
         cout << "Database connected" << endl;
