@@ -11,9 +11,28 @@
 #include <iostream>
 using namespace  std;
 
-<<<<<<< HEAD
 #include <iostream>
-#include "Player.h"
+#include "player.h"
+
+
+void loadEnvVars() {
+
+    QFile envFile(".env");
+    if(!envFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qWarning() << ".env file not found";
+        return;
+    }
+
+    QTextStream in(&envFile);
+    while(!in.atEnd()) {
+        QString line = in.readLine();
+        auto parts = line.split("=");
+        if(parts.size() == 2) {
+            qputenv(parts[0].toUtf8(), parts[1].toUtf8());
+        }
+    }
+    envFile.close();
+}
 
 void testPlayerClass() {
     // Erstelle einen Spieler mit dem Namen "Max Mustermann"
@@ -33,26 +52,8 @@ void testPlayerClass() {
     // Verwende eine Lifeline
     spieler.useLifeline();
     std::cout << "Verbleibende Lifelines: " << spieler.getLifelines() << std::endl;
-=======
-void loadEnvVars() {
-
-    QFile envFile(".env");
-    if(!envFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qWarning() << ".env file not found";
-        return;
-    }
-
-    QTextStream in(&envFile);
-    while(!in.atEnd()) {
-        QString line = in.readLine();
-        auto parts = line.split("=");
-        if(parts.size() == 2) {
-            qputenv(parts[0].toUtf8(), parts[1].toUtf8());
-        }
-    }
-    envFile.close();
->>>>>>> Houssem
 }
+
 
 
 int main(int argc, char *argv[])
