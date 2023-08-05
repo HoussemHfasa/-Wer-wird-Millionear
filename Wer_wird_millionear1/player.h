@@ -3,14 +3,14 @@
 #define PLAYER_H
 
 #include <string>
-
+using namespace std;
 class Player {
 public:
-   Player(const std::string& nickname);
+   Player(const string& nickname);
    void addToDatabase();
     // Methoden zur Abfrage von Informationen
 
-    std::string getNickname() const;
+    string getNickname() const;
     int getBestScore() const;
     int getCurrentScore() const;
     int getLifelines() const;
@@ -22,7 +22,7 @@ public:
 private:
     int id;
     int generateID(); // Hilfsmethode zur Generierung der ID
-    std::string nickname;
+    string nickname;
     int bestScore;
     int currentScore;
     int lifelines;

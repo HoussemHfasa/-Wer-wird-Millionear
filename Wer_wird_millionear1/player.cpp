@@ -1,7 +1,7 @@
 #include "Player.h"
 #include <QSqlQuery>
-
-Player::Player(const std::string& nickname)
+using namespace std;
+Player::Player(const string& nickname)
     : nickname(nickname), bestScore(0), currentScore(0), lifelines(3) {
     id = generateID();
 
@@ -25,7 +25,7 @@ int Player::generateID() {
     return 1; // Fallback-Wert, falls keine ID gefunden wurde oder ein Fehler aufgetreten ist
 }
 
-std::string Player::getNickname() const {
+string Player::getNickname() const {
     QSqlQuery query;
     query.prepare("SELECT nickname FROM benutzer WHERE id = :id");
     query.bindValue(":id", id);

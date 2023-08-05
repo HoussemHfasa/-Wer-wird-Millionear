@@ -2,7 +2,6 @@
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlError>
 #include <QtSql/QSqlQuery>
-
 #include <QApplication>
 #include <QDir>
 #include <QFile>
@@ -13,7 +12,7 @@ using namespace  std;
 
 #include <iostream>
 #include "player.h"
-
+#include "Frage.h"
 
 void loadEnvVars() {
 
@@ -54,7 +53,39 @@ void testPlayerClass() {
     std::cout << "Verbleibende Lifelines: " << spieler.getLifelines() << std::endl;
 }
 
+void testFrageClass() {
+    srand(time(0)); // Initialisiere den Zufallsgenerator
 
+    string kategorie = "Geschichte";
+    string schwierigkeit = "einfach";
+
+    Frage frage1 = Frage::erstelleZufaelligeFrage(kategorie, schwierigkeit);
+
+
+    // Teste die getFrage-Methode
+    std::string frageText = frage1.getFrage();
+    std::cout << "Frage: " << frageText << std::endl;
+
+    // Teste die getAntworten-Methode
+    std::vector<std::string> antworten = frage1.getAntworten();
+    std::cout << "Antworten:" << std::endl;
+    for (const std::string& antwort : antworten) {
+        std::cout << antwort << std::endl;
+    }
+
+    // Teste die getRichtigeAntwort-Methode
+    char richtigeAntwort = frage1.getRichtigeAntwort();
+    std::cout << "Richtige Antwort: " << richtigeAntwort << std::endl;
+
+    // Teste die getKategorie-Methode
+    std::string frageKategorie = frage1.getKategorie();
+    std::cout << "Frage Kategorie: " << frageKategorie << std::endl;
+
+    // Teste die istAntwortKorrekt-Methode
+    char benutzerAntwort = 'A'; // Annahme: Der Benutzer wählt Antwort A
+    bool istKorrekt = frage1.istAntwortKorrekt(benutzerAntwort);
+    std::cout << "Ist Antwort korrekt? " << (istKorrekt ? "Ja" : "Nein") << std::endl;
+}
 
 int main(int argc, char *argv[])
 {
@@ -104,6 +135,7 @@ int main(int argc, char *argv[])
      cout <<query.value(0).toInt()<<endl;
 
      testPlayerClass();
+     testFrageClass();
 
      return a.exec();
 
