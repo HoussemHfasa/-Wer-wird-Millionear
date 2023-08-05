@@ -10,6 +10,8 @@ CONFIG += c++17
 
 SOURCES += \
     Frage.cpp \
+    GameSession.cpp \
+    lifelines.cpp \
     main.cpp \
     mainwindow.cpp \
     player.cpp \
@@ -17,6 +19,8 @@ SOURCES += \
 
 HEADERS += \
     Frage.h \
+    GameSession.h \
+    lifelines.h \
     mainwindow.h \
     player.h \
     test.h
