@@ -15,7 +15,8 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     player.cpp \
-    test.cpp
+    test.cpp \
+    testcommit.cpp
 
 HEADERS += \
     Frage.h \
@@ -23,7 +24,8 @@ HEADERS += \
     lifelines.h \
     mainwindow.h \
     player.h \
-    test.h
+    test.h \
+    testcommit.h
 
 FORMS += \
     mainwindow.ui
