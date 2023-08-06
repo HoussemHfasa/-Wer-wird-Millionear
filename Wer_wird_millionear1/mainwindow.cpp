@@ -16,7 +16,7 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-//test
+//testcvbnjcvnb
 
 void MainWindow::on_pushButton_clicked()
 {
