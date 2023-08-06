@@ -13,6 +13,7 @@ using namespace  std;
 #include <iostream>
 #include "player.h"
 #include "Frage.h"
+#include "GameSession.h"
 
 void loadEnvVars() {
 
@@ -136,6 +137,19 @@ int main(int argc, char *argv[])
 
      testPlayerClass();
      testFrageClass();
+
+     // Spieler erstellen
+     Player spieler("Max Mustermann");
+
+     // Spiel erstellen
+     GameSession spiel(spieler);
+
+     // Kategorie und Schwierigkeitsgrad wählen (optional)
+     spiel.waehleSchwierigkeitsgrad("einfach");
+     spiel.waehleKategorie("Geschichte");
+
+     // Spiel starten
+     spiel.starteSpiel();
 
      return a.exec();
 
