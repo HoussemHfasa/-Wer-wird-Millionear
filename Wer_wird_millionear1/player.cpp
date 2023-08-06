@@ -18,12 +18,18 @@ Player::Player(const string& nickname)
 
 
 int Player::generateID() {
-    QSqlQuery query("SELECT MAX(id) FROM benutzer");
+    QSqlQuery query;
+    query.prepare("SELECT MAX(id) FROM benutzer");
     if (query.exec() && query.next()) {
-        return query.value(0).toInt() + 1;
+        int maxID = query.value(0).toInt();
+        return maxID + 1;
     }
-    return 1; // Fallback-Wert, falls keine ID gefunden wurde oder ein Fehler aufgetreten ist
+    // Falls keine ID gefunden wurde oder ein Fehler aufgetreten ist,
+    // könnte alternativ eine Standard-ID zurückgegeben werden, z. B. -1.
+    // Dies hängt von Ihren Anforderungen ab.
+    return 1;
 }
+
 
 string Player::getNickname() const {
     QSqlQuery query;
