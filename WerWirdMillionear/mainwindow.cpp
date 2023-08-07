@@ -158,7 +158,7 @@ void MainWindow::on_SpielStartButton_clicked()
 
 void MainWindow::on_Answer1_4_clicked()
 {
-    Player player("yassin");
+   /* Player player("yassin");
     GameSession gameSession(player);
 
     // Starte das Spiel und erhalte die nächste Frage
@@ -173,7 +173,7 @@ void MainWindow::on_Answer1_4_clicked()
     Answer1->setText(QString::fromStdString(antworten[0]));
     Answer2->setText(QString::fromStdString(antworten[1]));
     Answer3->setText(QString::fromStdString(antworten[2]));
-    Answer4->setText(QString::fromStdString(antworten[3]));
+    Answer4->setText(QString::fromStdString(antworten[3]));*/
 
 }
 

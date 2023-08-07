@@ -11,13 +11,15 @@ GameSession::GameSession(Player& spieler) : spieler(spieler), aktuelleFrageIndex
     gewaehlteKategorie = "";
 
 
+
     // Fragen vorbereiten (15 zufällige Fragen, ohne Wiederholung)
 
     gewinnstufen = {50, 100, 200, 300, 500, 1000, 2000, 4000, 8000, 16000, 32000, 64000, 125000, 500000, 1000000};
 }
 
-void GameSession::starteSpiel() {
-    fragen = vorbereiteteFragen(gewaehlteKategorie, gewaehlterSchwierigkeitsgrad);
+void GameSession::starteSpiel(const std::string& schwierigkeitsgrad, const std::string& kategorie, char AntwortSpieler1) {
+    cout<<"testtt";
+    fragen = vorbereiteteFragen(kategorie, schwierigkeitsgrad);
 
     // Dann die vorbereiteten Fragen abrufen
 
@@ -55,8 +57,8 @@ void GameSession::naechsteFrage() {
             cout << char('A' + i) << ": " << antworten[i] << "\n";
         }
 
-        char benutzerAntwort;
-        //cout << "Bitte wähle deine Antwort (A, B, C oder D): ";
+        //char benutzerAntwort;
+        cout << "Bitte wähle deine Antwort (A, B, C oder D): ";
                // cin >> benutzerAntwort;
 
         if (aktuelleFrage.istAntwortKorrekt(benutzerAntwort)) {
@@ -83,6 +85,9 @@ void GameSession::waehleSchwierigkeitsgrad(const string& schwierigkeitsgrad) {
 
 void GameSession::waehleKategorie(const string& kategorie) {
         gewaehlteKategorie = kategorie;
+}
+void GameSession::AntwortSpieler(const char& AntwortSpieler1) {
+        benutzerAntwort = AntwortSpieler1 ;
 }
 
 vector<Frage> GameSession::vorbereiteteFragen(const std::string& schwierigkeitsgrad, const std::string& kategorie) {

@@ -107,7 +107,7 @@ int main(int argc, char *argv[])
         cout << db.lastError().text().toStdString() << endl;
     }
 
-    QSqlQuery query;
+   /* QSqlQuery query;
     query.prepare("SELECT nickname, highscore FROM benutzer");
 
     if (query.exec()) {
@@ -120,30 +120,18 @@ int main(int argc, char *argv[])
         qDebug() << "Error: " << query.lastError();
     }
     cout <<query.value(0).toInt()<<endl;
-    testPlayerClass();
+    testPlayerClass();*/
+    cout<<"testtttt";
     Player spieler("Rama");
-
     // Create a GameSession object
     GameSession newgame(spieler);
-
     // Set the desired difficulty level and category using the public member functions
     newgame.waehleSchwierigkeitsgrad("einfach");
     newgame.waehleKategorie("Geschichte");
+    newgame.AntwortSpieler('A');
 
-    // Get the prepared questions using the public member function
-    vector<Frage> fragen = newgame.vorbereiteteFragen(newgame.gewaehlterSchwierigkeitsgrad,newgame.gewaehlteKategorie);
+   // newgame.starteSpiel(newgame.gewaehlterSchwierigkeitsgrad,newgame.gewaehlteKategorie,newgame.benutzerAntwort);
 
-    // Check the number of returned questions
-    cout << "Anzahl der vorbereiteten Fragen: " << fragen.size() << endl;
 
-    // Display the questions (for testing purposes)
-    for (const Frage& frage : fragen) {
-        cout << "Frage: " << frage.getFrage() << endl;
-        vector<string> antworten = frage.getAntworten();
-        for (int i = 0; i < antworten.size(); i++) {
-            cout << char('A' + i) << ": " << antworten[i] << endl;
-        }
-        cout << endl;
-    }
     return a.exec();
 }
