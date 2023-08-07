@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include <QLabel>
 #include <QPixmap>
+#include <QLineEdit>
+#include <QtSql>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -40,7 +42,27 @@ void MainWindow::on_BestenlisteButton_clicked()
 
 void MainWindow::on_SpielStartButton_clicked()
 {
+    QLineEdit *input_name = qobject_cast<QLineEdit *>(sender());
+    if (!input_name)
+        return;
+
+    QString nickname = input_name->text();
+
+    // Insert the name into the "benutzer" table
+    QSqlQuery query;
+    query.prepare("INSERT INTO benutzer (nickname) VALUES (:nickname)");
+    query.bindValue(":nickname", nickname);
+
+    if (!query.exec()) {
+        qDebug() << "Error executing query:" << query.lastError().text();
+    } else {
+        qDebug() << "Name inserted successfully.";
+    }
+
+
      ui->stackedWidget->setCurrentWidget(ui->SpielSeite);
+
+
 }
 
 
