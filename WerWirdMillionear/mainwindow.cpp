@@ -43,3 +43,9 @@ void MainWindow::on_SpielStartButton_clicked()
      ui->stackedWidget->setCurrentWidget(ui->SpielSeite);
 }
 
+
+void MainWindow::on_Answer1_4_clicked()
+{
+
+}
+

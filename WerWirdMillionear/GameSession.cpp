@@ -11,7 +11,7 @@ GameSession::GameSession(Player& spieler) : spieler(spieler), aktuelleFrageIndex
     gewaehlteKategorie = "";
 
     // Fragen vorbereiten (15 zufällige Fragen, ohne Wiederholung)
-    fragen = vorbereiteteFragen();
+    fragen = vorbereiteteFragen(gewaehlteKategorie,gewaehlterSchwierigkeitsgrad);
     gewinnstufen = {50, 100, 200, 300, 500, 1000, 2000, 4000, 8000, 16000, 32000, 64000, 125000, 500000, 1000000};
 }
 
@@ -77,10 +77,10 @@ void GameSession::waehleKategorie(const string& kategorie) {
 }
 
 
-vector<Frage> GameSession::vorbereiteteFragen() {
+vector<Frage> GameSession::vorbereiteteFragen(const std::string& schwierigkeitsgrad, const std::string& kategorie) {
     vector<Frage> vorbereiteteFragen;
     while (vorbereiteteFragen.size() < 15) {
-        Frage zufaelligeFrage = Frage::erstelleZufaelligeFrage(gewaehlteKategorie, gewaehlterSchwierigkeitsgrad);
+        Frage zufaelligeFrage = Frage::erstelleZufaelligeFrage(kategorie, schwierigkeitsgrad);
         if (find(vorbereiteteFragen.begin(), vorbereiteteFragen.end(), zufaelligeFrage) == vorbereiteteFragen.end()) {
             vorbereiteteFragen.push_back(zufaelligeFrage);
         }

@@ -23,6 +23,8 @@ Frage Frage::erstelleZufaelligeFrage(const std::string& kategorie, const std::st
             randomId = rand() % 28 + 55; // Zufällige Zahl zwischen 55 und 82
         } else if (kategorie == "Geschichte") {
             randomId = rand() % 30 + 83; // Zufällige Zahl zwischen 83 und 112
+        }else if (kategorie == "allgemein") {
+            randomId = rand() % 112 + 1; // Zufällige Zahl zwischen 83 und 112
         }
         tableName = "fragenkatalog_einfach";
     } else if (schwierigkeit == "mittelschwer") {
@@ -34,6 +36,8 @@ Frage Frage::erstelleZufaelligeFrage(const std::string& kategorie, const std::st
             randomId = rand() % 30 + 61; // Zufällige Zahl zwischen 61 und 90
         } else if (kategorie == "Geschichte") {
             randomId = rand() % 23 + 91; // Zufällige Zahl zwischen 91 und 113
+        }else if (kategorie == "allgemein") {
+            randomId = rand() % 113 + 1; // Zufällige Zahl zwischen 83 und 112
         }
         tableName = "fragenkatalog_mittelschwer";
     } else if (schwierigkeit == "schwer") {
@@ -45,6 +49,8 @@ Frage Frage::erstelleZufaelligeFrage(const std::string& kategorie, const std::st
             randomId = rand() % 30 + 61; // Zufällige Zahl zwischen 61 und 90
         } else if (kategorie == "Geschichte") {
             randomId = rand() % 30 + 1; // Zufällige Zahl zwischen 1 und 30
+        }else if (kategorie == "allgemein") {
+            randomId = rand() % 120 + 1; // Zufällige Zahl zwischen 83 und 112
         }
         tableName="fragenkatalog_schwer";
     }
