@@ -49,7 +49,7 @@ void GameSession::naechsteFrage() {
 
         char benutzerAntwort;
         cout << "Bitte wähle deine Antwort (A, B, C oder D): ";
-                cin >> benutzerAntwort;
+               // cin >> benutzerAntwort;
 
         if (aktuelleFrage.istAntwortKorrekt(benutzerAntwort)) {
             int gewinn = gewinnstufen[aktuelleFrageIndex]; // Gewinnstufe für die aktuelle Frage
