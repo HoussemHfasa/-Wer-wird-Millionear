@@ -46,6 +46,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Verknüpfung des Start-Buttons mit dem Slot
     connect(ui->SpielStartButton, &QPushButton::clicked, this, &MainWindow::on_SpielStartButton_clicked);
+    input_nickname = ui->input_nickname;
 
 }
 
@@ -111,30 +112,10 @@ void MainWindow::on_BestenlisteButton_clicked()
 
 void MainWindow::on_SpielStartButton_clicked()
 {
-    QLineEdit *input_nickname = qobject_cast<QLineEdit *>(sender());
-    if (!input_nickname)
-    {
-        return ;
-    }
-    QString nickname = input_nickname->text();
+    std::string nickname = input_nickname->text().toStdString();
 
-    // Insert the name into the "benutzer" table
-    QSqlQuery query;
-    query.prepare("INSERT INTO benutzer (nickname, Highscore, currentScore) VALUES (:nickname, 0, 0)");
-    query.bindValue(":nickname", nickname);
-
-    if (!query.exec()) {
-        qDebug() << "Error executing query:" << query.lastError().text();
-    } else {
-        qDebug() << "Name inserted successfully.";
-    }
-
-    // Check if the database connection is open
-    if (QSqlDatabase::database().isOpen()) {
-        qDebug() << "Database connection is open.";
-    } else {
-        qDebug() << "Database connection is not open.";
-    }
+    // Create a Player object with the entered nickname
+    Player player(nickname);
 
 
     ui->stackedWidget->setCurrentWidget(ui->SpielSeite);

@@ -4,6 +4,7 @@
 #include <QModelIndexList>
 #include <QStandardItemModel>
 #include <QPushButton>
+#include <QLineEdit>
 
 namespace Ui {
 class MainWindow;
@@ -37,5 +38,6 @@ private:
     QPushButton* Answer3;
     QPushButton* Answer4;
     QLabel* getFrage;
+    QLineEdit* input_nickname;
 
 };
