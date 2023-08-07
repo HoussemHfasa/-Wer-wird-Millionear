@@ -108,18 +108,6 @@ int main(int argc, char *argv[])
     }
 
     QSqlQuery query;
-    /*query.prepare("SELECT * FROM fragenkatalog_einfach");
-
-    if (query.exec()) {
-        while (query.next()) {
-            qDebug() << query.value(0).toInt() << ":"
-                     << query.value(1).toString() << ","
-                     << query.value(6).toString() << ","
-                     << query.value(5).toString();
-        }
-    } else {
-        qDebug() << "Error: " << query.lastError();
-    }*/
     query.prepare("SELECT nickname, highscore FROM benutzer");
 
     if (query.exec()) {
