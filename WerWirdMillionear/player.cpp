@@ -1,5 +1,6 @@
 #include "Player.h"
 #include <QSqlQuery>
+#include <QtSql/QSqlError>
 using namespace std;
 Player::Player(const std::string& nickname) : nickname(nickname), bestScore(0), currentScore(0) {
     QSqlQuery query;
@@ -80,4 +81,18 @@ void Player::updateScore(int newScore) {
     query.bindValue(":nickname",  QString::fromStdString(nickname)); // Hier wird der Platzhalter :currentScore mit dem Wert von currentScore ersetzt
     query.exec();
 }
+void Player::getAllPlayers()
+{
+    QSqlQuery query;
+    query.prepare("SELECT NICKNAME,HIGHSCORE FROM BENUTZER;");
+    if (query.exec()) {
+        while (query.next()) {
+            qDebug() << query.value(0).toString() << ":"
+                     << query.value(1).toInt();
+        }
+    } else {
+        qDebug() << "Error: " << query.lastError();
+    }
+}
+
 

@@ -1,7 +1,8 @@
 #include <QMainWindow>
 #include <QLabel>
 #include <QStackedWidget>
-
+#include <QModelIndexList>
+#include <QStandardItemModel>
 
 namespace Ui {
 class MainWindow;
@@ -23,9 +24,13 @@ private slots:
 
     void on_Answer1_4_clicked();
 
+    void on_listView_indexesMoved(const QModelIndexList &indexes);
+    void refreshList();
+
 private:
     Ui::MainWindow *ui;
     QLabel *imageLabel;
     QStackedWidget *stackedWidget;
+    QStandardItemModel *playerModel;
 
 };
