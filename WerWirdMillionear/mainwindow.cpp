@@ -2,16 +2,20 @@
 #include "ui_mainwindow.h"
 #include <QLabel>
 #include <QPixmap>
-<<<<<<< HEAD
-#include <QLineEdit>
-#include <QtSql>
-=======
 #include <player.h>
 #include <QSqlQuery>
 #include <QtSql/QSqlError>
 #include <QMessageBox>
 #include<QProgressDialog>
->>>>>>> origin/main
+#include <QLineEdit>
+#include <QtSql>
+#include <QListView>
+#include <QTableView>
+#include <QStandardItemModel>
+#include <QHeaderView>
+#include <QFont>
+#include <QBrush>
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -26,6 +30,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     QPixmap pix2(":/img/img/logo.png");
     ui->LogoSpiel->setPixmap(pix2);
+    // Create the playerModel and set it as the model for "Bestenliste" QListView
+    playerModel = new QStandardItemModel(this); // Assuming you have playerModel as a member variable of MainWindow
+    ui->Bestenliste->setModel(playerModel); // Assuming "Bestenliste" is the name of your QListView in the UI
+
 
 
 
@@ -73,7 +81,7 @@ void MainWindow::refreshList() {
     playerModel->appendRow(item);
 
     // Set model on list view
-    ui->listView->setModel(playerModel);
+    ui->Bestenliste->setModel(playerModel);
 
 }
 
@@ -83,7 +91,7 @@ MainWindow::~MainWindow()
     playerModel = new QStandardItemModel(this);
 
     // Connect signal to refresh slot
-    connect(ui->listView, &QListView::indexesMoved, this, &MainWindow::refreshList);
+    connect(ui->Bestenliste, &QListView::indexesMoved, this, &MainWindow::refreshList);
 
 }
 
@@ -92,11 +100,50 @@ void MainWindow::on_StartButton_clicked()
     // Switch to AnmeldenSeite
     ui->stackedWidget->setCurrentWidget(ui->AnmeldenSeite);
 }
-
 void MainWindow::on_BestenlisteButton_clicked()
 {
     // Switch to BestenlisteSeite
     ui->stackedWidget->setCurrentWidget(ui->BestenlisteSeite);
+
+    // Prepare the query to fetch data from the database
+    QSqlQuery query;
+    query.prepare("SELECT nickname, highscore FROM benutzer");
+
+    if (query.exec()) {
+        // Clear the existing data from the playerModel before adding new data
+        playerModel->clear();
+
+        while (query.next()) {
+            QString nickname = query.value(0).toString();
+            int highscore = query.value(1).toInt();
+
+            // create item with nickname and highscore
+            QStandardItem *item = new QStandardItem(nickname + ": " + QString::number(highscore));
+
+            // Set the text alignment to center for the item
+            item->setTextAlignment(Qt::AlignCenter);
+
+            // add item to model
+            playerModel->appendRow(item);
+        }
+    } else {
+        qDebug() << "Error:" << query.lastError();
+    }
+
+    // Add a header item at the top of the list
+    QList<QStandardItem*> headerItems;
+    QStandardItem *headerItem = new QStandardItem("Nickname: Highscore");
+
+    // Set text color to red for the header item
+    QBrush redBrush(Qt::red);
+    headerItem->setData(redBrush, Qt::ForegroundRole);
+    headerItem->setTextAlignment(Qt::AlignCenter);
+
+    headerItems.append(headerItem);
+    playerModel->insertRow(0, headerItems); // Insert at the first row (top of the list)
+
+    // Set the QListView to be read-only (disable item editing)
+    ui->Bestenliste->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
 void MainWindow::on_SpielStartButton_clicked()
@@ -165,6 +212,6 @@ void MainWindow::on_listView_indexesMoved(const QModelIndexList &indexes)
      playerModel->appendRow(item);
 
      // Set model on list view
-     ui->listView->setModel(playerModel);
+     ui->Bestenliste->setModel(playerModel);
 }
 
