@@ -27,6 +27,7 @@ private:
     vector<Frage> vorbereiteteFragen();
     vector<int> gewinnstufen;
     Lifeline lifeline;
+    vector<Frage> vorbereiteteFragen(const std::string& schwierigkeitsgrad, const std::string& kategorie);
 };
 
 
