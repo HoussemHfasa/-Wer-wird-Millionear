@@ -16,6 +16,7 @@ public:
 
     // Methoden zur Aktualisierung der Informationen
     void updateScore(int newScore);
+     void getAllPlayers();
 
 private:
     string nickname;

@@ -120,14 +120,13 @@ int main(int argc, char *argv[])
     } else {
         qDebug() << "Error: " << query.lastError();
     }*/
-    query.prepare("SELECT * FROM fragenkatalog_einfach WHERE FrageID = 5");
+    query.prepare("SELECT nickname, highscore FROM benutzer");
 
     if (query.exec()) {
-        if (query.next()) {
-            qDebug() << query.value(0).toInt() << ":"
-                     << query.value(1).toString() << ","
-                     << query.value(6).toString() << ","
-                     << query.value(5).toString();
+         while (query.next()) {
+            qDebug() << query.value(0).toString() << ":"
+                     << query.value(1).toInt() << ","
+                     << query.value(2).toInt() ;
         }
     } else {
         qDebug() << "Error: " << query.lastError();
