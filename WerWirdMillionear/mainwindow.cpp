@@ -136,7 +136,28 @@ void MainWindow::on_SpielStartButton_clicked()
         qDebug() << "Database connection is not open.";
     }*/
 
-    ui->stackedWidget->setCurrentWidget(ui->SpielSeite);
+
+   /* ui->stackedWidget->setCurrentWidget(ui->SpielSeite);
+    Player player("yassin");
+    GameSession gameSession(player);
+
+    // Starte das Spiel und erhalte die nächste Frage
+    gameSession.starteSpiel();
+    Frage aktuelleFrage = gameSession.getAktuelleFrage();
+
+    // Zeige die Frage auf dem Label an
+    getFrage->setText(QString::fromStdString(aktuelleFrage.getFrage()));
+
+    // Zeige die Antworten auf den Buttons an
+    vector<string> antworten = aktuelleFrage.getAntworten();
+    Answer1->setText(QString::fromStdString(antworten[0]));
+    Answer2->setText(QString::fromStdString(antworten[1]));
+    Answer3->setText(QString::fromStdString(antworten[2]));
+    Answer4->setText(QString::fromStdString(antworten[3]));*/
+}
+
+void MainWindow::on_Answer1_4_clicked()
+{
     Player player("yassin");
     GameSession gameSession(player);
 
@@ -153,10 +174,6 @@ void MainWindow::on_SpielStartButton_clicked()
     Answer2->setText(QString::fromStdString(antworten[1]));
     Answer3->setText(QString::fromStdString(antworten[2]));
     Answer4->setText(QString::fromStdString(antworten[3]));
-}
-
-void MainWindow::on_Answer1_4_clicked()
-{
 
 }
 
