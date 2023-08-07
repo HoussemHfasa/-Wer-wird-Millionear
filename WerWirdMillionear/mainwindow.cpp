@@ -33,7 +33,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->Logo_Label->setPixmap(pix);
 
 
-    QPixmap pix2(":/img/img/logo.png");
+   /* QPixmap pix2(":/img/img/logo.png");
     ui->LogoSpiel->setPixmap(pix2);
     // Create the playerModel and set it as the model for "Bestenliste" QListView
     playerModel = new QStandardItemModel(this); // Assuming you have playerModel as a member variable of MainWindow
@@ -45,8 +45,29 @@ MainWindow::MainWindow(QWidget *parent)
     getFrage = ui->getFrage;
 
     // Verknüpfung des Start-Buttons mit dem Slot
-    connect(ui->SpielStartButton, &QPushButton::clicked, this, &MainWindow::on_SpielStartButton_clicked);
+    connect(ui->SpielStartButton, &QPushButton::clicked, this, &MainWindow::on_SpielStartButton_clicked);*/
     input_nickname = ui->input_nickname;
+
+   /* comboBox_Kategorie = new QComboBox(this);
+    comboBox_Kategorie->addItem("Option 1");
+    comboBox_Kategorie->addItem("Option 2");
+    comboBox_Kategorie->addItem("Option 3");*/
+    //comboBox_Schwierigkeitsgrad
+    comboBox_Kategorie = new QComboBox(this);
+    comboBox_Kategorie->addItem("Allgemein");
+    comboBox_Kategorie->addItem("Sport");
+    comboBox_Kategorie->addItem("Wissenschaft");
+    comboBox_Kategorie->addItem("Kunst und Kultur");
+    comboBox_Kategorie->addItem("Geschichte");
+
+    comboBox_Schwierigkeitsgrad = new QComboBox(this);
+    comboBox_Schwierigkeitsgrad->addItem("Einfach");
+    comboBox_Schwierigkeitsgrad->addItem("Mittelschwer");
+    comboBox_Schwierigkeitsgrad->addItem("Schwer");
+    connect(ui->comboBox_Kategorie, SIGNAL(currentIndexChanged(QString)), this, SLOT(onCategoryChanged(QString)));
+
+
+    connect(ui->comboBox_Schwierigkeitsgrad, SIGNAL(currentIndexChanged(QString)), this, SLOT(onDifficultyChanged(QString)));
 
 }
 
@@ -109,13 +130,28 @@ void MainWindow::on_BestenlisteButton_clicked()
     ui->Bestenliste->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
+void MainWindow::onCategoryChanged(QString category) {
+    std::cout << category.toStdString() << std::endl;
+}
 
+void MainWindow::onDifficultyChanged(QString difficulty) {
+    std::cout << difficulty.toStdString() << std::endl;
+}
 void MainWindow::on_SpielStartButton_clicked()
 {
+
     std::string nickname = input_nickname->text().toStdString();
 
     // Create a Player object with the entered nickname
-    Player player(nickname);
+    //Player player(nickname);
+
+    QString category = ui->comboBox_Kategorie->currentText();
+    onCategoryChanged(category);
+
+    QString difficulty = ui->comboBox_Schwierigkeitsgrad->currentText();
+    onDifficultyChanged(difficulty);
+
+
 
 
     ui->stackedWidget->setCurrentWidget(ui->SpielSeite);
@@ -155,6 +191,12 @@ void MainWindow::on_Answer1_4_clicked()
     Answer2->setText(QString::fromStdString(antworten[1]));
     Answer3->setText(QString::fromStdString(antworten[2]));
     Answer4->setText(QString::fromStdString(antworten[3]));*/
+
+}
+void MainWindow::Combobox()
+{
+   /*  QString selectedOption1 = comboBox_Kategorie->currentText();
+    cout <<selectedOption1.toStdString();*/
 
 }
 

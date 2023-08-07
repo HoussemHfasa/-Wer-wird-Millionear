@@ -212,20 +212,6 @@ color: white;
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="input_nickname">
-          <property name="styleSheet">
-           <string notr="true">background-color: #ffffff;
-border: none;
-color: Black;
-padding: 10px 20px;
-font-size: 16px;
-font-weight: bold;
-border-radius: 10px;
-</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <spacer name="verticalSpacer_5">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -242,9 +228,12 @@ border-radius: 10px;
          </spacer>
         </item>
         <item>
-         <widget class="QPushButton" name="SpielStartButton">
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
+         <widget class="QLabel" name="Schwierigkeitsgrad">
+          <property name="maximumSize">
+           <size>
+            <width>200</width>
+            <height>50</height>
+           </size>
           </property>
           <property name="styleSheet">
            <string notr="true">background-color: #4B8A90;
@@ -256,8 +245,114 @@ font-weight: bold;
 border-radius: 10px;</string>
           </property>
           <property name="text">
-           <string>Beginne zu spielen</string>
+           <string>Schwierigkeitsgrad</string>
           </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="comboBox_Schwierigkeitsgrad">
+          <property name="maximumSize">
+           <size>
+            <width>200</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: #ffffff;
+border: none;
+color: black;
+padding: 10px 20px;
+font-size: 16px;
+font-weight: bold;
+border-radius: 10px;</string>
+          </property>
+          <item>
+           <property name="text">
+            <string>Einfach</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Mittelschwer</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Schwer</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item alignment="Qt::AlignRight">
+         <widget class="QLabel" name="Kategorie">
+          <property name="maximumSize">
+           <size>
+            <width>300</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: #4B8A90;
+border: none;
+color: white;
+padding: 10px 20px;
+font-size: 16px;
+font-weight: bold;
+border-radius: 10px;</string>
+          </property>
+          <property name="text">
+           <string>Kategorie</string>
+          </property>
+         </widget>
+        </item>
+        <item alignment="Qt::AlignRight">
+         <widget class="QComboBox" name="comboBox_Kategorie">
+          <property name="minimumSize">
+           <size>
+            <width>121</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>300</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: #ffffff;
+border: none;
+color: black;
+padding: 10px 20px;
+font-size: 16px;
+font-weight: bold;
+border-radius: 10px;</string>
+          </property>
+          <item>
+           <property name="text">
+            <string>Allgemein</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Sport</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Wissenschaft</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Kunst und Kultur</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Geschichte</string>
+           </property>
+          </item>
          </widget>
         </item>
         <item>
@@ -291,6 +386,39 @@ border-radius: 10px;</string>
            </size>
           </property>
          </spacer>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="input_nickname">
+          <property name="styleSheet">
+           <string notr="true">background-color: #ffffff;
+border: none;
+color: Black;
+padding: 10px 20px;
+font-size: 16px;
+font-weight: bold;
+border-radius: 10px;
+</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="SpielStartButton">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: #4B8A90;
+border: none;
+color: white;
+padding: 10px 20px;
+font-size: 16px;
+font-weight: bold;
+border-radius: 10px;</string>
+          </property>
+          <property name="text">
+           <string>Beginne zu spielen</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>

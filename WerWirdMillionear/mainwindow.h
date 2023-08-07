@@ -5,6 +5,8 @@
 #include <QStandardItemModel>
 #include <QPushButton>
 #include <QLineEdit>
+#include <QMainWindow>
+#include <QComboBox>
 
 namespace Ui {
 class MainWindow;
@@ -18,6 +20,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+
 private slots:
     void on_StartButton_clicked();
     void on_BestenlisteButton_clicked();
@@ -25,8 +28,10 @@ private slots:
     void on_SpielStartButton_clicked();
 
     void on_Answer1_4_clicked();
+    void Combobox();
+    void onCategoryChanged(QString category);
+    void onDifficultyChanged(QString difficulty);
 
-    void on_listView_indexesMoved(const QModelIndexList &indexes);
 
 private:
     Ui::MainWindow *ui;
@@ -39,5 +44,7 @@ private:
     QPushButton* Answer4;
     QLabel* getFrage;
     QLineEdit* input_nickname;
+    QComboBox *comboBox_Kategorie;
+    QComboBox *comboBox_Schwierigkeitsgrad;
 
 };

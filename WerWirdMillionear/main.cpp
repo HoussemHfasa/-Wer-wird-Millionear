@@ -121,7 +121,7 @@ int main(int argc, char *argv[])
     }
     cout <<query.value(0).toInt()<<endl;
     testPlayerClass();*/
-    cout<<"testtttt";
+    //cout<<"testtttt";
     Player spieler("Rama");
     // Create a GameSession object
     GameSession newgame(spieler);
