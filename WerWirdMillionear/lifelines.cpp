@@ -15,7 +15,7 @@ void Lifeline::fiftyFifty(const vector<string>& antworten, char richtigeAntwort)
         moeglicheAntworten.erase(remove(moeglicheAntworten.begin(), moeglicheAntworten.end(), richtigeAntwort), moeglicheAntworten.end());
 
         // Zwei zufällige Antworten auswählen (eine richtige und eine falsche)
-        random_shuffle(moeglicheAntworten.begin(), moeglicheAntworten.end());
+//random_shuffle(moeglicheAntworten.begin(), moeglicheAntworten.end());
         char antwort1 = moeglicheAntworten[0];
         char antwort2 = moeglicheAntworten[1];
 

@@ -21,6 +21,8 @@ private slots:
 
     void on_SpielStartButton_clicked();
 
+    void on_Answer1_4_clicked();
+
 private:
     Ui::MainWindow *ui;
     QLabel *imageLabel;
