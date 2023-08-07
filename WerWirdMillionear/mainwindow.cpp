@@ -111,7 +111,7 @@ void MainWindow::on_BestenlisteButton_clicked()
 
 void MainWindow::on_SpielStartButton_clicked()
 {
-    /*QLineEdit *input_nickname = qobject_cast<QLineEdit *>(sender());
+    QLineEdit *input_nickname = qobject_cast<QLineEdit *>(sender());
     if (!input_nickname)
     {
         return ;
@@ -134,11 +134,11 @@ void MainWindow::on_SpielStartButton_clicked()
         qDebug() << "Database connection is open.";
     } else {
         qDebug() << "Database connection is not open.";
-    }*/
+    }
 
 
-   /* ui->stackedWidget->setCurrentWidget(ui->SpielSeite);
-    Player player("yassin");
+    ui->stackedWidget->setCurrentWidget(ui->SpielSeite);
+    /*Player player("yassin");
     GameSession gameSession(player);
 
     // Starte das Spiel und erhalte die nächste Frage
