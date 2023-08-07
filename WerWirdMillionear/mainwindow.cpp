@@ -143,7 +143,7 @@ void MainWindow::on_SpielStartButton_clicked()
     std::string nickname = input_nickname->text().toStdString();
 
     // Create a Player object with the entered nickname
-    //Player player(nickname);
+    Player player(nickname);
 
     QString category = ui->comboBox_Kategorie->currentText();
     onCategoryChanged(category);
