@@ -27,7 +27,6 @@ private:
     Player& spieler;
     vector<Frage> fragen;
     int aktuelleFrageIndex;
-
     vector<Frage> vorbereiteteFragen();
     vector<int> gewinnstufen;
     Frage& getAktuelleFrage() const;

@@ -15,7 +15,8 @@
 #include <QHeaderView>
 #include <QFont>
 #include <QBrush>
-
+#include <Frage.h>
+#include <GameSession.h>
 
 #include <iostream>
 using namespace std ;
@@ -37,6 +38,15 @@ MainWindow::MainWindow(QWidget *parent)
     // Create the playerModel and set it as the model for "Bestenliste" QListView
     playerModel = new QStandardItemModel(this); // Assuming you have playerModel as a member variable of MainWindow
     ui->Bestenliste->setModel(playerModel); // Assuming "Bestenliste" is the name of your QListView in the UI
+    Answer1 = ui->Answer1_4;
+    Answer2 = ui->Answer2;
+    Answer3 = ui->Answer3;
+    Answer4 = ui->Answer4;
+    getFrage = ui->getFrage;
+
+    // Verknüpfung des Start-Buttons mit dem Slot
+    connect(ui->SpielStartButton, &QPushButton::clicked, this, &MainWindow::on_SpielStartButton_clicked);
+
 }
 
 
@@ -101,7 +111,7 @@ void MainWindow::on_BestenlisteButton_clicked()
 
 void MainWindow::on_SpielStartButton_clicked()
 {
-    QLineEdit *input_nickname = qobject_cast<QLineEdit *>(sender());
+    /*QLineEdit *input_nickname = qobject_cast<QLineEdit *>(sender());
     if (!input_nickname)
     {
         return ;
@@ -124,9 +134,25 @@ void MainWindow::on_SpielStartButton_clicked()
         qDebug() << "Database connection is open.";
     } else {
         qDebug() << "Database connection is not open.";
-    }
+    }*/
 
     ui->stackedWidget->setCurrentWidget(ui->SpielSeite);
+    Player player("yassin");
+    GameSession gameSession(player);
+
+    // Starte das Spiel und erhalte die nächste Frage
+    gameSession.starteSpiel();
+    Frage aktuelleFrage = gameSession.getAktuelleFrage();
+
+    // Zeige die Frage auf dem Label an
+    getFrage->setText(QString::fromStdString(aktuelleFrage.getFrage()));
+
+    // Zeige die Antworten auf den Buttons an
+    vector<string> antworten = aktuelleFrage.getAntworten();
+    Answer1->setText(QString::fromStdString(antworten[0]));
+    Answer2->setText(QString::fromStdString(antworten[1]));
+    Answer3->setText(QString::fromStdString(antworten[2]));
+    Answer4->setText(QString::fromStdString(antworten[3]));
 }
 
 void MainWindow::on_Answer1_4_clicked()
