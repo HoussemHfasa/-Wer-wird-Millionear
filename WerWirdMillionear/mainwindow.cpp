@@ -17,6 +17,10 @@
 #include <QBrush>
 
 
+#include <iostream>
+using namespace std ;
+
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -33,12 +37,6 @@ MainWindow::MainWindow(QWidget *parent)
     // Create the playerModel and set it as the model for "Bestenliste" QListView
     playerModel = new QStandardItemModel(this); // Assuming you have playerModel as a member variable of MainWindow
     ui->Bestenliste->setModel(playerModel); // Assuming "Bestenliste" is the name of your QListView in the UI
-
-
-
-
-
-
 }
 
 
@@ -100,17 +98,19 @@ void MainWindow::on_BestenlisteButton_clicked()
     ui->Bestenliste->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
+
 void MainWindow::on_SpielStartButton_clicked()
 {
-    QLineEdit *input_name = qobject_cast<QLineEdit *>(sender());
-    if (!input_name)
-        return;
-
-    QString nickname = input_name->text();
+    QLineEdit *input_nickname = qobject_cast<QLineEdit *>(sender());
+    if (!input_nickname)
+    {
+        return ;
+    }
+    QString nickname = input_nickname->text();
 
     // Insert the name into the "benutzer" table
     QSqlQuery query;
-    query.prepare("INSERT INTO benutzer (nickname) VALUES (:nickname)");
+    query.prepare("INSERT INTO benutzer (nickname, Highscore, currentScore) VALUES (:nickname, 0, 0)");
     query.bindValue(":nickname", nickname);
 
     if (!query.exec()) {
@@ -119,12 +119,15 @@ void MainWindow::on_SpielStartButton_clicked()
         qDebug() << "Name inserted successfully.";
     }
 
+    // Check if the database connection is open
+    if (QSqlDatabase::database().isOpen()) {
+        qDebug() << "Database connection is open.";
+    } else {
+        qDebug() << "Database connection is not open.";
+    }
 
-     ui->stackedWidget->setCurrentWidget(ui->SpielSeite);
-
-
+    ui->stackedWidget->setCurrentWidget(ui->SpielSeite);
 }
-
 
 void MainWindow::on_Answer1_4_clicked()
 {
