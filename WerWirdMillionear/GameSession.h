@@ -17,17 +17,22 @@ public:
     void waehleAntwort(int antwortIndex);
     void waehleSchwierigkeitsgrad(const string& schwierigkeitsgrad);
     void waehleKategorie(const string& kategorie);
+    Frage getAktuelleFrage();
+    string gewaehlterSchwierigkeitsgrad;
+    string gewaehlteKategorie;
+    vector<Frage> vorbereiteteFragen(const std::string& schwierigkeitsgrad, const std::string& kategorie);
 
 private:
+
     Player& spieler;
     vector<Frage> fragen;
     int aktuelleFrageIndex;
-    string gewaehlterSchwierigkeitsgrad;
-    string gewaehlteKategorie;
+
     vector<Frage> vorbereiteteFragen();
     vector<int> gewinnstufen;
+    Frage& getAktuelleFrage() const;
     Lifeline lifeline;
-    vector<Frage> vorbereiteteFragen(const std::string& schwierigkeitsgrad, const std::string& kategorie);
+
 };
 
 

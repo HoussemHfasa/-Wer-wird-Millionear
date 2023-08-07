@@ -134,7 +134,5 @@ int main(int argc, char *argv[])
     }
     cout <<query.value(0).toInt()<<endl;
     testPlayerClass();
-
     return a.exec();
-
 }
