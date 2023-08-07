@@ -25,7 +25,6 @@ private slots:
     void on_Answer1_4_clicked();
 
     void on_listView_indexesMoved(const QModelIndexList &indexes);
-    void refreshList();
 
 private:
     Ui::MainWindow *ui;
