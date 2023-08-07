@@ -3,6 +3,7 @@
 #include <QStackedWidget>
 #include <QModelIndexList>
 #include <QStandardItemModel>
+#include <QPushButton>
 
 namespace Ui {
 class MainWindow;
@@ -29,7 +30,12 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QLabel *imageLabel;
-    QStackedWidget *stackedWidget;
     QStandardItemModel *playerModel;
+    QStackedWidget *stackedWidget;
+    QPushButton* Answer1;
+    QPushButton* Answer2;
+    QPushButton* Answer3;
+    QPushButton* Answer4;
+    QLabel* getFrage;
 
 };
