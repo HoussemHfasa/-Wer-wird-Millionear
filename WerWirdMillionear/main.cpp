@@ -36,13 +36,12 @@ void loadEnvVars() {
 
 void testPlayerClass() {
     // Erstelle einen Spieler mit dem Namen "Max Mustermann"
-    Player spieler("Max Mustermann");
+    Player spieler("Houssam");
 
     // Überprüfe, ob der Spieler erfolgreich erstellt wurde
     std::cout << "Spielername: " << spieler.getNickname() << std::endl;
     std::cout << "Highscore: " << spieler.getBestScore() << std::endl;
     std::cout << "Aktueller Score: " << spieler.getCurrentScore() << std::endl;
-    std::cout << "Lifelines: " << spieler.getLifelines() << std::endl;
 
     // Aktualisiere den Score des Spielers
     spieler.updateScore(1000);
@@ -50,8 +49,8 @@ void testPlayerClass() {
     std::cout << "Aktualisierter Score: " << spieler.getCurrentScore() << std::endl;
 
     // Verwende eine Lifeline
-    spieler.useLifeline();
-    std::cout << "Verbleibende Lifelines: " << spieler.getLifelines() << std::endl;
+
+
 }
 
 void testFrageClass() {
@@ -121,22 +120,19 @@ int main(int argc, char *argv[])
     } else {
         qDebug() << "Error: " << query.lastError();
     }*/
-    query.prepare("SELECT * FROM fragenkatalog_einfach WHERE FrageID = 5");
+    query.prepare("SELECT nickname, highscore FROM benutzer");
 
     if (query.exec()) {
-        if (query.next()) {
-            qDebug() << query.value(0).toInt() << ":"
-                     << query.value(1).toString() << ","
-                     << query.value(6).toString() << ","
-                     << query.value(5).toString();
+         while (query.next()) {
+            qDebug() << query.value(0).toString() << ":"
+                     << query.value(1).toInt() << ","
+                     << query.value(2).toInt() ;
         }
     } else {
         qDebug() << "Error: " << query.lastError();
     }
     cout <<query.value(0).toInt()<<endl;
-
     testPlayerClass();
-    testFrageClass();
 
     return a.exec();
 
