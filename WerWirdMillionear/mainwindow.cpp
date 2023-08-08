@@ -31,8 +31,7 @@ MainWindow::MainWindow(QWidget *parent)
     // Display the logo
     QPixmap pix(":/img/img/logo.png");
     ui->Logo_Label->setPixmap(pix);
-    // Initialize the pop-up dialog
-    spielanleitungDialog = new QDialog(this);
+
 
     QPixmap pix2(":/img/img/logo.png");
     ui->LogoSpiel->setPixmap(pix2);
@@ -54,7 +53,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->Answer3, &QPushButton::clicked, this, &MainWindow::on_Answer3_clicked);
     connect(ui->Answer4, &QPushButton::clicked, this, &MainWindow::on_Answer4_clicked);
 
-    comboBox_Kategorie = new QComboBox(this);
+    /*comboBox_Kategorie = new QComboBox(this);
     comboBox_Kategorie->addItem("allgemein");
     comboBox_Kategorie->addItem("Sport");
     comboBox_Kategorie->addItem("Wissenschaft");
@@ -64,7 +63,7 @@ MainWindow::MainWindow(QWidget *parent)
     comboBox_Schwierigkeitsgrad = new QComboBox(this);
     comboBox_Schwierigkeitsgrad->addItem("einfach");
     comboBox_Schwierigkeitsgrad->addItem("mittelschwer");
-    comboBox_Schwierigkeitsgrad->addItem("schwer");
+    comboBox_Schwierigkeitsgrad->addItem("schwer");*/
     connect(ui->comboBox_Kategorie, SIGNAL(currentIndexChanged(QString)), this, SLOT(onCategoryChanged(QString)));
 
 
@@ -227,53 +226,7 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
 
 void MainWindow::on_Answer1_4_clicked()
 {
-   /* Player player("yassin");
-    GameSession gameSession(player);
 
-    // Starte das Spiel und erhalte die nächste Frage
-    gameSession.starteSpiel();
-    Frage aktuelleFrage = gameSession.getAktuelleFrage();
-
-    // Zeige die Frage auf dem Label an
-    getFrage->setText(QString::fromStdString(aktuelleFrage.getFrage()));
-
-    // Zeige die Antworten auf den Buttons an
-    vector<string> antworten = aktuelleFrage.getAntworten();
-    Answer1->setText(QString::fromStdString(antworten[0]));
-    Answer2->setText(QString::fromStdString(antworten[1]));
-    Answer3->setText(QString::fromStdString(antworten[2]));
-    Answer4->setText(QString::fromStdString(antworten[3]));*/
-    // Retrieve the selected answer from the clicked button
-    char selectedAnswer = 'A'; // For example, 'A' corresponds to Answer1_4 button
-    // You need to update this based on the clicked button.
-/*
-    // Get the current question from the game session
-    Frage aktuelleFrage = Spiel.getAktuelleFrage();
-
-    // Check if the selected answer is correct
-    if (aktuelleFrage.istAntwortKorrekt(selectedAnswer)) {
-        // Update the player's score
-        int gewinn = gewinnstufen[aktuelleFrageIndex]; // Gewinnstufe für die aktuelle Frage
-        cout << "Richtig! Du erhältst " << gewinn << " Punkte.\n";
-                                                     player.updateScore(player.getCurrentScore() + gewinn);
-
-        // Proceed to the next question or end the game
-        if (aktuelleFrageIndex < fragen.size() - 1) {
-            aktuelleFrageIndex++;
-            aktuelleFrage = Spiel.getAktuelleFrage();
-            ui->getFrage->setText(QString::fromStdString(aktuelleFrage.getFrage()));
-            // Update the answer buttons' text with the new answers
-            // ...
-        } else {
-            // All questions answered, end the game
-            beendeSpiel();
-        }
-    } else {
-        // Incorrect answer, end the game
-        cout << "Leider falsch. Das Spiel ist vorbei.\n";
-        beendeSpiel();
-    }
-}*/
 
 }
 
@@ -294,18 +247,17 @@ void MainWindow::on_Answer4_clicked()
 {
 
 }
-
+//SpielanleitungPage
 
 void MainWindow::on_spielanleitungButton_clicked()
 {
-    // Load the UI design of SpielanleitungPage
-    Ui::SpielanleitungPage dialogUi;
-    dialogUi.setupUi(spielanleitungDialog);
+     ui->stackedWidget->setCurrentWidget(ui->SpielanleitungPage);
 
-    // Optionally, connect a close button within the pop-up dialog to close it
-    connect(dialogUi.closeButton, &QPushButton::clicked, spielanleitungDialog, &QDialog::accept);
+}
 
-    // Show the pop-up dialog as a modal dialog
-    spielanleitungDialog->exec();
+
+void MainWindow::on_Zurueckstartseite_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->Startseite);
 }
 

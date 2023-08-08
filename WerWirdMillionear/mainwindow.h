@@ -9,6 +9,7 @@
 #include <QComboBox>
 #include <GameSession.h>
 
+
 namespace Ui {
 class MainWindow;
 }
@@ -36,6 +37,8 @@ private slots:
     void on_Answer4_clicked();
     void on_spielanleitungButton_clicked();
 
+    void on_Zurueckstartseite_clicked();
+
 private:
     Ui::MainWindow *ui;
     QLabel *imageLabel;
@@ -51,5 +54,4 @@ private:
     QComboBox *comboBox_Schwierigkeitsgrad;
     vector<Frage> fragen;
     int aktuelleFrageIndex;
-    SpielanleitungPage *spielanleitungPage;
 };
