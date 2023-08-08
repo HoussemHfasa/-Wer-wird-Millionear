@@ -7,6 +7,7 @@
 #include <QLineEdit>
 #include <QMainWindow>
 #include <QComboBox>
+#include <GameSession.h>
 
 namespace Ui {
 class MainWindow;
@@ -21,6 +22,7 @@ public:
     ~MainWindow();
 
 
+
 private slots:
     void on_StartButton_clicked();
     void on_BestenlisteButton_clicked();
@@ -32,6 +34,12 @@ private slots:
     void onCategoryChanged(QString category);
     void onDifficultyChanged(QString difficulty);
 
+
+    void on_Answer2_clicked();
+
+    void on_Answer3_clicked();
+
+    void on_Answer4_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -46,5 +54,7 @@ private:
     QLineEdit* input_nickname;
     QComboBox *comboBox_Kategorie;
     QComboBox *comboBox_Schwierigkeitsgrad;
+
+
 
 };

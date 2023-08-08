@@ -18,7 +18,7 @@ GameSession::GameSession(Player& spieler) : spieler(spieler), aktuelleFrageIndex
 }
 
 void GameSession::starteSpiel(const std::string& schwierigkeitsgrad, const std::string& kategorie, char AntwortSpieler1) {
-    cout<<"testtt";
+
     fragen = vorbereiteteFragen(kategorie, schwierigkeitsgrad);
 
     // Dann die vorbereiteten Fragen abrufen

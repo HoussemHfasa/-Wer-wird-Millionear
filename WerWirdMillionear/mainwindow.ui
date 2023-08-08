@@ -268,17 +268,17 @@ border-radius: 10px;</string>
           </property>
           <item>
            <property name="text">
-            <string>Einfach</string>
+            <string>einfach</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>Mittelschwer</string>
+            <string>mittelschwer</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>Schwer</string>
+            <string>schwer</string>
            </property>
           </item>
          </widget>
@@ -330,7 +330,7 @@ border-radius: 10px;</string>
           </property>
           <item>
            <property name="text">
-            <string>Allgemein</string>
+            <string>allgemein</string>
            </property>
           </item>
           <item>

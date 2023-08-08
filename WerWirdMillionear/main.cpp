@@ -129,8 +129,21 @@ int main(int argc, char *argv[])
     newgame.waehleSchwierigkeitsgrad("einfach");
     newgame.waehleKategorie("Geschichte");
     newgame.AntwortSpieler('A');
+    vector<Frage> fragen = newgame.vorbereiteteFragen("einfach","Geschichte");
 
-   // newgame.starteSpiel(newgame.gewaehlterSchwierigkeitsgrad,newgame.gewaehlteKategorie,newgame.benutzerAntwort);
+    // Check the number of prepared questions
+   // cout << "Anzahl der vorbereiteten Fragen: " << fragen.size() << endl;
+
+   /* // Display the questions (for testing purposes)
+    for (const Frage& frage : fragen) {
+        cout << "Frage: " << frage.getFrage() << endl;
+        vector<string> antworten = frage.getAntworten();
+        for (int i = 0; i < antworten.size(); i++) {
+            cout << char('A' + i) << ": " << antworten[i] << endl;
+        }
+        cout << endl;
+    }*/
+    cout << fragen[0].getFrage()<<endl;
 
 
     return a.exec();

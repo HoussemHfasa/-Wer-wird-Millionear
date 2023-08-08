@@ -48,22 +48,22 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->SpielStartButton, &QPushButton::clicked, this, &MainWindow::on_SpielStartButton_clicked);*/
     input_nickname = ui->input_nickname;
 
-   /* comboBox_Kategorie = new QComboBox(this);
-    comboBox_Kategorie->addItem("Option 1");
-    comboBox_Kategorie->addItem("Option 2");
-    comboBox_Kategorie->addItem("Option 3");*/
-    //comboBox_Schwierigkeitsgrad
+    connect(ui->Answer1_4, &QPushButton::clicked, this, &MainWindow::on_Answer1_4_clicked);
+    connect(ui->Answer2, &QPushButton::clicked, this, &MainWindow::on_Answer2_clicked);
+    connect(ui->Answer3, &QPushButton::clicked, this, &MainWindow::on_Answer3_clicked);
+    connect(ui->Answer4, &QPushButton::clicked, this, &MainWindow::on_Answer4_clicked);
+
     comboBox_Kategorie = new QComboBox(this);
-    comboBox_Kategorie->addItem("Allgemein");
+    comboBox_Kategorie->addItem("allgemein");
     comboBox_Kategorie->addItem("Sport");
     comboBox_Kategorie->addItem("Wissenschaft");
     comboBox_Kategorie->addItem("Kunst und Kultur");
     comboBox_Kategorie->addItem("Geschichte");
 
     comboBox_Schwierigkeitsgrad = new QComboBox(this);
-    comboBox_Schwierigkeitsgrad->addItem("Einfach");
-    comboBox_Schwierigkeitsgrad->addItem("Mittelschwer");
-    comboBox_Schwierigkeitsgrad->addItem("Schwer");
+    comboBox_Schwierigkeitsgrad->addItem("einfach");
+    comboBox_Schwierigkeitsgrad->addItem("mittelschwer");
+    comboBox_Schwierigkeitsgrad->addItem("schwer");
     connect(ui->comboBox_Kategorie, SIGNAL(currentIndexChanged(QString)), this, SLOT(onCategoryChanged(QString)));
 
 
@@ -152,6 +152,20 @@ void MainWindow::on_SpielStartButton_clicked()
     QString difficulty = ui->comboBox_Schwierigkeitsgrad->currentText();
     onDifficultyChanged(difficulty);
 
+    GameSession Spiel(player);
+    Spiel.vorbereiteteFragen(difficulty.toStdString(),category.toStdString());
+    vector<Frage> fragen = Spiel.vorbereiteteFragen(difficulty.toStdString(),category.toStdString());
+
+   // Spiel.vorbereiteteFragen("einfach","Geschichte");
+
+    vector<string> antworten = fragen[0].getAntworten();
+    ui->getFrage->setText(QString::fromStdString(fragen[0].getFrage()));
+
+    ui->Answer1_4->setText(QString::fromStdString(antworten[0]));
+    ui-> Answer2->setText(QString::fromStdString(antworten[1]));
+    ui->Answer3->setText(QString::fromStdString(antworten[2]));
+    ui-> Answer4->setText(QString::fromStdString(antworten[3]));
+
     ui->stackedWidget->setCurrentWidget(ui->SpielSeite);
 
 }
@@ -174,14 +188,55 @@ void MainWindow::on_Answer1_4_clicked()
     Answer2->setText(QString::fromStdString(antworten[1]));
     Answer3->setText(QString::fromStdString(antworten[2]));
     Answer4->setText(QString::fromStdString(antworten[3]));*/
+    // Retrieve the selected answer from the clicked button
+    char selectedAnswer = 'A'; // For example, 'A' corresponds to Answer1_4 button
+    // You need to update this based on the clicked button.
+/*
+    // Get the current question from the game session
+    Frage aktuelleFrage = Spiel.getAktuelleFrage();
+
+    // Check if the selected answer is correct
+    if (aktuelleFrage.istAntwortKorrekt(selectedAnswer)) {
+        // Update the player's score
+        int gewinn = gewinnstufen[aktuelleFrageIndex]; // Gewinnstufe für die aktuelle Frage
+        cout << "Richtig! Du erhältst " << gewinn << " Punkte.\n";
+                                                     player.updateScore(player.getCurrentScore() + gewinn);
+
+        // Proceed to the next question or end the game
+        if (aktuelleFrageIndex < fragen.size() - 1) {
+            aktuelleFrageIndex++;
+            aktuelleFrage = Spiel.getAktuelleFrage();
+            ui->getFrage->setText(QString::fromStdString(aktuelleFrage.getFrage()));
+            // Update the answer buttons' text with the new answers
+            // ...
+        } else {
+            // All questions answered, end the game
+            beendeSpiel();
+        }
+    } else {
+        // Incorrect answer, end the game
+        cout << "Leider falsch. Das Spiel ist vorbei.\n";
+        beendeSpiel();
+    }
+}*/
 
 }
-void MainWindow::Combobox()
+
+
+void MainWindow::on_Answer2_clicked()
 {
-   /*  QString selectedOption1 = comboBox_Kategorie->currentText();
-    cout <<selectedOption1.toStdString();*/
 
 }
 
 
+void MainWindow::on_Answer3_clicked()
+{
+
+}
+
+
+void MainWindow::on_Answer4_clicked()
+{
+
+}
 
