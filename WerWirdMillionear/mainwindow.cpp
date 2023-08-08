@@ -17,22 +17,96 @@
 #include <QBrush>
 #include <Frage.h>
 #include <GameSession.h>
-
-
-
-
+#include <lifelines.h>
 #include <iostream>
 using namespace std ;
 
+Lifeline lifelines;
+
+// ...
+
+// Wenn der "50:50" Button geklickt wird
+void MainWindow::on_fiftyFifty_clicked()
+{
+    // Rufe die fiftyFifty-Funktion der Lifeline auf
+    lifelines.fiftyFifty(fragen[aktuelleFrageIndex].getAntworten(), fragen[aktuelleFrageIndex].getRichtigeAntwort());
+
+    // Leere zwei Buttons mit falschen Antworten
+    vector<string> antworten = fragen[aktuelleFrageIndex].getAntworten();
+
+    // Zufällige Auswahl von zwei falschen Antworten
+    int richtigeAntwortIndex = fragen[aktuelleFrageIndex].getRichtigeAntwort() - 'A';
+    vector<int> falscheAntwortIndizes;
+    for (int i = 0; i < antworten.size(); i++) {
+        if (i != richtigeAntwortIndex) {
+            falscheAntwortIndizes.push_back(i);
+        }
+    }
+
+    random_shuffle(falscheAntwortIndizes.begin(), falscheAntwortIndizes.end());
+
+    // Leere die Texte der ausgewählten falschen Antworten
+    ui->Answer1_4->setText("");
+    ui->Answer2->setText("");
+    ui->Answer3->setText("");
+    ui->Answer4->setText("");
+
+    if (!falscheAntwortIndizes.empty()) {
+        ui->Answer1_4->setText(QString::fromStdString(antworten[falscheAntwortIndizes[0]]));
+    }
+    if (falscheAntwortIndizes.size() > 1) {
+        ui->Answer2->setText(QString::fromStdString(antworten[falscheAntwortIndizes[1]]));
+    }
+}
+
+// Wenn der "Publikum" Button geklickt wird
+void MainWindow::on_audience_clicked()
+{
+    // Rufe die audience-Funktion der Lifeline auf
+    lifelines.audience(fragen[aktuelleFrageIndex].getAntworten(), fragen[aktuelleFrageIndex].getRichtigeAntwort());
+
+    vector<string> antworten = fragen[aktuelleFrageIndex].getAntworten();
+    // Aktualisiere die Anzeige für den Publikumsjoker
+    vector<int> stimmenProzent = lifelines.getAudienceStimmenProzent();
+    ui->Answer1_4->setText(QString::fromStdString(antworten[0]) + " - " + QString::number(stimmenProzent[0]) + "%");
+    ui->Answer2->setText(QString::fromStdString(antworten[1]) + " - " + QString::number(stimmenProzent[1]) + "%");
+    ui->Answer3->setText(QString::fromStdString(antworten[2]) + " - " + QString::number(stimmenProzent[2]) + "%");
+    ui->Answer4->setText(QString::fromStdString(antworten[3]) + " - " + QString::number(stimmenProzent[3]) + "%");
+
+    // Deaktiviere den Button für den Publikumsjoker
+    ui->audience->setEnabled(false);
+}
+
+
+
+
+// Wenn der "Telefon" Button geklickt wird
+void MainWindow::on_phone_clicked()
+{
+    // Rufe die phone-Funktion der Lifeline auf
+    lifelines.phone(fragen[aktuelleFrageIndex].getAntworten(), fragen[aktuelleFrageIndex].getRichtigeAntwort());
+
+    // Markiere die Antwort des Freundes auf den Buttons visuell
+    string freundRat = lifelines.getPhoneAntwort();
+    cout <<freundRat<<endl;
+
+    if (freundRat == "A") {
+        ui->Answer1_4->setStyleSheet("color: green;");
+    } else if (freundRat == "B") {
+        ui->Answer2->setStyleSheet("color: green;");
+    } else if (freundRat == "C") {
+        ui->Answer3->setStyleSheet("color: green;");
+    } else if (freundRat == "D") {
+        ui->Answer4->setStyleSheet("color: green;");
+    }
+    // Hier könntest du die Anzeige für den Telefonjoker aktualisieren, z.B. den Button deaktivieren
+}
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-
-
 
     // Display the logo
     QPixmap pix(":/img/img/logo.png");
@@ -266,17 +340,4 @@ void MainWindow::on_Zurueckstartseite_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->Startseite);
 }
-
-
-void MainWindow::on_Zurueckstartseite_2_clicked()
-{
-     ui->stackedWidget->setCurrentWidget(ui->Startseite);
-}
-
-
-void MainWindow::on_StartseiteBtn_clicked()
-{
-     ui->stackedWidget->setCurrentWidget(ui->Startseite);
-}
-
 
