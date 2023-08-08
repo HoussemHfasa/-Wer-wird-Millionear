@@ -24,7 +24,7 @@
     <item row="0" column="1">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="Startseite">
        <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -589,7 +589,7 @@ border-radius: 10px;</string>
          <string/>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_6">
+       <widget class="QPushButton" name="phone">
         <property name="geometry">
          <rect>
           <x>1020</x>
@@ -774,7 +774,7 @@ font-weight: bold;
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_5">
+       <widget class="QPushButton" name="fiftyFifty">
         <property name="geometry">
          <rect>
           <x>960</x>
@@ -976,7 +976,7 @@ font-weight: bold;
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_7">
+       <widget class="QPushButton" name="audience">
         <property name="geometry">
          <rect>
           <x>900</x>

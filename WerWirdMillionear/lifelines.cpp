@@ -4,10 +4,12 @@
 #include <algorithm> // Für die Funktion std::random_shuffle
 using namespace std;
 #include <cstdlib>   // Für rand() und srand()
+#include <numeric>
 
 Lifeline::Lifeline() : fiftyFiftyUsed(false), audienceUsed(false), phoneUsed(false) {
     // Konstruktor
 }
+
 
 void Lifeline::fiftyFifty(const vector<string>& antworten, char richtigeAntwort) {
     if (!fiftyFiftyUsed) {
@@ -26,6 +28,7 @@ void Lifeline::fiftyFifty(const vector<string>& antworten, char richtigeAntwort)
     }
 }
 
+
 void Lifeline::audience(const std::vector<std::string>& antworten, char richtigeAntwort) {
     if (!audienceUsed) {
         int richtigeAntwortIndex = richtigeAntwort - 'A';
@@ -41,9 +44,13 @@ void Lifeline::audience(const std::vector<std::string>& antworten, char richtige
             }
         }
 
-        cout << "Das Publikum hat folgende Stimmen abgegeben:\n";
+        // Summe der Stimmen berechnen
+        int summeStimmen = accumulate(stimmen.begin(), stimmen.end(), 0);
+
+        // Prozentuale Anteile berechnen und die UI aktualisieren
         for (int i = 0; i < antworten.size(); i++) {
-            cout << char('A' + i) << ": " << stimmen[i] << "%\n";
+            int stimmenProzent = (stimmen[i] * 100) / summeStimmen;
+            // Die UI aktualisieren, um den berechneten Prozentsatz neben dem entsprechenden QPushButton anzuzeigen
         }
 
         audienceUsed = true;
@@ -52,14 +59,25 @@ void Lifeline::audience(const std::vector<std::string>& antworten, char richtige
     }
 }
 
+std::vector<int> Lifeline::getAudienceStimmenProzent() const {
+    return stimmenProzent;
+}
+
+
+
 void Lifeline::phone(const std::vector<std::string>& antworten, char richtigeAntwort) {
     if (!phoneUsed) {
-        string freundRat = "Hmm, ich bin mir nicht sicher, aber ich denke die richtige Antwort ist '" + string(1, richtigeAntwort) + "'.";
+        freundRat = string(1, richtigeAntwort);
         cout << "Ein Freund am Telefon sagt: " << freundRat << "\n";
         phoneUsed = true;
     } else {
         cout << "Der Telefonjoker wurde bereits verwendet.\n";
     }
+}
+
+// Getter-Methode für die Antwort des Freundes
+string Lifeline::getPhoneAntwort() const {
+    return freundRat;
 }
 
 bool Lifeline::isFiftyFiftyUsed() const {

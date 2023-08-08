@@ -26,20 +26,18 @@ void handleAnswerClick(char selectedAnswer);
 private slots:
     void on_StartButton_clicked();
     void on_BestenlisteButton_clicked();
-
     void on_SpielStartButton_clicked();
-
     void on_Answer1_4_clicked();
     void Combobox();
     void onCategoryChanged(QString category);
     void onDifficultyChanged(QString difficulty);
-
-
     void on_Answer2_clicked();
-
     void on_Answer3_clicked();
-
     void on_Answer4_clicked();
+    void on_fiftyFifty_clicked();
+    void on_audience_clicked();
+    void on_phone_clicked();
+
 
 private:
     Ui::MainWindow *ui;
