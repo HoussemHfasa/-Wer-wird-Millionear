@@ -11,7 +11,7 @@ class GameSession {
 public:
     GameSession(Player& spieler);
 
-    void starteSpiel(const std::string& schwierigkeitsgrad, const std::string& kategorie, char AntwortSpieler1);
+    void starteSpiel(const std::string& schwierigkeitsgrad, const std::string& kategorie);
     void beendeSpiel();
     void naechsteFrage();
     void waehleAntwort(int antwortIndex);
