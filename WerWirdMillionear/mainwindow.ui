@@ -20,18 +20,944 @@
    <string notr="true">background-color: rgb(2, 14, 35);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>20</x>
       <y>30</y>
-      <width>1026</width>
+      <width>1152</width>
       <height>454</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_33">
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_15">
+       <item>
+        <widget class="QStackedWidget" name="stackedWidget">
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <widget class="QWidget" name="Startseite">
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <item>
+              <widget class="QLabel" name="Logo_Label">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap>img/logo.png</pixmap>
+               </property>
+               <property name="scaledContents">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="verticalSpacer">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeType">
+                <enum>QSizePolicy::Maximum</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_3">
+               <item>
+                <widget class="QPushButton" name="StartButton">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #4B8A90;
+border: none;
+color: white;
+padding: 10px 20px;
+font-size: 16px;
+font-weight: bold;
+border-radius: 10px;</string>
+                 </property>
+                 <property name="text">
+                  <string>Start</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="BestenlisteButton">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #4B8A90;
+border: none;
+color: white;
+padding: 10px 20px;
+font-size: 16px;
+font-weight: bold;
+border-radius: 10px;</string>
+                 </property>
+                 <property name="text">
+                  <string>Bestenliste</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </item>
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QPushButton" name="spielanleitungButton">
+             <property name="maximumSize">
+              <size>
+               <width>300</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: #4B8A90;
+border: none;
+color: white;
+padding: 10px 20px;
+font-size: 16px;
+font-weight: bold;
+border-radius: 10px;</string>
+             </property>
+             <property name="text">
+              <string> Spielanleitung</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="BestenlisteSeite">
+          <layout class="QGridLayout" name="gridLayout_2">
+           <item row="0" column="0">
+            <layout class="QVBoxLayout" name="verticalLayout_16">
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_4">
+               <item>
+                <widget class="QLabel" name="label_4">
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #4B8A90;
+border: none;
+color: white;
+padding: 10px 20px;
+font-size: 16px;
+font-weight: bold;
+border-radius: 10px;</string>
+                 </property>
+                 <property name="text">
+                  <string>Rangtabelle</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QListView" name="Bestenliste">
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #ffffff;
+border: none;
+color: black;
+padding: 10px 20px;
+font-size: 26px;
+font-weight: bold;
+border-radius: 16px;</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="AnmeldenSeite">
+          <layout class="QVBoxLayout" name="verticalLayout">
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_13">
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_8">
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_5">
+                 <item>
+                  <widget class="QLabel" name="label">
+                   <property name="font">
+                    <font>
+                     <pointsize>40</pointsize>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">
+color: white;
+</string>
+                   </property>
+                   <property name="text">
+                    <string>Geben Sie Ihre Spielenname:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="input_nickname">
+                   <property name="styleSheet">
+                    <string notr="true">background-color: #ffffff;
+border: none;
+color: Black;
+padding: 10px 20px;
+font-size: 16px;
+font-weight: bold;
+border-radius: 10px;
+</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_2">
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_7">
+                   <item>
+                    <widget class="QLabel" name="Kategorie">
+                     <property name="maximumSize">
+                      <size>
+                       <width>300</width>
+                       <height>50</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: #4B8A90;
+border: none;
+color: white;
+padding: 10px 20px;
+font-size: 16px;
+font-weight: bold;
+border-radius: 10px;</string>
+                     </property>
+                     <property name="text">
+                      <string>Kategorie</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QComboBox" name="comboBox_Kategorie">
+                     <property name="minimumSize">
+                      <size>
+                       <width>121</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>300</width>
+                       <height>50</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: #ffffff;
+border: none;
+color: black;
+padding: 10px 20px;
+font-size: 16px;
+font-weight: bold;
+border-radius: 10px;</string>
+                     </property>
+                     <item>
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>allgemein</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Sport</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Wissenschaft</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Kunst und Kultur</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Geschichte</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_6">
+                   <item>
+                    <widget class="QLabel" name="Schwierigkeitsgrad">
+                     <property name="maximumSize">
+                      <size>
+                       <width>200</width>
+                       <height>50</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: #4B8A90;
+border: none;
+color: white;
+padding: 10px 20px;
+font-size: 16px;
+font-weight: bold;
+border-radius: 10px;</string>
+                     </property>
+                     <property name="text">
+                      <string>Schwierigkeitsgrad</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QComboBox" name="comboBox_Schwierigkeitsgrad">
+                     <property name="maximumSize">
+                      <size>
+                       <width>200</width>
+                       <height>50</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: #ffffff;
+border: none;
+color: black;
+padding: 10px 20px;
+font-size: 16px;
+font-weight: bold;
+border-radius: 10px;</string>
+                     </property>
+                     <item>
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>einfach</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>mittelschwer</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>schwer</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QPushButton" name="SpielStartButton">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: #4B8A90;
+border: none;
+color: white;
+padding: 10px 20px;
+font-size: 16px;
+font-weight: bold;
+border-radius: 10px;</string>
+               </property>
+               <property name="text">
+                <string>Beginne zu spielen</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="SpielSeite">
+          <layout class="QGridLayout" name="gridLayout">
+           <item row="0" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_5">
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_12">
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_11">
+                 <item>
+                  <widget class="QLabel" name="LogoSpiel">
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="pixmap">
+                    <pixmap resource="resource.qrc">:/img/img/logo.png</pixmap>
+                   </property>
+                   <property name="scaledContents">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="getFrage">
+                   <property name="styleSheet">
+                    <string notr="true">background-color: #ffffff;
+border: none;
+color: Black;
+padding: 10px 20px;
+font-size: 16px;
+font-weight: bold;
+border-radius: 10px;
+</string>
+                   </property>
+                   <property name="text">
+                    <string>TextLabel</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout">
+                   <item>
+                    <layout class="QVBoxLayout" name="verticalLayout_9">
+                     <item>
+                      <widget class="QPushButton" name="Answer1_4">
+                       <property name="styleSheet">
+                        <string notr="true">background-color: #ffffff;
+border: none;
+color: Black;
+padding: 10px 20px;
+font-size: 16px;
+font-weight: bold;
+border-radius: 25px;
+</string>
+                       </property>
+                       <property name="text">
+                        <string>PushButton</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="Answer3">
+                       <property name="styleSheet">
+                        <string notr="true">background-color: #ffffff;
+border: none;
+color: Black;
+padding: 10px 20px;
+font-size: 16px;
+font-weight: bold;
+border-radius: 25px;
+</string>
+                       </property>
+                       <property name="text">
+                        <string>PushButton</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QVBoxLayout" name="verticalLayout_10">
+                     <item>
+                      <widget class="QPushButton" name="Answer2">
+                       <property name="styleSheet">
+                        <string notr="true">background-color: #ffffff;
+border: none;
+color: Black;
+padding: 10px 20px;
+font-size: 16px;
+font-weight: bold;
+border-radius: 25px;
+</string>
+                       </property>
+                       <property name="text">
+                        <string>PushButton</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="Answer4">
+                       <property name="styleSheet">
+                        <string notr="true">background-color: #ffffff;
+border: none;
+color: Black;
+padding: 10px 20px;
+font-size: 16px;
+font-weight: bold;
+border-radius: 25px;
+</string>
+                       </property>
+                       <property name="text">
+                        <string>PushButton</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_14" stretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_4">
+                 <item>
+                  <widget class="QPushButton" name="pushButton_7">
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="autoFillBackground">
+                    <bool>false</bool>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">back-ground-color: transparent;
+border-image:url(:/img/img/people.png);
+border:none;
+background-repeat:none;</string>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="pushButton_5">
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="autoFillBackground">
+                    <bool>false</bool>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">back-ground-color: transparent;
+border-image:url(:/img/half.png);
+border:none;
+background-repeat:none;</string>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="pushButton_6">
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="autoFillBackground">
+                    <bool>false</bool>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">back-ground-color: transparent;
+border-image:url(:/img/call.png);
+border:none;
+background-repeat:none;</string>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_21">
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #473662;
+border: none;
+color: White;
+
+font-weight: bold;
+
+</string>
+                 </property>
+                 <property name="text">
+                  <string>1.000.000€</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_20">
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #473662;
+border: none;
+color: White;
+
+font-weight: bold;
+
+</string>
+                 </property>
+                 <property name="text">
+                  <string>500.000€</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_19">
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #473662;
+border: none;
+color: White;
+
+font-weight: bold;
+
+</string>
+                 </property>
+                 <property name="text">
+                  <string>250.000€</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_18">
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #473662;
+border: none;
+color: White;
+
+font-weight: bold;
+
+</string>
+                 </property>
+                 <property name="text">
+                  <string>125.000€</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_17">
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #473662;
+border: none;
+color: White;
+
+font-weight: bold;
+
+</string>
+                 </property>
+                 <property name="text">
+                  <string>64.000€</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_16">
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #473662;
+border: none;
+color: White;
+
+font-weight: bold;
+
+</string>
+                 </property>
+                 <property name="text">
+                  <string>32.000€</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_15">
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #473662;
+border: none;
+color: White;
+
+font-weight: bold;
+
+</string>
+                 </property>
+                 <property name="text">
+                  <string>16.000€</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_14">
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #473662;
+border: none;
+color: White;
+
+font-weight: bold;
+
+</string>
+                 </property>
+                 <property name="text">
+                  <string>8.000€</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_13">
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #473662;
+border: none;
+color: White;
+
+font-weight: bold;
+
+</string>
+                 </property>
+                 <property name="text">
+                  <string>4.000€</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_12">
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #473662;
+border: none;
+color: White;
+
+font-weight: bold;
+
+</string>
+                 </property>
+                 <property name="text">
+                  <string>2.000€</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_11">
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #473662;
+border: none;
+color: White;
+
+font-weight: bold;
+
+</string>
+                 </property>
+                 <property name="text">
+                  <string>1.000€</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_10">
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #473662;
+border: none;
+color: White;
+
+font-weight: bold;
+
+</string>
+                 </property>
+                 <property name="text">
+                  <string>500€</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="E300">
+                 <property name="font">
+                  <font>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #473662;
+border: none;
+color: White;
+
+font-weight: bold;
+
+</string>
+                 </property>
+                 <property name="text">
+                  <string>300€</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="E200">
+                 <property name="font">
+                  <font>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #473662;
+border: none;
+color: White;
+
+font-weight: bold;
+
+</string>
+                 </property>
+                 <property name="text">
+                  <string>200€</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="E100">
+                 <property name="font">
+                  <font>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="autoFillBackground">
+                  <bool>false</bool>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #473662;
+border: none;
+color: White;
+
+font-weight: bold;
+
+</string>
+                 </property>
+                 <property name="text">
+                  <string>100€</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="SpielanleitungPage">
+          <layout class="QGridLayout" name="gridLayout_3">
+           <item row="0" column="0">
+            <layout class="QVBoxLayout" name="verticalLayout_15">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_6"/>
+             </item>
+             <item>
+              <widget class="QTextBrowser" name="textBrowser">
+               <property name="styleSheet">
+                <string notr="true">background-color: #ffffff;
+border: none;
+color: black;
+padding: 10px 20px;
+font-size: 26px;
+font-weight: bold;
+border-radius: 16px;</string>
+               </property>
+               <property name="html">
+                <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:26px; font-weight:700; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px; color:#aa0000;&quot;&gt;Spielanleitung für &amp;quot;Wer wird Millionär &amp;quot;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Willkommen zu &amp;quot;Wer wird Millionär &amp;quot;! Ein spannendes Quizspiel, bei dem du dein Wissen in verschiedenen Kategorien unter Beweis stellen kannst. Lass uns gemeinsam die Spielregeln erkunden und herausfinden, ob du es bis zur Million schaffst.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px; color:#005500;&quot;&gt;Spielziel&lt;/span&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;: Dein Ziel ist es, die 15 Fragen richtig zu beantworten und dabei den Hauptpreis von einer Million zu gewinnen. Achte darauf, jede Frage sorgfältig zu überlegen, denn bei einer falschen Antwort endet das Spiel.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px; color:#0000ff;&quot;&gt;Spielstart:&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;
+&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Startseite: Auf der Startseite hast du zwei Optionen: &amp;quot;Bestenliste&amp;quot; und &amp;quot;Start&amp;quot;.&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Bestenliste: Hier kannst du die Liste der besten Spieler und ihre höchsten Punktzahlen einsehen.&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Start: Klicke auf &amp;quot;Start&amp;quot;, um zum Einloggen-Bereich zu gelangen.&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px; color:#0000ff;&quot;&gt;Einloggen:&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;
+&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Wähle deine bevorzugte Schwierigkeitsstufe und Kategorie aus den Dropdown-Menüs aus.&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Gib deinen Spitznamen (Nickname) ein, unter dem du im Spiel bekannt sein möchtest.&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Klicke auf &amp;quot;Beginne zu spielen&amp;quot;, um das Spiel zu starten.&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px; color:#0000ff;&quot;&gt;Spielablauf:&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;
+&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Spielseite: Du befindest dich nun auf der Spielseite. Hier wirst du nacheinander 15 Fragen beantworten.&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Frage und Antworten: Jede Frage wird mit vier Antwortmöglichkeiten präsentiert. Wähle die richtige Antwort aus.&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Joker: Du hast drei Joker zur Verfügung:&lt;/span&gt;
+&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 2;&quot;&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;50/50: Dieser Joker entfernt zwei falsche Antwortmöglichkeiten.&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Frage das Publikum: Dieser Joker zeigt dir die Tendenz der Zuschauer bei der Beantwortung der Frage.&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Frage einen Freund: Dieser Joker erlaubt es dir, einen Freund um Rat zu fragen.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px; color:#0000ff;&quot;&gt;Spielgewinn:&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;
+&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Bei jeder richtigen Antwort erhöhst du deine Gewinnsumme. Schaffst du es bis zur 15. Frage, gewinnst du eine Million.&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Bei einer falschen Antwort endet das Spiel, und du gewinnst den zuletzt erreichten Betrag.&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Spielende: Herzlichen Glückwunsch, wenn du die Millionenfrage richtig beantwortet hast! Dein Gewinn wird in der Bestenliste gespeichert. Wenn du das Spiel beendest, bevor du die Million gewinnst, wird dein aktueller Gewinn ebenfalls in der Bestenliste festgehalten.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Viel Erfolg bei &amp;quot;Wer wird Millionär - Quizio&amp;quot;! Teste dein Wissen, nutze deine Joker klug und werde zum Millionär!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
        <item>
         <widget class="QPushButton" name="Zurueckstartseite_2">
          <property name="maximumSize">
@@ -68,932 +994,6 @@ border-radius: 10px;</string>
         </spacer>
        </item>
       </layout>
-     </item>
-     <item>
-      <widget class="QStackedWidget" name="stackedWidget">
-       <property name="currentIndex">
-        <number>3</number>
-       </property>
-       <widget class="QWidget" name="Startseite">
-        <layout class="QVBoxLayout" name="verticalLayout_3">
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_2">
-           <item>
-            <widget class="QLabel" name="Logo_Label">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="pixmap">
-              <pixmap>img/logo.png</pixmap>
-             </property>
-             <property name="scaledContents">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <spacer name="verticalSpacer">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeType">
-              <enum>QSizePolicy::Maximum</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>40</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item alignment="Qt::AlignHCenter">
-            <widget class="QPushButton" name="spielanleitungButton">
-             <property name="maximumSize">
-              <size>
-               <width>300</width>
-               <height>50</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-color: #4B8A90;
-border: none;
-color: white;
-padding: 10px 20px;
-font-size: 16px;
-font-weight: bold;
-border-radius: 10px;</string>
-             </property>
-             <property name="text">
-              <string> Spielanleitung</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_3">
-             <item>
-              <widget class="QPushButton" name="StartButton">
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">background-color: #4B8A90;
-border: none;
-color: white;
-padding: 10px 20px;
-font-size: 16px;
-font-weight: bold;
-border-radius: 10px;</string>
-               </property>
-               <property name="text">
-                <string>Start</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="BestenlisteButton">
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">background-color: #4B8A90;
-border: none;
-color: white;
-padding: 10px 20px;
-font-size: 16px;
-font-weight: bold;
-border-radius: 10px;</string>
-               </property>
-               <property name="text">
-                <string>Bestenliste</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QWidget" name="BestenlisteSeite">
-        <layout class="QGridLayout" name="gridLayout_2">
-         <item row="0" column="0">
-          <layout class="QVBoxLayout" name="verticalLayout_16">
-           <item>
-            <layout class="QVBoxLayout" name="verticalLayout_4">
-             <item>
-              <widget class="QLabel" name="label_4">
-               <property name="styleSheet">
-                <string notr="true">background-color: #4B8A90;
-border: none;
-color: white;
-padding: 10px 20px;
-font-size: 16px;
-font-weight: bold;
-border-radius: 10px;</string>
-               </property>
-               <property name="text">
-                <string>Rangtabelle</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QListView" name="Bestenliste">
-               <property name="styleSheet">
-                <string notr="true">background-color: #ffffff;
-border: none;
-color: black;
-padding: 10px 20px;
-font-size: 26px;
-font-weight: bold;
-border-radius: 16px;</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QWidget" name="AnmeldenSeite">
-        <layout class="QVBoxLayout" name="verticalLayout">
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_13">
-           <item>
-            <layout class="QVBoxLayout" name="verticalLayout_8">
-             <item>
-              <layout class="QVBoxLayout" name="verticalLayout_5">
-               <item>
-                <widget class="QLabel" name="label">
-                 <property name="font">
-                  <font>
-                   <pointsize>40</pointsize>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">
-color: white;
-</string>
-                 </property>
-                 <property name="text">
-                  <string>Geben Sie Ihre Spielenname:</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLineEdit" name="input_nickname">
-                 <property name="styleSheet">
-                  <string notr="true">background-color: #ffffff;
-border: none;
-color: Black;
-padding: 10px 20px;
-font-size: 16px;
-font-weight: bold;
-border-radius: 10px;
-</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_2">
-               <item>
-                <layout class="QVBoxLayout" name="verticalLayout_7">
-                 <item>
-                  <widget class="QLabel" name="Kategorie">
-                   <property name="maximumSize">
-                    <size>
-                     <width>300</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">background-color: #4B8A90;
-border: none;
-color: white;
-padding: 10px 20px;
-font-size: 16px;
-font-weight: bold;
-border-radius: 10px;</string>
-                   </property>
-                   <property name="text">
-                    <string>Kategorie</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QComboBox" name="comboBox_Kategorie">
-                   <property name="minimumSize">
-                    <size>
-                     <width>121</width>
-                     <height>0</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>300</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">background-color: #ffffff;
-border: none;
-color: black;
-padding: 10px 20px;
-font-size: 16px;
-font-weight: bold;
-border-radius: 10px;</string>
-                   </property>
-                   <item>
-                    <property name="text">
-                     <string/>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>allgemein</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Sport</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Wissenschaft</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Kunst und Kultur</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Geschichte</string>
-                    </property>
-                   </item>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <layout class="QVBoxLayout" name="verticalLayout_6">
-                 <item>
-                  <widget class="QLabel" name="Schwierigkeitsgrad">
-                   <property name="maximumSize">
-                    <size>
-                     <width>200</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">background-color: #4B8A90;
-border: none;
-color: white;
-padding: 10px 20px;
-font-size: 16px;
-font-weight: bold;
-border-radius: 10px;</string>
-                   </property>
-                   <property name="text">
-                    <string>Schwierigkeitsgrad</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QComboBox" name="comboBox_Schwierigkeitsgrad">
-                   <property name="maximumSize">
-                    <size>
-                     <width>200</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">background-color: #ffffff;
-border: none;
-color: black;
-padding: 10px 20px;
-font-size: 16px;
-font-weight: bold;
-border-radius: 10px;</string>
-                   </property>
-                   <item>
-                    <property name="text">
-                     <string/>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>einfach</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>mittelschwer</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>schwer</string>
-                    </property>
-                   </item>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-              </layout>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <widget class="QPushButton" name="SpielStartButton">
-             <property name="cursor">
-              <cursorShape>PointingHandCursor</cursorShape>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-color: #4B8A90;
-border: none;
-color: white;
-padding: 10px 20px;
-font-size: 16px;
-font-weight: bold;
-border-radius: 10px;</string>
-             </property>
-             <property name="text">
-              <string>Beginne zu spielen</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QWidget" name="SpielSeite">
-        <layout class="QGridLayout" name="gridLayout">
-         <item row="0" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_5">
-           <item>
-            <layout class="QVBoxLayout" name="verticalLayout_12">
-             <item>
-              <layout class="QVBoxLayout" name="verticalLayout_11">
-               <item>
-                <widget class="QLabel" name="LogoSpiel">
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="pixmap">
-                  <pixmap resource="resource.qrc">:/img/img/logo.png</pixmap>
-                 </property>
-                 <property name="scaledContents">
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="getFrage">
-                 <property name="styleSheet">
-                  <string notr="true">background-color: #ffffff;
-border: none;
-color: Black;
-padding: 10px 20px;
-font-size: 16px;
-font-weight: bold;
-border-radius: 10px;
-</string>
-                 </property>
-                 <property name="text">
-                  <string>TextLabel</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout">
-                 <item>
-                  <layout class="QVBoxLayout" name="verticalLayout_9">
-                   <item>
-                    <widget class="QPushButton" name="Answer1_4">
-                     <property name="styleSheet">
-                      <string notr="true">background-color: #ffffff;
-border: none;
-color: Black;
-padding: 10px 20px;
-font-size: 16px;
-font-weight: bold;
-border-radius: 25px;
-</string>
-                     </property>
-                     <property name="text">
-                      <string>PushButton</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QPushButton" name="Answer3">
-                     <property name="styleSheet">
-                      <string notr="true">background-color: #ffffff;
-border: none;
-color: Black;
-padding: 10px 20px;
-font-size: 16px;
-font-weight: bold;
-border-radius: 25px;
-</string>
-                     </property>
-                     <property name="text">
-                      <string>PushButton</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <layout class="QVBoxLayout" name="verticalLayout_10">
-                   <item>
-                    <widget class="QPushButton" name="Answer2">
-                     <property name="styleSheet">
-                      <string notr="true">background-color: #ffffff;
-border: none;
-color: Black;
-padding: 10px 20px;
-font-size: 16px;
-font-weight: bold;
-border-radius: 25px;
-</string>
-                     </property>
-                     <property name="text">
-                      <string>PushButton</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QPushButton" name="Answer4">
-                     <property name="styleSheet">
-                      <string notr="true">background-color: #ffffff;
-border: none;
-color: Black;
-padding: 10px 20px;
-font-size: 16px;
-font-weight: bold;
-border-radius: 25px;
-</string>
-                     </property>
-                     <property name="text">
-                      <string>PushButton</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                </layout>
-               </item>
-              </layout>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <layout class="QVBoxLayout" name="verticalLayout_14" stretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">
-             <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_4">
-               <item>
-                <widget class="QPushButton" name="pushButton_7">
-                 <property name="cursor">
-                  <cursorShape>PointingHandCursor</cursorShape>
-                 </property>
-                 <property name="autoFillBackground">
-                  <bool>false</bool>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">back-ground-color: transparent;
-border-image:url(:/img/img/people.png);
-border:none;
-background-repeat:none;</string>
-                 </property>
-                 <property name="text">
-                  <string/>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QPushButton" name="pushButton_5">
-                 <property name="cursor">
-                  <cursorShape>PointingHandCursor</cursorShape>
-                 </property>
-                 <property name="autoFillBackground">
-                  <bool>false</bool>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">back-ground-color: transparent;
-border-image:url(:/img/half.png);
-border:none;
-background-repeat:none;</string>
-                 </property>
-                 <property name="text">
-                  <string/>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QPushButton" name="pushButton_6">
-                 <property name="cursor">
-                  <cursorShape>PointingHandCursor</cursorShape>
-                 </property>
-                 <property name="autoFillBackground">
-                  <bool>false</bool>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">back-ground-color: transparent;
-border-image:url(:/img/call.png);
-border:none;
-background-repeat:none;</string>
-                 </property>
-                 <property name="text">
-                  <string/>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_21">
-               <property name="styleSheet">
-                <string notr="true">background-color: #473662;
-border: none;
-color: White;
-
-font-weight: bold;
-
-</string>
-               </property>
-               <property name="text">
-                <string>1.000.000€</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_20">
-               <property name="styleSheet">
-                <string notr="true">background-color: #473662;
-border: none;
-color: White;
-
-font-weight: bold;
-
-</string>
-               </property>
-               <property name="text">
-                <string>500.000€</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_19">
-               <property name="styleSheet">
-                <string notr="true">background-color: #473662;
-border: none;
-color: White;
-
-font-weight: bold;
-
-</string>
-               </property>
-               <property name="text">
-                <string>250.000€</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_18">
-               <property name="styleSheet">
-                <string notr="true">background-color: #473662;
-border: none;
-color: White;
-
-font-weight: bold;
-
-</string>
-               </property>
-               <property name="text">
-                <string>125.000€</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_17">
-               <property name="styleSheet">
-                <string notr="true">background-color: #473662;
-border: none;
-color: White;
-
-font-weight: bold;
-
-</string>
-               </property>
-               <property name="text">
-                <string>64.000€</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_16">
-               <property name="styleSheet">
-                <string notr="true">background-color: #473662;
-border: none;
-color: White;
-
-font-weight: bold;
-
-</string>
-               </property>
-               <property name="text">
-                <string>32.000€</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_15">
-               <property name="styleSheet">
-                <string notr="true">background-color: #473662;
-border: none;
-color: White;
-
-font-weight: bold;
-
-</string>
-               </property>
-               <property name="text">
-                <string>16.000€</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_14">
-               <property name="styleSheet">
-                <string notr="true">background-color: #473662;
-border: none;
-color: White;
-
-font-weight: bold;
-
-</string>
-               </property>
-               <property name="text">
-                <string>8.000€</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_13">
-               <property name="styleSheet">
-                <string notr="true">background-color: #473662;
-border: none;
-color: White;
-
-font-weight: bold;
-
-</string>
-               </property>
-               <property name="text">
-                <string>4.000€</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_12">
-               <property name="styleSheet">
-                <string notr="true">background-color: #473662;
-border: none;
-color: White;
-
-font-weight: bold;
-
-</string>
-               </property>
-               <property name="text">
-                <string>2.000€</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_11">
-               <property name="styleSheet">
-                <string notr="true">background-color: #473662;
-border: none;
-color: White;
-
-font-weight: bold;
-
-</string>
-               </property>
-               <property name="text">
-                <string>1.000€</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_10">
-               <property name="styleSheet">
-                <string notr="true">background-color: #473662;
-border: none;
-color: White;
-
-font-weight: bold;
-
-</string>
-               </property>
-               <property name="text">
-                <string>500€</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="E300">
-               <property name="font">
-                <font>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">background-color: #473662;
-border: none;
-color: White;
-
-font-weight: bold;
-
-</string>
-               </property>
-               <property name="text">
-                <string>300€</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="E200">
-               <property name="font">
-                <font>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">background-color: #473662;
-border: none;
-color: White;
-
-font-weight: bold;
-
-</string>
-               </property>
-               <property name="text">
-                <string>200€</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="E100">
-               <property name="font">
-                <font>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="autoFillBackground">
-                <bool>false</bool>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">background-color: #473662;
-border: none;
-color: White;
-
-font-weight: bold;
-
-</string>
-               </property>
-               <property name="text">
-                <string>100€</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QWidget" name="SpielanleitungPage">
-        <layout class="QGridLayout" name="gridLayout_3">
-         <item row="0" column="0">
-          <layout class="QVBoxLayout" name="verticalLayout_15">
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_6"/>
-           </item>
-           <item>
-            <widget class="QTextBrowser" name="textBrowser">
-             <property name="styleSheet">
-              <string notr="true">background-color: #ffffff;
-border: none;
-color: black;
-padding: 10px 20px;
-font-size: 26px;
-font-weight: bold;
-border-radius: 16px;</string>
-             </property>
-             <property name="html">
-              <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:26px; font-weight:700; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px; color:#aa0000;&quot;&gt;Spielanleitung für &amp;quot;Wer wird Millionär &amp;quot;&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Willkommen zu &amp;quot;Wer wird Millionär &amp;quot;! Ein spannendes Quizspiel, bei dem du dein Wissen in verschiedenen Kategorien unter Beweis stellen kannst. Lass uns gemeinsam die Spielregeln erkunden und herausfinden, ob du es bis zur Million schaffst.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px; color:#005500;&quot;&gt;Spielziel&lt;/span&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;: Dein Ziel ist es, die 15 Fragen richtig zu beantworten und dabei den Hauptpreis von einer Million zu gewinnen. Achte darauf, jede Frage sorgfältig zu überlegen, denn bei einer falschen Antwort endet das Spiel.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px; color:#0000ff;&quot;&gt;Spielstart:&lt;/span&gt;&lt;/p&gt;
-&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;
-&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Startseite: Auf der Startseite hast du zwei Optionen: &amp;quot;Bestenliste&amp;quot; und &amp;quot;Start&amp;quot;.&lt;/span&gt;&lt;/li&gt;
-&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Bestenliste: Hier kannst du die Liste der besten Spieler und ihre höchsten Punktzahlen einsehen.&lt;/span&gt;&lt;/li&gt;
-&lt;li style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Start: Klicke auf &amp;quot;Start&amp;quot;, um zum Einloggen-Bereich zu gelangen.&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px; color:#0000ff;&quot;&gt;Einloggen:&lt;/span&gt;&lt;/p&gt;
-&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;
-&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Wähle deine bevorzugte Schwierigkeitsstufe und Kategorie aus den Dropdown-Menüs aus.&lt;/span&gt;&lt;/li&gt;
-&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Gib deinen Spitznamen (Nickname) ein, unter dem du im Spiel bekannt sein möchtest.&lt;/span&gt;&lt;/li&gt;
-&lt;li style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Klicke auf &amp;quot;Beginne zu spielen&amp;quot;, um das Spiel zu starten.&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px; color:#0000ff;&quot;&gt;Spielablauf:&lt;/span&gt;&lt;/p&gt;
-&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;
-&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Spielseite: Du befindest dich nun auf der Spielseite. Hier wirst du nacheinander 15 Fragen beantworten.&lt;/span&gt;&lt;/li&gt;
-&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Frage und Antworten: Jede Frage wird mit vier Antwortmöglichkeiten präsentiert. Wähle die richtige Antwort aus.&lt;/span&gt;&lt;/li&gt;
-&lt;li style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Joker: Du hast drei Joker zur Verfügung:&lt;/span&gt;
-&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 2;&quot;&gt;
-&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;50/50: Dieser Joker entfernt zwei falsche Antwortmöglichkeiten.&lt;/span&gt;&lt;/li&gt;
-&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Frage das Publikum: Dieser Joker zeigt dir die Tendenz der Zuschauer bei der Beantwortung der Frage.&lt;/span&gt;&lt;/li&gt;
-&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Frage einen Freund: Dieser Joker erlaubt es dir, einen Freund um Rat zu fragen.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ol&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px; color:#0000ff;&quot;&gt;Spielgewinn:&lt;/span&gt;&lt;/p&gt;
-&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;
-&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Bei jeder richtigen Antwort erhöhst du deine Gewinnsumme. Schaffst du es bis zur 15. Frage, gewinnst du eine Million.&lt;/span&gt;&lt;/li&gt;
-&lt;li style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Bei einer falschen Antwort endet das Spiel, und du gewinnst den zuletzt erreichten Betrag.&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Spielende: Herzlichen Glückwunsch, wenn du die Millionenfrage richtig beantwortet hast! Dein Gewinn wird in der Bestenliste gespeichert. Wenn du das Spiel beendest, bevor du die Million gewinnst, wird dein aktueller Gewinn ebenfalls in der Bestenliste festgehalten.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26px;&quot;&gt;Viel Erfolg bei &amp;quot;Wer wird Millionär - Quizio&amp;quot;! Teste dein Wissen, nutze deine Joker klug und werde zum Millionär!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </widget>
-      </widget>
      </item>
     </layout>
    </widget>
