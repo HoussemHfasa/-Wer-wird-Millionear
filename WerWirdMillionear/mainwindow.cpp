@@ -186,12 +186,9 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
         aktuelleFrageIndex++;
 
         if (aktuelleFrageIndex < fragen.size()) {
-            // Display the next question and answers
-            const Frage& nächsteFrage = fragen[aktuelleFrageIndex];
-                vector<string> antworten = nächsteFrage.getAntworten();
-
-                                ui->getFrage->setText(QString::fromStdString(nächsteFrage.getFrage()));
-                                ui->Answer1_4->setText(QString::fromStdString(antworten[0]));
+            vector<string> antworten = fragen[0].getAntworten();
+            ui->getFrage->setText(QString::fromStdString(fragen[0].getFrage()));
+            ui->Answer1_4->setText(QString::fromStdString(antworten[0]));
             ui->Answer2->setText(QString::fromStdString(antworten[1]));
             ui->Answer3->setText(QString::fromStdString(antworten[2]));
             ui->Answer4->setText(QString::fromStdString(antworten[3]));
