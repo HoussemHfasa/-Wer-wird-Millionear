@@ -31,7 +31,8 @@ MainWindow::MainWindow(QWidget *parent)
     // Display the logo
     QPixmap pix(":/img/img/logo.png");
     ui->Logo_Label->setPixmap(pix);
-
+    // Initialize the pop-up dialog
+    spielanleitungDialog = new QDialog(this);
 
     QPixmap pix2(":/img/img/logo.png");
     ui->LogoSpiel->setPixmap(pix2);
@@ -292,5 +293,19 @@ void MainWindow::on_Answer3_clicked()
 void MainWindow::on_Answer4_clicked()
 {
 
+}
+
+
+void MainWindow::on_spielanleitungButton_clicked()
+{
+    // Load the UI design of SpielanleitungPage
+    Ui::SpielanleitungPage dialogUi;
+    dialogUi.setupUi(spielanleitungDialog);
+
+    // Optionally, connect a close button within the pop-up dialog to close it
+    connect(dialogUi.closeButton, &QPushButton::clicked, spielanleitungDialog, &QDialog::accept);
+
+    // Show the pop-up dialog as a modal dialog
+    spielanleitungDialog->exec();
 }
 
