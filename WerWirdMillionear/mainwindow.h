@@ -39,6 +39,10 @@ private slots:
 
     void on_Zurueckstartseite_clicked();
 
+    void on_Zurueckstartseite_2_clicked();
+
+    void on_StartseiteBtn_clicked();
+
 private:
     Ui::MainWindow *ui;
     QLabel *imageLabel;

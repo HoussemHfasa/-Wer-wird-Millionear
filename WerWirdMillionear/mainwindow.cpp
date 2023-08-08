@@ -18,6 +18,9 @@
 #include <Frage.h>
 #include <GameSession.h>
 
+
+
+
 #include <iostream>
 using namespace std ;
 
@@ -27,6 +30,9 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+
+
 
     // Display the logo
     QPixmap pix(":/img/img/logo.png");
@@ -260,4 +266,17 @@ void MainWindow::on_Zurueckstartseite_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->Startseite);
 }
+
+
+void MainWindow::on_Zurueckstartseite_2_clicked()
+{
+     ui->stackedWidget->setCurrentWidget(ui->Startseite);
+}
+
+
+void MainWindow::on_StartseiteBtn_clicked()
+{
+     ui->stackedWidget->setCurrentWidget(ui->Startseite);
+}
+
 
