@@ -15,6 +15,11 @@ public:
     explicit settings(QWidget *parent = nullptr);
     ~settings();
 
+private slots:
+    void on_sliderProgress_sliderMoved(int position);
+
+    void on_sliderVolume_sliderMoved(int position);
+
 private:
     Ui::settings *ui;
 };

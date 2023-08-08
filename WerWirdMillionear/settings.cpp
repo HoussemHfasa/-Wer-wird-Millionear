@@ -12,3 +12,15 @@ settings::~settings()
 {
     delete ui;
 }
+
+void settings::on_sliderProgress_sliderMoved(int position)
+{
+
+}
+
+
+void settings::on_sliderVolume_sliderMoved(int position)
+{
+
+}
+
