@@ -243,15 +243,67 @@ void MainWindow::on_SpielStartButton_clicked()
 
     // Spiel.vorbereiteteFragen("einfach","Geschichte");
 
-    vector<string> antworten = fragen[0].getAntworten();
-    ui->getFrage->setText(QString::fromStdString(fragen[0].getFrage()));
+
+
+    // Store the index of the current question
+    //aktuelleFrageIndex = 0;
+    currentscore=player.getCurrentScore();
+    switch (currentscore){
+    case 0:
+        aktuelleFrageIndex=0;
+        break;
+    case 100:
+        aktuelleFrageIndex=1;
+        break;
+    case 200:
+        aktuelleFrageIndex=2;
+        break;
+    case 300:
+        aktuelleFrageIndex=3;
+        break;
+    case 500:
+        aktuelleFrageIndex=4;
+        break;
+    case 1000:
+        aktuelleFrageIndex=5;
+        break;
+    case 2000:
+        aktuelleFrageIndex=6;
+        break;
+    case 4000:
+        aktuelleFrageIndex=7;
+        break;
+    case 8000:
+        aktuelleFrageIndex=8;
+        break;
+    case 16000:
+        aktuelleFrageIndex=9;
+        break;
+    case 32000:
+        aktuelleFrageIndex=10;
+        break;
+    case 64000:
+        aktuelleFrageIndex=11;
+        break;
+    case 125000:
+        aktuelleFrageIndex=12;
+        break;
+    case 250000:
+        aktuelleFrageIndex=13;
+        break;
+    case 500000:
+        aktuelleFrageIndex=14;
+        break;
+    case 1000000:
+        aktuelleFrageIndex=15;
+        break;
+    }
+    vector<string> antworten = fragen[aktuelleFrageIndex].getAntworten();
+    ui->getFrage->setText(QString::fromStdString(fragen[aktuelleFrageIndex].getFrage()));
     ui->Answer1_4->setText(QString::fromStdString(antworten[0]));
     ui->Answer2->setText(QString::fromStdString(antworten[1]));
     ui->Answer3->setText(QString::fromStdString(antworten[2]));
     ui->Answer4->setText(QString::fromStdString(antworten[3]));
-
-    // Store the index of the current question
-    aktuelleFrageIndex = 0;
 
 
 

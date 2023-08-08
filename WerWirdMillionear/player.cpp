@@ -1,6 +1,7 @@
 #include "Player.h"
 #include <QSqlQuery>
 #include <QtSql/QSqlError>
+#include <iostream>
 using namespace std;
 Player::Player(const std::string& nickname) : nickname(nickname), bestScore(0), currentScore(0) {
     QSqlQuery query;
