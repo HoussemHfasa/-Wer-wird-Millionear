@@ -74,7 +74,7 @@ void MainWindow::on_audience_clicked()
     ui->Answer4->setText(QString::fromStdString(antworten[3]) + " - " + QString::number(stimmenProzent[3]) + "%");
 
     // Deaktiviere den Button für den Publikumsjoker
-    ui->audience->setEnabled(false);
+    //ui->audience->setEnabled(false);
 }
 
 
@@ -388,8 +388,9 @@ void MainWindow::on_spielanleitungButton_clicked()
 }
 
 
-void MainWindow::on_Zurueckstartseite_clicked()
+
+void MainWindow::on_Zurueckstartseite_2_clicked()
 {
-    ui->stackedWidget->setCurrentWidget(ui->Startseite);
+      ui->stackedWidget->setCurrentWidget(ui->Startseite);
 }
 
