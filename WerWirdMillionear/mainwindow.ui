@@ -55,7 +55,7 @@ border-radius: 10px;</string>
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>0</number>
+             <number>2</number>
             </property>
             <widget class="QWidget" name="Startseite">
              <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -548,7 +548,7 @@ border-radius: 25px;
                   <item>
                    <layout class="QHBoxLayout" name="horizontalLayout_4">
                     <item>
-                     <widget class="QPushButton" name="pushButton_7">
+                     <widget class="QPushButton" name="audience">
                       <property name="cursor">
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
@@ -569,7 +569,7 @@ height: 50px;</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QPushButton" name="pushButton_5">
+                     <widget class="QPushButton" name="fiftyFifty">
                       <property name="cursor">
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
@@ -590,7 +590,7 @@ height: 50px;</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QPushButton" name="pushButton_6">
+                     <widget class="QPushButton" name="phone">
                       <property name="cursor">
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
@@ -999,7 +999,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <x>0</x>
      <y>0</y>
      <width>1111</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

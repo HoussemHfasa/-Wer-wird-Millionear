@@ -39,7 +39,6 @@ private slots:
     void on_fiftyFifty_clicked();
     void on_audience_clicked();
     void on_phone_clicked();
-    void on_spielanleitungButton_clicked();
 
 
     void on_Zurueckstartseite_2_clicked();
