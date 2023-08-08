@@ -6,5 +6,6 @@
     <qresource prefix="/">
         <file>img/call.png</file>
         <file>img/half.png</file>
+        <file>img/setting.png</file>
     </qresource>
 </RCC>
