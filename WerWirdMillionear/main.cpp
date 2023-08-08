@@ -6,7 +6,6 @@
 #include <QDir>
 #include <QFile>
 #include <QProcessEnvironment>
-
 #include <iostream>
 using namespace  std;
 
