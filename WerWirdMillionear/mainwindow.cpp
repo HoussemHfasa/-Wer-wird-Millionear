@@ -166,7 +166,7 @@ void MainWindow::on_SpielStartButton_clicked()
     ui->Answer4->setText(QString::fromStdString(antworten[3]));
 
     // Store the index of the current question
-    int aktuelleFrageIndex = 0;
+    aktuelleFrageIndex = 0;
 
     // Connect the answer buttons to handleAnswerClick
     connect(ui->Answer1_4, &QPushButton::clicked, this, [=]() { handleAnswerClick('A'); });
@@ -179,6 +179,7 @@ void MainWindow::on_SpielStartButton_clicked()
 
 void MainWindow::handleAnswerClick(char selectedAnswer)
 {
+    while(aktuelleFrageIndex<15){
     const Frage& aktuelleFrage = fragen[aktuelleFrageIndex];
 
     if (aktuelleFrage.istAntwortKorrekt(selectedAnswer)) {
@@ -186,12 +187,17 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
         aktuelleFrageIndex++;
 
         if (aktuelleFrageIndex < fragen.size()) {
-            vector<string> antworten = fragen[0].getAntworten();
-            ui->getFrage->setText(QString::fromStdString(fragen[0].getFrage()));
+            vector<string> antworten = fragen[aktuelleFrageIndex].getAntworten();
+            ui->getFrage->setText(QString::fromStdString(fragen[aktuelleFrageIndex].getFrage()));
             ui->Answer1_4->setText(QString::fromStdString(antworten[0]));
             ui->Answer2->setText(QString::fromStdString(antworten[1]));
             ui->Answer3->setText(QString::fromStdString(antworten[2]));
             ui->Answer4->setText(QString::fromStdString(antworten[3]));
+            connect(ui->Answer1_4, &QPushButton::clicked, this, [=]() { handleAnswerClick('A'); });
+            connect(ui->Answer2, &QPushButton::clicked, this, [=]() { handleAnswerClick('B'); });
+            connect(ui->Answer3, &QPushButton::clicked, this, [=]() { handleAnswerClick('C'); });
+            connect(ui->Answer4, &QPushButton::clicked, this, [=]() { handleAnswerClick('D'); });
+
         } else {
             // End of the game
             // Handle accordingly, e.g., show final score
@@ -209,6 +215,7 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
         ui->Answer2->setText("");
         ui->Answer3->setText("");
         ui->Answer4->setText("");
+    }
     }
 }
 
