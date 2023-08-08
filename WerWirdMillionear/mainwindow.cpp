@@ -68,10 +68,14 @@ void MainWindow::on_audience_clicked()
     vector<string> antworten = fragen[aktuelleFrageIndex].getAntworten();
     // Aktualisiere die Anzeige für den Publikumsjoker
     vector<int> stimmenProzent = lifelines.getAudienceStimmenProzent();
-    ui->Answer1_4->setText(QString::fromStdString(antworten[0]) + " - " + QString::number(stimmenProzent[0]) + "%");
-    ui->Answer2->setText(QString::fromStdString(antworten[1]) + " - " + QString::number(stimmenProzent[1]) + "%");
-    ui->Answer3->setText(QString::fromStdString(antworten[2]) + " - " + QString::number(stimmenProzent[2]) + "%");
-    ui->Answer4->setText(QString::fromStdString(antworten[3]) + " - " + QString::number(stimmenProzent[3]) + "%");
+    ui->Answer1_4->setText(QString::fromStdString(fragen[aktuelleFrageIndex].getAntworten()[0]) +
+                           " (" + QString::number(stimmenProzent[0]) + "%)");
+    ui->Answer2->setText(QString::fromStdString(fragen[aktuelleFrageIndex].getAntworten()[1]) +
+                         " (" + QString::number(stimmenProzent[1]) + "%)");
+    ui->Answer3->setText(QString::fromStdString(fragen[aktuelleFrageIndex].getAntworten()[2]) +
+                         " (" + QString::number(stimmenProzent[2]) + "%)");
+    ui->Answer4->setText(QString::fromStdString(fragen[aktuelleFrageIndex].getAntworten()[3]) +
+                         " (" + QString::number(stimmenProzent[3]) + "%)");
 
     // Deaktiviere den Button für den Publikumsjoker
     ui->audience->setEnabled(false);

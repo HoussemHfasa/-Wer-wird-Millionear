@@ -27,6 +27,8 @@ private slots:
     void on_StartButton_clicked();
     void on_BestenlisteButton_clicked();
     void on_SpielStartButton_clicked();
+    void on_spielanleitungButton_clicked();
+    void on_Zurueckstartseite_clicked();
     void on_Answer1_4_clicked();
     void Combobox();
     void onCategoryChanged(QString category);

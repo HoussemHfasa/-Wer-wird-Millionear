@@ -2,7 +2,7 @@
 #include <QSqlQuery>
 #include <QtSql/QSqlError>
 using namespace std;
-Player::Player(const std::string& nickname) : nickname(nickname), bestScore(0), currentScore(0) {
+Player::Player(const std::string& nickname) {
     QSqlQuery query;
     query.prepare("SELECT * FROM benutzer WHERE nickname = :nickname");
     query.bindValue(":nickname", QString::fromStdString(nickname));
@@ -17,8 +17,8 @@ Player::Player(const std::string& nickname) : nickname(nickname), bestScore(0), 
         query.prepare("INSERT INTO benutzer (nickname, Highscore, currentScore) "
                       "VALUES (:nickname, :bestScore, :currentScore)");
         query.bindValue(":nickname", QString::fromStdString(nickname));
-        query.bindValue(":bestScore", bestScore);
-        query.bindValue(":currentScore", currentScore);
+        query.bindValue(":bestScore", 0);
+        query.bindValue(":currentScore", 0);
         query.exec();
     }
 }

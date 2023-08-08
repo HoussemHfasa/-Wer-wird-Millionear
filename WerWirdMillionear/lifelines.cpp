@@ -5,6 +5,10 @@
 using namespace std;
 #include <cstdlib>   // Für rand() und srand()
 #include <numeric>
+#include <QtWidgets/QPushButton>
+#include <QString>
+#include <QWidget>
+
 
 Lifeline::Lifeline() : fiftyFiftyUsed(false), audienceUsed(false), phoneUsed(false) {
     // Konstruktor
@@ -33,25 +37,23 @@ void Lifeline::audience(const std::vector<std::string>& antworten, char richtige
     if (!audienceUsed) {
         int richtigeAntwortIndex = richtigeAntwort - 'A';
         vector<int> stimmen(antworten.size(), 0);
-
+         stimmenProzent.resize(antworten.size());
         // Zufällige Stimmen simulieren (die richtige Antwort erhält mehr Stimmen)
-        for (int i = 0; i < 100; i++) {
-            int stimme = rand() % antworten.size();
-            if (stimme == richtigeAntwortIndex) {
-                stimmen[stimme] += 70;
-            } else {
-                stimmen[stimme] += 30;
-            }
-        }
-
-        // Summe der Stimmen berechnen
-        int summeStimmen = accumulate(stimmen.begin(), stimmen.end(), 0);
-
-        // Prozentuale Anteile berechnen und die UI aktualisieren
+        int summeStimmen = 0;
         for (int i = 0; i < antworten.size(); i++) {
-            int stimmenProzent = (stimmen[i] * 100) / summeStimmen;
-            // Die UI aktualisieren, um den berechneten Prozentsatz neben dem entsprechenden QPushButton anzuzeigen
+            if (i == richtigeAntwortIndex) {
+                stimmen[i] = rand() % 70 + 31; // Bereich 31-100 für die richtige Antwort
+            } else {
+                stimmen[i] = rand() % 30 + 1;  // Bereich 1-30 für falsche Antworten
+            }
+            summeStimmen += stimmen[i];
         }
+
+        // Prozentsätze berechnen
+        for (int i = 0; i < antworten.size(); i++) {
+            stimmenProzent[i] = (stimmen[i] * 100) / summeStimmen;
+        }
+
 
         audienceUsed = true;
     } else {
@@ -62,7 +64,6 @@ void Lifeline::audience(const std::vector<std::string>& antworten, char richtige
 std::vector<int> Lifeline::getAudienceStimmenProzent() const {
     return stimmenProzent;
 }
-
 
 
 void Lifeline::phone(const std::vector<std::string>& antworten, char richtigeAntwort) {
