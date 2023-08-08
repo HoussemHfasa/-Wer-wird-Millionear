@@ -54,4 +54,5 @@ private:
     QComboBox *comboBox_Schwierigkeitsgrad;
     vector<Frage> fragen;
     int aktuelleFrageIndex;
+    int currentscore;
 };
