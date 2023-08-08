@@ -68,6 +68,11 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     connect(ui->comboBox_Schwierigkeitsgrad, SIGNAL(currentIndexChanged(QString)), this, SLOT(onDifficultyChanged(QString)));
+    // Connect the answer buttons to handleAnswerClick
+    connect(ui->Answer1_4, &QPushButton::clicked, this, [=]() { handleAnswerClick('A'); });
+    connect(ui->Answer2, &QPushButton::clicked, this, [=]() { handleAnswerClick('B'); });
+    connect(ui->Answer3, &QPushButton::clicked, this, [=]() { handleAnswerClick('C'); });
+    connect(ui->Answer4, &QPushButton::clicked, this, [=]() { handleAnswerClick('D'); });
 
 }
 
@@ -168,46 +173,47 @@ void MainWindow::on_SpielStartButton_clicked()
     // Store the index of the current question
     aktuelleFrageIndex = 0;
 
-    // Connect the answer buttons to handleAnswerClick
-    connect(ui->Answer1_4, &QPushButton::clicked, this, [=]() { handleAnswerClick('A'); });
-    connect(ui->Answer2, &QPushButton::clicked, this, [=]() { handleAnswerClick('B'); });
-    connect(ui->Answer3, &QPushButton::clicked, this, [=]() { handleAnswerClick('C'); });
-    connect(ui->Answer4, &QPushButton::clicked, this, [=]() { handleAnswerClick('D'); });
+
 
     ui->stackedWidget->setCurrentWidget(ui->SpielSeite);
 }
 
 void MainWindow::handleAnswerClick(char selectedAnswer)
 {
+    int Fragenanzahl=fragen.size();
 
     const Frage& aktuelleFrage = fragen[aktuelleFrageIndex];
 
     if (aktuelleFrage.istAntwortKorrekt(selectedAnswer)) {
         // User's answer is correct
-        aktuelleFrageIndex++;
+        //
+        aktuelleFrageIndex+=1;
+        cout<<aktuelleFrageIndex <<endl;
+        cout<<fragen[aktuelleFrageIndex].getFrage()<<endl;
+        cout<<fragen[aktuelleFrageIndex].getRichtigeAntwort()<<endl;
+        cout<<fragen.size()<<endl;
 
-        if (aktuelleFrageIndex < fragen.size()) {
-            vector<string> antworten = fragen[1].getAntworten();
-            ui->getFrage->setText(QString::fromStdString(fragen[1].getFrage()));
+
+        if (aktuelleFrageIndex < Fragenanzahl) {
+            vector<string> antworten = fragen[aktuelleFrageIndex].getAntworten();
+            ui->getFrage->setText(QString::fromStdString(fragen[aktuelleFrageIndex].getFrage()));
             ui->Answer1_4->setText(QString::fromStdString(antworten[0]));
             ui->Answer2->setText(QString::fromStdString(antworten[1]));
             ui->Answer3->setText(QString::fromStdString(antworten[2]));
             ui->Answer4->setText(QString::fromStdString(antworten[3]));
-            connect(ui->Answer1_4, &QPushButton::clicked, this, [=]() { handleAnswerClick('A'); });
-            connect(ui->Answer2, &QPushButton::clicked, this, [=]() { handleAnswerClick('B'); });
-            connect(ui->Answer3, &QPushButton::clicked, this, [=]() { handleAnswerClick('C'); });
-            connect(ui->Answer4, &QPushButton::clicked, this, [=]() { handleAnswerClick('D'); });
-
-        } else {
+        }
+        else if (aktuelleFrageIndex==Fragenanzahl) {
             // End of the game
             // Handle accordingly, e.g., show final score
             ui->getFrage->setText("Herzlichen Glückwunsch! Du hast alle Fragen beantwortet.");
-                ui->Answer1_4->setText("");
+            ui->Answer1_4->setText("");
             ui->Answer2->setText("");
             ui->Answer3->setText("");
             ui->Answer4->setText("");
         }
-    } else {
+    }
+
+     else {
         // User's answer is incorrect
         // Handle accordingly, e.g., show incorrect message
         ui->getFrage->setText("Leider falsch. Das Spiel ist vorbei.");
@@ -216,7 +222,6 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
         ui->Answer3->setText("");
         ui->Answer4->setText("");
     }
-
 }
 
 void MainWindow::on_Answer1_4_clicked()

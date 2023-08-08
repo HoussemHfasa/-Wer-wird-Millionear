@@ -268,6 +268,11 @@ border-radius: 10px;</string>
           </property>
           <item>
            <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item>
+           <property name="text">
             <string>einfach</string>
            </property>
           </item>
@@ -328,6 +333,11 @@ font-size: 16px;
 font-weight: bold;
 border-radius: 10px;</string>
           </property>
+          <item>
+           <property name="text">
+            <string/>
+           </property>
+          </item>
           <item>
            <property name="text">
             <string>allgemein</string>
