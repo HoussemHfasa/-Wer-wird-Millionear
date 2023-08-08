@@ -16,7 +16,8 @@ SOURCES += \
     lifelines.cpp \
     main.cpp \
     mainwindow.cpp \
-    player.cpp
+    player.cpp \
+    settings.cpp
 
 HEADERS += \
     Frage.h \
@@ -25,10 +26,12 @@ HEADERS += \
     bestenlisteseite.h \
     lifelines.h \
     mainwindow.h \
-    player.h
+    player.h \
+    settings.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    settings.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
