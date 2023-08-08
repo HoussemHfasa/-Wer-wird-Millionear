@@ -2,14 +2,19 @@
 
 ## Einführung
 
-"Wer wird Millionear" ist ein Quizspiel, bei dem Spieler ihr Wissen in verschiedenen Kategorien testen können. Die Spieler können vor dem Spiel den Schwierigkeitsgrad und die Kategorie auswählen. Das Spiel hat ein Lebenssystem, bei dem die Spieler bei jeder falschen Antwort ein Leben verlieren. Es gibt auch drei Joker, die den Spielern helfen: 50/50, Frage das Publikum und Frage einen Freund. Die Spiellogik kümmert sich um das Spielmanagement, das Lebenstracking, die Implementierung der Joker und die Integration mit UI und Datenbank.
+Wer wird Millionear" ist ein Quizspiel, bei dem Spieler ihr Wissen in verschiedenen Kategorien testen können. Die Spieler können vor dem Spiel den Schwierigkeitsgrad und die Kategorie auswählen. Das Spiel hat ein Lebenssystem, bei dem die Spieler bei jeder falschen Antwort ein Leben verlieren. Es gibt auch drei Joker, die den Spielern helfen: 50/50, Frage das Publikum und Frage einen Freund. Die Spiellogik kümmert sich um das Spielmanagement, das Lebenstracking, die Implementierung der Joker und die Integration mit UI und Datenbank.
 
 ## Funktionen
 
-- Auswahl von Schwierigkeitsgrad und Kategorie
+- Anmeldung nur mit Nickname
+- Auswahl von Schwierigkeitsgrad
+- Auswahl der Kategorie
 - Quizfragen beantworten
 - Lebenssystem mit Verlust eines Lebens pro falscher Antwort
 - Drei Joker: 50/50, Frage das Publikum, Frage einen Freund
+- Einstellungen verwalten
+- Speichern des Fortschritts
+- Anzeige der Spielanleitung
 - Punktetracking und Highscore-Liste
 
 ## Technischer Stack
@@ -26,10 +31,25 @@
 
 ## Installation
 
-1. Repository klonen
-2. Abhängigkeiten installieren (Qt, SQLite)
-3. Projekt mit qmake kompilieren
-4. Ausführbare Datei starten
+1. Repository klonen: Klone das Repository auf deinen Computer.
+
+2. MySQL installieren und Datenbank importieren: Installiere MySQL auf deinem System und importiere die Datenbank "werwirdmillionaer.sql" aus dem Ordner "Datenbank".
+
+3. Qt installieren: Installiere das Qt-Framework. Wähle bei der Komponentenauswahl Folgendes aus:
+
+- In "Qt 6.6.0-beta2": Wähle "MSVC 2019 64-bit" und "MinGW 11.2.0 64-bit".
+- Unter "Zusätzliche Komponenten": Wähle "Qt 5-Kompatibilitätsmodul", "Qt Shader Tools" und "Qt Multimedia".
+- In "Entwicklungs- und Designwerkzeuge": Wähle "Qt Creator 11.0.1", "Qt Creator 11.0.1 CDB Debugger Support", "MinGW 11.2.0 64-bit", "QT Installer Framework 4.6", "CMake 3.42.2" und "Ninja 1.10.2".
+
+4. MySQL Connector/C installieren: Lade den "MySQL Connector/C" von folgendem Link herunter: https://downloads.mysql.com/archives/c-c/.
+
+5. MySQL Connector/ODBC installieren: Lade "Connector/ODBC 8.1.0" von folgendem Link herunter: https://dev.mysql.com/downloads/connector/odbc/.
+
+6. ODBC-Datenquelle einrichten: Öffne die "ODBC-Datenquelle (64-Bit)" und füge den "MySQL ODBC 8.1 Unicode Driver" hinzu. Gib deinen Host, Benutzernamen, Passwort und die Datenbank "werwirdmillionaer" ein.
+
+7. Projekt ausführen: Jetzt kannst du das Projekt einfach ausführen und das Spiel genießen!
+
+- Hinweis: Bitte stelle sicher, dass du alle Abhängigkeiten und Einstellungen gemäß den Anweisungen korrekt installierst, um das Spiel reibungslos nutzen zu können. Viel Spaß beim Spielen von "Wer wird Millionär"!
 
 ## Verwendung
 
