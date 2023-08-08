@@ -379,23 +379,17 @@ void MainWindow::on_Answer4_clicked()
 {
 
 }
-//SpielanleitungPage
 
-/*void MainWindow::on_spielanleitungButton_clicked()
-{
-     ui->stackedWidget->setCurrentWidget(ui->SpielanleitungPage);
-
-}
-
-
-void MainWindow::on_Zurueckstartseite_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->Startseite);
-}*/
 
 
 void MainWindow::on_Zurueckstartseite_2_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->Startseite);
+}
+
+
+void MainWindow::on_spielanleitungButton_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->SpielanleitungPage);
 }
 
