@@ -179,7 +179,7 @@ void MainWindow::on_SpielStartButton_clicked()
 
 void MainWindow::handleAnswerClick(char selectedAnswer)
 {
-    while(aktuelleFrageIndex<15){
+
     const Frage& aktuelleFrage = fragen[aktuelleFrageIndex];
 
     if (aktuelleFrage.istAntwortKorrekt(selectedAnswer)) {
@@ -187,8 +187,8 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
         aktuelleFrageIndex++;
 
         if (aktuelleFrageIndex < fragen.size()) {
-            vector<string> antworten = fragen[aktuelleFrageIndex].getAntworten();
-            ui->getFrage->setText(QString::fromStdString(fragen[aktuelleFrageIndex].getFrage()));
+            vector<string> antworten = fragen[1].getAntworten();
+            ui->getFrage->setText(QString::fromStdString(fragen[1].getFrage()));
             ui->Answer1_4->setText(QString::fromStdString(antworten[0]));
             ui->Answer2->setText(QString::fromStdString(antworten[1]));
             ui->Answer3->setText(QString::fromStdString(antworten[2]));
@@ -216,7 +216,7 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
         ui->Answer3->setText("");
         ui->Answer4->setText("");
     }
-    }
+
 }
 
 void MainWindow::on_Answer1_4_clicked()
