@@ -17,7 +17,7 @@ GameSession::GameSession(Player& spieler) : spieler(spieler), aktuelleFrageIndex
     gewinnstufen = {50, 100, 200, 300, 500, 1000, 2000, 4000, 8000, 16000, 32000, 64000, 125000, 500000, 1000000};
 }
 
-void GameSession::starteSpiel(const std::string& schwierigkeitsgrad, const std::string& kategorie, char AntwortSpieler1) {
+void GameSession::starteSpiel(const std::string& schwierigkeitsgrad, const std::string& kategorie) {
 
     fragen = vorbereiteteFragen(kategorie, schwierigkeitsgrad);
 

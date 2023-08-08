@@ -153,21 +153,66 @@ void MainWindow::on_SpielStartButton_clicked()
     onDifficultyChanged(difficulty);
 
     GameSession Spiel(player);
-    Spiel.vorbereiteteFragen(difficulty.toStdString(),category.toStdString());
-    vector<Frage> fragen = Spiel.vorbereiteteFragen(difficulty.toStdString(),category.toStdString());
+    //Spiel.vorbereiteteFragen(difficulty.toStdString(),category.toStdString());
+    fragen = Spiel.vorbereiteteFragen(difficulty.toStdString(),category.toStdString());
 
-   // Spiel.vorbereiteteFragen("einfach","Geschichte");
+    // Spiel.vorbereiteteFragen("einfach","Geschichte");
 
     vector<string> antworten = fragen[0].getAntworten();
     ui->getFrage->setText(QString::fromStdString(fragen[0].getFrage()));
-
     ui->Answer1_4->setText(QString::fromStdString(antworten[0]));
-    ui-> Answer2->setText(QString::fromStdString(antworten[1]));
+    ui->Answer2->setText(QString::fromStdString(antworten[1]));
     ui->Answer3->setText(QString::fromStdString(antworten[2]));
-    ui-> Answer4->setText(QString::fromStdString(antworten[3]));
+    ui->Answer4->setText(QString::fromStdString(antworten[3]));
+
+    // Store the index of the current question
+    int aktuelleFrageIndex = 0;
+
+    // Connect the answer buttons to handleAnswerClick
+    connect(ui->Answer1_4, &QPushButton::clicked, this, [=]() { handleAnswerClick('A'); });
+    connect(ui->Answer2, &QPushButton::clicked, this, [=]() { handleAnswerClick('B'); });
+    connect(ui->Answer3, &QPushButton::clicked, this, [=]() { handleAnswerClick('C'); });
+    connect(ui->Answer4, &QPushButton::clicked, this, [=]() { handleAnswerClick('D'); });
 
     ui->stackedWidget->setCurrentWidget(ui->SpielSeite);
+}
 
+void MainWindow::handleAnswerClick(char selectedAnswer)
+{
+    const Frage& aktuelleFrage = fragen[aktuelleFrageIndex];
+
+    if (aktuelleFrage.istAntwortKorrekt(selectedAnswer)) {
+        // User's answer is correct
+        aktuelleFrageIndex++;
+
+        if (aktuelleFrageIndex < fragen.size()) {
+            // Display the next question and answers
+            const Frage& nächsteFrage = fragen[aktuelleFrageIndex];
+                vector<string> antworten = nächsteFrage.getAntworten();
+
+                                ui->getFrage->setText(QString::fromStdString(nächsteFrage.getFrage()));
+                                ui->Answer1_4->setText(QString::fromStdString(antworten[0]));
+            ui->Answer2->setText(QString::fromStdString(antworten[1]));
+            ui->Answer3->setText(QString::fromStdString(antworten[2]));
+            ui->Answer4->setText(QString::fromStdString(antworten[3]));
+        } else {
+            // End of the game
+            // Handle accordingly, e.g., show final score
+            ui->getFrage->setText("Herzlichen Glückwunsch! Du hast alle Fragen beantwortet.");
+                ui->Answer1_4->setText("");
+            ui->Answer2->setText("");
+            ui->Answer3->setText("");
+            ui->Answer4->setText("");
+        }
+    } else {
+        // User's answer is incorrect
+        // Handle accordingly, e.g., show incorrect message
+        ui->getFrage->setText("Leider falsch. Das Spiel ist vorbei.");
+        ui->Answer1_4->setText("");
+        ui->Answer2->setText("");
+        ui->Answer3->setText("");
+        ui->Answer4->setText("");
+    }
 }
 
 void MainWindow::on_Answer1_4_clicked()

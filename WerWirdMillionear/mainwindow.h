@@ -20,7 +20,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
+void handleAnswerClick(char selectedAnswer);
 
 
 private slots:
@@ -54,7 +54,6 @@ private:
     QLineEdit* input_nickname;
     QComboBox *comboBox_Kategorie;
     QComboBox *comboBox_Schwierigkeitsgrad;
-
-
-
+    vector<Frage> fragen;
+    int aktuelleFrageIndex;
 };
