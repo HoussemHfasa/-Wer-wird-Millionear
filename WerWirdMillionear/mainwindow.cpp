@@ -187,8 +187,8 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
         aktuelleFrageIndex++;
 
         if (aktuelleFrageIndex < fragen.size()) {
-            vector<string> antworten = fragen[1].getAntworten();
-            ui->getFrage->setText(QString::fromStdString(fragen[1].getFrage()));
+            vector<string> antworten = fragen[aktuelleFrageIndex].getAntworten();
+            ui->getFrage->setText(QString::fromStdString(fragen[aktuelleFrageIndex].getFrage()));
             ui->Answer1_4->setText(QString::fromStdString(antworten[0]));
             ui->Answer2->setText(QString::fromStdString(antworten[1]));
             ui->Answer3->setText(QString::fromStdString(antworten[2]));
