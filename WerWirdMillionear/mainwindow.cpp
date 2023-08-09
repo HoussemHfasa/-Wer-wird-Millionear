@@ -1,11 +1,15 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QMediaPlayer>
-#include <QUrl>
-#include <QAudio>
 #include <iostream>
 #include <QtSql>
+#include <QSqlQuery>
+#include"settings.h"
+#include"win.h"
+#include"lose.h"
 using namespace std ;
+
+
+
 
 Lifeline lifelines;
 
@@ -160,21 +164,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_StartButton_clicked()
 {
     // Switch to AnmeldenSeite
-    //ui->stackedWidget->setCurrentWidget(ui->AnmeldenSeite);
-    QMediaPlayer *musicPlayer = new QMediaPlayer;
-    musicPlayer->setMedia(QUrl::fromLocalFile(":/img/song.mp3"));
-
-    // Adjust the volume using QAudioMixer
-    QAudioMixerControl *mixerControl = musicPlayer->audio()->mixerControl();
-    if (mixerControl) {
-        mixerControl->setVolume(50);
-    }
-
-    musicPlayer->play();
-
-
-
-
+    ui->stackedWidget->setCurrentWidget(ui->AnmeldenSeite);
 }
 void MainWindow::on_BestenlisteButton_clicked()
 {
@@ -259,7 +249,6 @@ void MainWindow::on_Neustart_clicked()
 }
 void MainWindow::on_SpielStartButton_clicked()
 {
-
     nickname = input_nickname->text().toStdString();
     // Create a Player object with the entered nickname
     player=new Player(nickname);
@@ -324,6 +313,9 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
             ui->Answer2->setText("");
             ui->Answer3->setText("");
             ui->Answer4->setText("");
+            win win;
+            win.setModal(true);
+            win.exec();
 
         }
         player->updateScore(Scores[aktuelleFrageIndex]);
@@ -337,6 +329,9 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
         ui->Answer3->setText("");
         ui->Answer4->setText("");
         player->updateScore(Scores[0]);
+        lose lose;
+        lose.setModal(true);
+        lose.exec();
 
     }
 
@@ -374,3 +369,11 @@ void MainWindow::highlightReachedQuestion() {
         }
     }
 }
+
+void MainWindow::on_Einstellung_clicked()
+{
+    settings settings;
+    settings.setModal(true);
+    settings.exec();
+}
+

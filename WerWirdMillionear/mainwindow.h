@@ -39,6 +39,10 @@ private slots:
 
     void on_Neustart_clicked();
 
+    void on_pushButton_clicked();
+
+    void on_Einstellung_clicked();
+
 private:
     Ui::MainWindow *ui;
     QLabel *imageLabel;

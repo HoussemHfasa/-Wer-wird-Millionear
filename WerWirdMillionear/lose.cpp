@@ -12,3 +12,9 @@ lose::~lose()
 {
     delete ui;
 }
+
+void lose::on_pushButton_clicked()
+{
+    close();
+}
+
