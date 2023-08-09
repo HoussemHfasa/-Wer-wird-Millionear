@@ -471,11 +471,27 @@ font-weight: bold;
 border-radius: 10px;</string>
                 </property>
                 <property name="text">
-                 <string>Beginne zu spielen</string>
+                 <string>Forsetzen</string>
                 </property>
                </widget>
               </item>
              </layout>
+            </item>
+            <item>
+             <widget class="QPushButton" name="Neustart">
+              <property name="styleSheet">
+               <string notr="true">background-color: #4B8A90;
+border: none;
+color: white;
+padding: 10px 20px;
+font-size: 16px;
+font-weight: bold;
+border-radius: 10px;</string>
+              </property>
+              <property name="text">
+               <string>Neustart</string>
+              </property>
+             </widget>
             </item>
            </layout>
           </widget>
@@ -618,7 +634,7 @@ border-radius: 25px;
                 <item>
                  <layout class="QHBoxLayout" name="horizontalLayout_4">
                   <item>
-                   <widget class="QPushButton" name="pushButton_7">
+                   <widget class="QPushButton" name="audience">
                     <property name="cursor">
                      <cursorShape>PointingHandCursor</cursorShape>
                     </property>
@@ -626,13 +642,13 @@ border-radius: 25px;
                      <bool>false</bool>
                     </property>
                     <property name="styleSheet">
-                     <string notr="true">QPushButton#pushButton_7{
+                     <string notr="true">
 border-image: url(:/img/img/people.png);
 border: none;
 background-repeat: none;
 width: 20px;
 height: 50px;
-}
+
 
 </string>
                     </property>
@@ -642,7 +658,7 @@ height: 50px;
                    </widget>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="pushButton_5">
+                   <widget class="QPushButton" name="fiftyFifty">
                     <property name="cursor">
                      <cursorShape>PointingHandCursor</cursorShape>
                     </property>
@@ -663,7 +679,7 @@ height: 50px;</string>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="pushButton_6">
+                   <widget class="QPushButton" name="phone">
                     <property name="cursor">
                      <cursorShape>PointingHandCursor</cursorShape>
                     </property>
@@ -1070,7 +1086,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <x>0</x>
      <y>0</y>
      <width>1111</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
