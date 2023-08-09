@@ -309,6 +309,7 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
             ui->Answer4->setText("");
 
         }
+        player->updateScore(Scores[aktuelleFrageIndex]);
     }
     else {
         // User's answer is incorrect
@@ -318,9 +319,10 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
         ui->Answer2->setText("");
         ui->Answer3->setText("");
         ui->Answer4->setText("");
+        player->updateScore(Scores[0]);
 
     }
-    player->updateScore(Scores[aktuelleFrageIndex]);
+
     highlightReachedQuestion();
 
 }
