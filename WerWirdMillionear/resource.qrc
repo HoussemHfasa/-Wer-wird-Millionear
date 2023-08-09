@@ -8,5 +8,8 @@
         <file>img/half.png</file>
         <file>img/setting.png</file>
         <file>img/song.mp3</file>
+        <file>img/notcall.png</file>
+        <file>img/nothalf.png</file>
+        <file>img/notpeople.png</file>
     </qresource>
 </RCC>
