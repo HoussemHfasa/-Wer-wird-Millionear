@@ -95,7 +95,7 @@ border-radius: 10px;</string>
         <item>
          <widget class="QStackedWidget" name="stackedWidget">
           <property name="currentIndex">
-           <number>0</number>
+           <number>3</number>
           </property>
           <widget class="QWidget" name="Startseite">
            <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -618,13 +618,13 @@ border-radius: 25px;
                      <bool>false</bool>
                     </property>
                     <property name="styleSheet">
-                     <string notr="true">QPushButton#pushButton_7{
+                     <string notr="true">
 border-image: url(:/img/img/people.png);
 border: none;
 background-repeat: none;
 width: 20px;
 height: 50px;
-}
+
 
 </string>
                     </property>
