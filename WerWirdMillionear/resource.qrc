@@ -7,5 +7,6 @@
         <file>img/call.png</file>
         <file>img/half.png</file>
         <file>img/setting.png</file>
+        <file>img/song.mp3</file>
     </qresource>
 </RCC>

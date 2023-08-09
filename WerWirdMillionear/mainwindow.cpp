@@ -19,6 +19,9 @@
 #include <GameSession.h>
 #include <lifelines.h>
 #include <iostream>
+#include <QMediaPlayer>
+
+
 using namespace std ;
 
 Lifeline lifelines;
@@ -107,6 +110,26 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+
+
+    QMediaPlayer *player = new QMediaPlayer;
+    player->setSource(QUrl("qrc:/sounds/song.mp3")); // Access file from resources
+    player->setActiveAudioTrack(50); // Set the volume to 50%
+    player->play(); //
+
+
+
+
+
+
+
+
+
+
+
+
+    //----------------------
 
     // Display the logo
     QPixmap pix(":/img/img/logo.png");
@@ -379,19 +402,7 @@ void MainWindow::on_Answer4_clicked()
 {
 
 }
-//SpielanleitungPage
 
-/*void MainWindow::on_spielanleitungButton_clicked()
-{
-     ui->stackedWidget->setCurrentWidget(ui->SpielanleitungPage);
-
-}
-
-
-void MainWindow::on_Zurueckstartseite_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->Startseite);
-}*/
 
 
 void MainWindow::on_Zurueckstartseite_2_clicked()

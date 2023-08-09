@@ -8,7 +8,7 @@
 #include <QProcessEnvironment>
 #include <iostream>
 using namespace  std;
-
+#include <QMediaPlayer>
 #include <iostream>
 #include "player.h"
 #include "Frage.h"

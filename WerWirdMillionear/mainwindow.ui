@@ -55,7 +55,7 @@ border-radius: 10px;</string>
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>0</number>
+             <number>2</number>
             </property>
             <widget class="QWidget" name="Startseite">
              <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -212,7 +212,7 @@ border-radius: 16px;</string>
                 <item>
                  <layout class="QVBoxLayout" name="verticalLayout_8">
                   <item>
-                   <layout class="QVBoxLayout" name="verticalLayout_5">
+                   <layout class="QVBoxLayout" name="verticalLayout_5" stretch="1,1">
                     <item>
                      <widget class="QLabel" name="label">
                       <property name="font">
@@ -400,6 +400,12 @@ border-radius: 10px;</string>
                 </item>
                 <item>
                  <widget class="QPushButton" name="SpielStartButton">
+                  <property name="minimumSize">
+                   <size>
+                    <width>1067</width>
+                    <height>0</height>
+                   </size>
+                  </property>
                   <property name="cursor">
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
