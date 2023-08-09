@@ -101,13 +101,13 @@ void MainWindow::on_phone_clicked()
     string freundRat = lifelines.getPhoneAntwort();
 
     if (freundRat == "A") {
-        ui->Answer1_4->setStyleSheet("color: green;");
+        ui->Answer1_4->setText(ui->Answer1_4->text() + "   Freundrat");
     } else if (freundRat == "B") {
-        ui->Answer2->setStyleSheet("color: green;");
+        ui->Answer2->setText(ui->Answer2->text() + "   Freundrat");
     } else if (freundRat == "C") {
-        ui->Answer3->setStyleSheet("color: green;");
+        ui->Answer3->setText(ui->Answer3->text() + "   Freundrat");
     } else if (freundRat == "D") {
-        ui->Answer4->setStyleSheet("color: green;");
+        ui->Answer4->setText(ui->Answer4->text() + "   Freundrat");
     }
     }
     lifelines.isPhoneUsed();
