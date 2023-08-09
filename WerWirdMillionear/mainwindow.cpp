@@ -82,8 +82,7 @@ void MainWindow::on_phone_clicked()
     lifelines.phone(fragen[aktuelleFrageIndex].getAntworten(), fragen[aktuelleFrageIndex].getRichtigeAntwort());
 
     // Markiere die Antwort des Freundes auf den Buttons visuell
-    //string freundRat = lifelines.getPhoneAntwort();
-    string freundRat ="A";
+    string freundRat = lifelines.getPhoneAntwort();
 
     if (freundRat == "A") {
         ui->Answer1_4->setText(ui->Answer1_4->text() + "   (Freundrat)");
