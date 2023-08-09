@@ -352,11 +352,6 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
         else if (aktuelleFrageIndex==Fragenanzahl) {
             // End of the game
             // Handle accordingly, e.g., show final score
-            ui->getFrage->setText("Herzlichen Glückwunsch! Du hast alle Fragen beantwortet.");
-                ui->Answer1_4->setText("");
-            ui->Answer2->setText("");
-            ui->Answer3->setText("");
-            ui->Answer4->setText("");
             highlightReachedQuestion();
             win win;
             win.setModal(true);
@@ -368,11 +363,6 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
     else {
         // User's answer is incorrect
         // Handle accordingly, e.g., show incorrect message
-        ui->getFrage->setText("Leider falsch. Das Spiel ist vorbei.");
-        ui->Answer1_4->setText("");
-        ui->Answer2->setText("");
-        ui->Answer3->setText("");
-        ui->Answer4->setText("");
         player->updateScore(Scores[0]);
         highlightReachedQuestion();
         lose lose;
