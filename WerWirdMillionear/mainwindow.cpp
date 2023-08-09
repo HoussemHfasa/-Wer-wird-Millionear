@@ -6,6 +6,11 @@
 #include"settings.h"
 #include"win.h"
 #include"lose.h"
+#include "AudioPlayer.h"
+
+
+
+
 using namespace std ;
 
 
@@ -13,6 +18,14 @@ using namespace std ;
 
 Lifeline lifelines;
 
+void MainWindow::on_StartButton_clicked()
+{
+    // Switch to AnmeldenSeite
+    ui->stackedWidget->setCurrentWidget(ui->AnmeldenSeite);
+
+
+
+}
 
 // Wenn der "50:50" Button geklickt wird
 void MainWindow::on_fiftyFifty_clicked()
@@ -166,11 +179,7 @@ MainWindow::~MainWindow()
 
 }
 
-void MainWindow::on_StartButton_clicked()
-{
-    // Switch to AnmeldenSeite
-    ui->stackedWidget->setCurrentWidget(ui->AnmeldenSeite);
-}
+
 void MainWindow::on_BestenlisteButton_clicked()
 {
     // Switch to BestenlisteSeite
