@@ -7,7 +7,7 @@
 #include"win.h"
 #include <QGraphicsColorizeEffect>
 #include <lose.h>
-
+#include "QMessageBox"
 
 
 
@@ -242,67 +242,94 @@ void MainWindow::onDifficultyChanged(QString difficulty) {
 }
 void MainWindow::on_Neustart_clicked()
 {
-    nickname = input_nickname->text().toStdString();
-    // Create a Player object with the entered nickname
-    player=new Player(nickname);
-    //Player player(nickname);
+    try {
+        nickname = input_nickname->text().toStdString();
+        if (nickname.empty()) {
+            throw std::runtime_error("Nickname cannot be empty.");
+        }
 
-    QString category = ui->comboBox_Kategorie->currentText();
-    onCategoryChanged(category);
+        QString category = ui->comboBox_Kategorie->currentText();
+        QString difficulty = ui->comboBox_Schwierigkeitsgrad->currentText();
 
-    QString difficulty = ui->comboBox_Schwierigkeitsgrad->currentText();
-    onDifficultyChanged(difficulty);
+        if (category.isEmpty() || difficulty.isEmpty()) {
+            throw std::runtime_error("Please select both category and difficulty.");
+        }
 
-    GameSession Spiel(*player);
-    player->updateScore(Scores[0]);
-    //Spiel.vorbereiteteFragen(difficulty.toStdString(),category.toStdString());
-    fragen = Spiel.vorbereiteteFragen(difficulty.toStdString(),category.toStdString());
-    aktuelleFrageIndex=0;
-    vector<string> antworten = fragen[aktuelleFrageIndex].getAntworten();
-    ui->getFrage->setText(QString::fromStdString(fragen[aktuelleFrageIndex].getFrage()));
-    ui->Answer1_4->setText(QString::fromStdString(antworten[0]));
-    ui->Answer2->setText(QString::fromStdString(antworten[1]));
-    ui->Answer3->setText(QString::fromStdString(antworten[2]));
-    ui->Answer4->setText(QString::fromStdString(antworten[3]));
-    ui->stackedWidget->setCurrentWidget(ui->SpielSeite);
+        player = new Player(nickname);
+        onCategoryChanged(category);
+        onDifficultyChanged(difficulty);
 
+        GameSession Spiel(*player);
+        player->updateScore(Scores[0]);
+        fragen = Spiel.vorbereiteteFragen(difficulty.toStdString(), category.toStdString());
 
+        aktuelleFrageIndex = 0;
+        vector<string> antworten = fragen[aktuelleFrageIndex].getAntworten();
+        ui->getFrage->setText(QString::fromStdString(fragen[aktuelleFrageIndex].getFrage()));
+        ui->Answer1_4->setText(QString::fromStdString(antworten[0]));
+        ui->Answer2->setText(QString::fromStdString(antworten[1]));
+        ui->Answer3->setText(QString::fromStdString(antworten[2]));
+        ui->Answer4->setText(QString::fromStdString(antworten[3]));
+        ui->stackedWidget->setCurrentWidget(ui->SpielSeite);
+
+    } catch (const std::exception& e) {
+        QMessageBox::critical(this, "Error", e.what());
+    }
 }
+
 void MainWindow::on_SpielStartButton_clicked()
 {
-    nickname = input_nickname->text().toStdString();
-    // Create a Player object with the entered nickname
-    player=new Player(nickname);
-    //Player player(nickname);
-
-    QString category = ui->comboBox_Kategorie->currentText();
-    onCategoryChanged(category);
-
-    QString difficulty = ui->comboBox_Schwierigkeitsgrad->currentText();
-    onDifficultyChanged(difficulty);
-
-    GameSession Spiel(*player);
-    //Spiel.vorbereiteteFragen(difficulty.toStdString(),category.toStdString());
-    fragen = Spiel.vorbereiteteFragen(difficulty.toStdString(),category.toStdString());
-
-    // Store the index of the current question
-    currentscore=player->getCurrentScore();
-    cout<<currentscore<<endl;
-    for(int i = 0; i < 16; i++) {
-        if(Scores[i] == currentscore) {
-            aktuelleFrageIndex=i;
-            break ;
+    try {
+        nickname = input_nickname->text().toStdString();
+        if (nickname.empty()) {
+            throw std::runtime_error("Nickname cannot be empty.");
         }
+
+        QString category = ui->comboBox_Kategorie->currentText();
+        QString difficulty = ui->comboBox_Schwierigkeitsgrad->currentText();
+
+        if (category.isEmpty() || difficulty.isEmpty()) {
+            throw std::runtime_error("Please select both category and difficulty.");
+        }
+
+        player = new Player(nickname);
+        onCategoryChanged(category);
+        onDifficultyChanged(difficulty);
+
+        GameSession Spiel(*player);
+        fragen = Spiel.vorbereiteteFragen(difficulty.toStdString(), category.toStdString());
+
+        currentscore = player->getCurrentScore();
+        cout << currentscore << endl;
+
+        int aktuelleFrageIndex = -1;
+
+        for (int i = 0; i < 16; i++) {
+            if (Scores[i] == currentscore) {
+                aktuelleFrageIndex = i;
+                break;
+            }
+        }
+
+        if (aktuelleFrageIndex == -1) {
+            throw std::runtime_error("No matching score found for question index.");
+        }
+
+        highlightReachedQuestion();
+
+        vector<string> antworten = fragen[aktuelleFrageIndex].getAntworten();
+        ui->getFrage->setText(QString::fromStdString(fragen[aktuelleFrageIndex].getFrage()));
+        ui->Answer1_4->setText(QString::fromStdString(antworten[0]));
+        ui->Answer2->setText(QString::fromStdString(antworten[1]));
+        ui->Answer3->setText(QString::fromStdString(antworten[2]));
+        ui->Answer4->setText(QString::fromStdString(antworten[3]));
+        ui->stackedWidget->setCurrentWidget(ui->SpielSeite);
+
+    } catch (const std::exception& e) {
+        QMessageBox::critical(this, "Error", e.what());
     }
-    highlightReachedQuestion();
-    vector<string> antworten = fragen[aktuelleFrageIndex].getAntworten();
-    ui->getFrage->setText(QString::fromStdString(fragen[aktuelleFrageIndex].getFrage()));
-    ui->Answer1_4->setText(QString::fromStdString(antworten[0]));
-    ui->Answer2->setText(QString::fromStdString(antworten[1]));
-    ui->Answer3->setText(QString::fromStdString(antworten[2]));
-    ui->Answer4->setText(QString::fromStdString(antworten[3]));
-    ui->stackedWidget->setCurrentWidget(ui->SpielSeite);
 }
+
 
 void MainWindow::handleAnswerClick(char selectedAnswer)
 {
