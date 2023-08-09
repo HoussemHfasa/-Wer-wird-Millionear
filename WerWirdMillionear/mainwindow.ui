@@ -36,7 +36,7 @@
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton#Zurueckstartseite_2 {
-    background-color: #4B8A90;
+    background-color: #fd9c2a;
     border: none;
     color: white;
     padding: 10px 20px;
@@ -72,8 +72,11 @@ QPushButton#Zurueckstartseite_2:checked {
       </item>
       <item>
        <widget class="QPushButton" name="pushButton">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
-         <string notr="true">background-color: #4B8A90;
+         <string notr="true">background-color: #fd9c2a;
 border: none;
 color: white;
 padding: 10px 20px;
@@ -95,7 +98,7 @@ border-radius: 10px;</string>
         <item>
          <widget class="QStackedWidget" name="stackedWidget">
           <property name="currentIndex">
-           <number>3</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="Startseite">
            <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -187,6 +190,9 @@ border-radius: 10px;</string>
                 <width>300</width>
                 <height>50</height>
                </size>
+              </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
               </property>
               <property name="styleSheet">
                <string notr="true">background-color: #4B8A90;
@@ -326,6 +332,9 @@ border-radius: 10px;</string>
                         <height>50</height>
                        </size>
                       </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
                       <property name="styleSheet">
                        <string notr="true">background-color: #ffffff;
 border: none;
@@ -400,6 +409,9 @@ border-radius: 10px;</string>
                         <width>200</width>
                         <height>50</height>
                        </size>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="styleSheet">
                        <string notr="true">background-color: #ffffff;
@@ -511,6 +523,9 @@ border-radius: 10px;
                      <layout class="QVBoxLayout" name="verticalLayout_9">
                       <item>
                        <widget class="QPushButton" name="Answer1_4">
+                        <property name="cursor">
+                         <cursorShape>PointingHandCursor</cursorShape>
+                        </property>
                         <property name="styleSheet">
                          <string notr="true">background-color: #ffffff;
 border: none;
@@ -528,6 +543,9 @@ border-radius: 25px;
                       </item>
                       <item>
                        <widget class="QPushButton" name="Answer3">
+                        <property name="cursor">
+                         <cursorShape>PointingHandCursor</cursorShape>
+                        </property>
                         <property name="styleSheet">
                          <string notr="true">background-color: #ffffff;
 border: none;
@@ -549,6 +567,9 @@ border-radius: 25px;
                      <layout class="QVBoxLayout" name="verticalLayout_10">
                       <item>
                        <widget class="QPushButton" name="Answer2">
+                        <property name="cursor">
+                         <cursorShape>PointingHandCursor</cursorShape>
+                        </property>
                         <property name="styleSheet">
                          <string notr="true">background-color: #ffffff;
 border: none;
@@ -566,6 +587,9 @@ border-radius: 25px;
                       </item>
                       <item>
                        <widget class="QPushButton" name="Answer4">
+                        <property name="cursor">
+                         <cursorShape>PointingHandCursor</cursorShape>
+                        </property>
                         <property name="styleSheet">
                          <string notr="true">background-color: #ffffff;
 border: none;

@@ -15,6 +15,6 @@ win::~win()
 
 void win::on_pushButton_clicked()
 {
-
+    close();
 }
 

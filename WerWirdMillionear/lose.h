@@ -15,6 +15,9 @@ public:
     explicit lose(QWidget *parent = nullptr);
     ~lose();
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::lose *ui;
 };

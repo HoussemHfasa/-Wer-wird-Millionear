@@ -19,6 +19,9 @@
 #include <GameSession.h>
 #include <lifelines.h>
 #include <iostream>
+#include"settings.h"
+#include"lose.h"
+#include"win.h"
 using namespace std ;
 
 Lifeline lifelines;
@@ -355,6 +358,11 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
             ui->Answer2->setText("");
             ui->Answer3->setText("");
             ui->Answer4->setText("");
+
+            win win;
+            win.setModal(true);
+            win.exec();
+
         }
     } else {
         // User's answer is incorrect
@@ -364,6 +372,10 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
         ui->Answer2->setText("");
         ui->Answer3->setText("");
         ui->Answer4->setText("");
+
+        lose lose;
+        lose.setModal(true);
+        lose.exec();
     }
 }
 
@@ -402,5 +414,13 @@ void MainWindow::on_Zurueckstartseite_2_clicked()
 void MainWindow::on_spielanleitungButton_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->SpielanleitungPage);
+}
+
+
+void MainWindow::on_pushButton_clicked()
+{
+    settings settings;
+    settings.setModal(true);
+    settings.exec();
 }
 
