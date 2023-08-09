@@ -24,7 +24,6 @@ void MainWindow::on_StartButton_clicked()
     ui->stackedWidget->setCurrentWidget(ui->AnmeldenSeite);
 
 
-
 }
 
 // Wenn der "50:50" Button geklickt wird
@@ -361,6 +360,11 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
 }
 void MainWindow::on_Zurueckstartseite_2_clicked()
 {
+    QProcess::startDetached(QCoreApplication::applicationFilePath());
+
+    QCoreApplication::quit();
+
+
     ui->stackedWidget->setCurrentWidget(ui->Startseite);
 }
 void MainWindow::switchToStartseitePage()
