@@ -61,4 +61,5 @@ private:
     vector<Frage> fragen;
     int aktuelleFrageIndex;
     int currentscore;
+    vector<int> gewinnstufen;
 };
