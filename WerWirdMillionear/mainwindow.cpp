@@ -44,6 +44,7 @@ void MainWindow::on_fiftyFifty_clicked()
     }
     }
     lifelines.isFiftyFiftyUsed();
+
 }
 
 // Wenn der "Publikum" Button geklickt wird
@@ -102,6 +103,21 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    e100Label = findChild<QLabel*>("E100");
+    e200Label = findChild<QLabel*>("E200");
+    e300Label = findChild<QLabel*>("E300");
+    e500Label = findChild<QLabel*>("E500");
+    e1000Label = findChild<QLabel*>("E1000");
+    e2000Label = findChild<QLabel*>("E2000");
+    e4000Label = findChild<QLabel*>("E4000");
+    e8000Label = findChild<QLabel*>("E8000");
+    e16000Label = findChild<QLabel*>("E16000");
+    e32000Label = findChild<QLabel*>("E32000");
+    e64000Label = findChild<QLabel*>("E64000");
+    e125000Label = findChild<QLabel*>("E125000");
+    e250000Label = findChild<QLabel*>("E250000");
+    e500000Label = findChild<QLabel*>("E500000");
+    e1000000Label = findChild<QLabel*>("E1000000");
 
     // Display the logo
     QPixmap pix(":/img/img/logo.png");
@@ -271,7 +287,6 @@ void MainWindow::on_SpielStartButton_clicked()
     ui->Answer4->setText(QString::fromStdString(antworten[3]));
 
 
-
     ui->stackedWidget->setCurrentWidget(ui->SpielSeite);
 }
 
@@ -280,6 +295,7 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
     int Fragenanzahl=fragen.size();
 
     const Frage& aktuelleFrage = fragen[aktuelleFrageIndex];
+
 
     if (aktuelleFrage.istAntwortKorrekt(selectedAnswer)) {
         // User's answer is correct
@@ -318,6 +334,51 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
         ui->Answer2->setText("");
         ui->Answer3->setText("");
         ui->Answer4->setText("");
+    }
+    if(aktuelleFrageIndex == 1) {
+        e100Label->setStyleSheet("background-color: #90EE90");
+    }
+    if(aktuelleFrageIndex == 2) {
+        e200Label->setStyleSheet("background-color: #90EE90");
+    }
+    if(aktuelleFrageIndex == 3) {
+        e300Label->setStyleSheet("background-color: #90EE90");
+    }
+    if(aktuelleFrageIndex == 4) {
+        e500Label->setStyleSheet("background-color: #90EE90");
+    }
+    if(aktuelleFrageIndex == 5) {
+        e1000Label->setStyleSheet("background-color: #FFFF00");
+    }
+    if(aktuelleFrageIndex == 6) {
+        e2000Label->setStyleSheet("background-color: #FFFF00");
+    }
+    if(aktuelleFrageIndex == 7) {
+        e4000Label->setStyleSheet("background-color: #FFFF00");
+    }
+    if(aktuelleFrageIndex == 8) {
+        e8000Label->setStyleSheet("background-color: #FFFF00");
+    }
+    if(aktuelleFrageIndex == 9) {
+        e16000Label->setStyleSheet("background-color: #FFFF00");
+    }
+    if(aktuelleFrageIndex == 10) {
+        e32000Label->setStyleSheet("background-color: #FFA500");
+    }
+    if(aktuelleFrageIndex == 11) {
+        e64000Label->setStyleSheet("background-color: #FFA500");
+    }
+    if(aktuelleFrageIndex == 12) {
+        e125000Label->setStyleSheet("background-color: #FFA500");
+    }
+    if(aktuelleFrageIndex == 13) {
+        e250000Label->setStyleSheet("background-color: #FFA500");
+    }
+    if(aktuelleFrageIndex == 14) {
+        e500000Label->setStyleSheet("background-color: #FFA500");
+    }
+    if(aktuelleFrageIndex == 15) {
+        e1000000Label->setStyleSheet("background-color: #FF0000");
     }
 }
 
