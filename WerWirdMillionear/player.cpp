@@ -62,7 +62,7 @@ void Player::updateScore(int newScore) {
     if (newScore > bestScore) {
         bestScore = newScore;
     }
-    if(bestScore==1000000)
+    if(newScore==1000000)
     {
         currentScore=0;
     }

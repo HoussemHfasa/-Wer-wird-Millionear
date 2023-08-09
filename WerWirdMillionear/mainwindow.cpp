@@ -298,7 +298,6 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
             ui->Answer2->setText(QString::fromStdString(antworten[1]));
             ui->Answer3->setText(QString::fromStdString(antworten[2]));
             ui->Answer4->setText(QString::fromStdString(antworten[3]));
-
         }
         else if (aktuelleFrageIndex==Fragenanzahl) {
             // End of the game
@@ -310,9 +309,7 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
             ui->Answer4->setText("");
 
         }
-
     }
-
     else {
         // User's answer is incorrect
         // Handle accordingly, e.g., show incorrect message
@@ -325,9 +322,6 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
     }
     player->updateScore(Scores[aktuelleFrageIndex]);
     highlightReachedQuestion();
-
-
-
 
 }
 void MainWindow::on_Zurueckstartseite_2_clicked()
