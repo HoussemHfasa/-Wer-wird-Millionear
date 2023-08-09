@@ -37,6 +37,8 @@ private slots:
     void highlightReachedQuestion();
 
 
+    void on_Neustart_clicked();
+
 private:
     Ui::MainWindow *ui;
     QLabel *imageLabel;
@@ -70,5 +72,6 @@ private:
     QLabel *e1000000Label ;
     Player* player;
     vector<int> Scores;
+    string nickname;
 
 };

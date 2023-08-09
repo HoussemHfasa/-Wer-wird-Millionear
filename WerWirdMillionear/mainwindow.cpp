@@ -144,6 +144,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->Answer4, &QPushButton::clicked, this, [=]() { handleAnswerClick('D'); });
 
 
+
 }
 
 
@@ -212,11 +213,37 @@ void MainWindow::onCategoryChanged(QString category) {
 void MainWindow::onDifficultyChanged(QString difficulty) {
     std::cout << difficulty.toStdString() << std::endl;
 }
+void MainWindow::on_Neustart_clicked()
+{
+    nickname = input_nickname->text().toStdString();
+    // Create a Player object with the entered nickname
+    player=new Player(nickname);
+    //Player player(nickname);
+
+    QString category = ui->comboBox_Kategorie->currentText();
+    onCategoryChanged(category);
+
+    QString difficulty = ui->comboBox_Schwierigkeitsgrad->currentText();
+    onDifficultyChanged(difficulty);
+
+    GameSession Spiel(*player);
+    player->updateScore(Scores[0]);
+    //Spiel.vorbereiteteFragen(difficulty.toStdString(),category.toStdString());
+    fragen = Spiel.vorbereiteteFragen(difficulty.toStdString(),category.toStdString());
+    aktuelleFrageIndex=0;
+    vector<string> antworten = fragen[aktuelleFrageIndex].getAntworten();
+    ui->getFrage->setText(QString::fromStdString(fragen[aktuelleFrageIndex].getFrage()));
+    ui->Answer1_4->setText(QString::fromStdString(antworten[0]));
+    ui->Answer2->setText(QString::fromStdString(antworten[1]));
+    ui->Answer3->setText(QString::fromStdString(antworten[2]));
+    ui->Answer4->setText(QString::fromStdString(antworten[3]));
+    ui->stackedWidget->setCurrentWidget(ui->SpielSeite);
+
+
+}
 void MainWindow::on_SpielStartButton_clicked()
 {
-
-    std::string nickname = input_nickname->text().toStdString();
-
+    nickname = input_nickname->text().toStdString();
     // Create a Player object with the entered nickname
     player=new Player(nickname);
     //Player player(nickname);
@@ -230,7 +257,6 @@ void MainWindow::on_SpielStartButton_clicked()
     GameSession Spiel(*player);
     //Spiel.vorbereiteteFragen(difficulty.toStdString(),category.toStdString());
     fragen = Spiel.vorbereiteteFragen(difficulty.toStdString(),category.toStdString());
-
 
     // Store the index of the current question
     currentscore=player->getCurrentScore();
@@ -248,8 +274,6 @@ void MainWindow::on_SpielStartButton_clicked()
     ui->Answer2->setText(QString::fromStdString(antworten[1]));
     ui->Answer3->setText(QString::fromStdString(antworten[2]));
     ui->Answer4->setText(QString::fromStdString(antworten[3]));
-
-
     ui->stackedWidget->setCurrentWidget(ui->SpielSeite);
 }
 
@@ -336,6 +360,9 @@ void MainWindow::highlightReachedQuestion() {
         }
     }
 }
+
+
+
 
 
 

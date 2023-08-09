@@ -419,7 +419,23 @@ font-weight: bold;
 border-radius: 10px;</string>
                   </property>
                   <property name="text">
-                   <string>Beginne zu spielen</string>
+                   <string>Fortsetzen</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="Neustart">
+                  <property name="styleSheet">
+                   <string notr="true">background-color: #4B8A90;
+border: none;
+color: white;
+padding: 10px 20px;
+font-size: 16px;
+font-weight: bold;
+border-radius: 10px;</string>
+                  </property>
+                  <property name="text">
+                   <string>Neustart</string>
                   </property>
                  </widget>
                 </item>
