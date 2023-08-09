@@ -1,8 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QMediaPlayer>
+#include <QUrl>
+#include <QAudio>
 #include <iostream>
 #include <QtSql>
-#include <QSqlQuery>
 using namespace std ;
 
 Lifeline lifelines;
@@ -158,7 +160,21 @@ MainWindow::~MainWindow()
 void MainWindow::on_StartButton_clicked()
 {
     // Switch to AnmeldenSeite
-    ui->stackedWidget->setCurrentWidget(ui->AnmeldenSeite);
+    //ui->stackedWidget->setCurrentWidget(ui->AnmeldenSeite);
+    QMediaPlayer *musicPlayer = new QMediaPlayer;
+    musicPlayer->setMedia(QUrl::fromLocalFile(":/img/song.mp3"));
+
+    // Adjust the volume using QAudioMixer
+    QAudioMixerControl *mixerControl = musicPlayer->audio()->mixerControl();
+    if (mixerControl) {
+        mixerControl->setVolume(50);
+    }
+
+    musicPlayer->play();
+
+
+
+
 }
 void MainWindow::on_BestenlisteButton_clicked()
 {
@@ -243,6 +259,7 @@ void MainWindow::on_Neustart_clicked()
 }
 void MainWindow::on_SpielStartButton_clicked()
 {
+
     nickname = input_nickname->text().toStdString();
     // Create a Player object with the entered nickname
     player=new Player(nickname);
