@@ -1,16 +1,29 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <iostream>
-#include <QtSql>
+#include <QLabel>
+#include <QPixmap>
+#include <player.h>
 #include <QSqlQuery>
-#include"settings.h"
-#include "win.h"
-
-
+#include <QtSql/QSqlError>
+#include <QMessageBox>
+#include<QProgressDialog>
+#include <QLineEdit>
+#include <QtSql>
+#include <QListView>
+#include <QTableView>
+#include <QStandardItemModel>
+#include <QHeaderView>
+#include <QFont>
+#include <QBrush>
+#include <Frage.h>
+#include <GameSession.h>
+#include <lifelines.h>
+#include <iostream>
 using namespace std ;
 
 Lifeline lifelines;
 
+// ...
 
 // Wenn der "50:50" Button geklickt wird
 void MainWindow::on_fiftyFifty_clicked()
@@ -25,8 +38,7 @@ void MainWindow::on_fiftyFifty_clicked()
     // Zufällige Auswahl von zwei falschen Antworten
     int richtigeAntwortIndex = fragen[aktuelleFrageIndex].getRichtigeAntwort() - 'A';
     vector<int> falscheAntwortIndizes;
-    int antwortsize=antworten.size();
-    for (int i = 0; i < antwortsize; i++) {
+    for (int i = 0; i < antworten.size(); i++) {
         if (i != richtigeAntwortIndex) {
             falscheAntwortIndizes.push_back(i);
         }
@@ -48,7 +60,6 @@ void MainWindow::on_fiftyFifty_clicked()
     }
     }
     lifelines.isFiftyFiftyUsed();
-
 }
 
 // Wenn der "Publikum" Button geklickt wird
@@ -90,13 +101,13 @@ void MainWindow::on_phone_clicked()
     string freundRat = lifelines.getPhoneAntwort();
 
     if (freundRat == "A") {
-        ui->Answer1_4->setText(ui->Answer1_4->text() + "   (Freundrat)");
+        ui->Answer1_4->setText(ui->Answer1_4->text() + "   Freundrat");
     } else if (freundRat == "B") {
-        ui->Answer2->setText(ui->Answer2->text() + "   (Freundrat)");
+        ui->Answer2->setText(ui->Answer2->text() + "   Freundrat");
     } else if (freundRat == "C") {
-        ui->Answer3->setText(ui->Answer3->text() + "   (Freundrat)");
+        ui->Answer3->setText(ui->Answer3->text() + "   Freundrat");
     } else if (freundRat == "D") {
-        ui->Answer4->setText(ui->Answer4->text() + "   (Freundrat)");
+        ui->Answer4->setText(ui->Answer4->text() + "   Freundrat");
     }
     }
     lifelines.isPhoneUsed();
@@ -106,28 +117,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
-
-
-
-
-
-
     ui->setupUi(this);
-    e100Label = findChild<QLabel*>("E100");
-    e200Label = findChild<QLabel*>("E200");
-    e300Label = findChild<QLabel*>("E300");
-    e500Label = findChild<QLabel*>("E500");
-    e1000Label = findChild<QLabel*>("E1000");
-    e2000Label = findChild<QLabel*>("E2000");
-    e4000Label = findChild<QLabel*>("E4000");
-    e8000Label = findChild<QLabel*>("E8000");
-    e16000Label = findChild<QLabel*>("E16000");
-    e32000Label = findChild<QLabel*>("E32000");
-    e64000Label = findChild<QLabel*>("E64000");
-    e125000Label = findChild<QLabel*>("E125000");
-    e250000Label = findChild<QLabel*>("E250000");
-    e500000Label = findChild<QLabel*>("E500000");
-    e1000000Label = findChild<QLabel*>("E1000000");
 
     // Display the logo
     QPixmap pix(":/img/img/logo.png");
@@ -139,10 +129,35 @@ MainWindow::MainWindow(QWidget *parent)
     // Create the playerModel and set it as the model for "Bestenliste" QListView
     playerModel = new QStandardItemModel(this); // Assuming you have playerModel as a member variable of MainWindow
     ui->Bestenliste->setModel(playerModel); // Assuming "Bestenliste" is the name of your QListView in the UI
+   /* Answer1 = ui->Answer1_4;
+    Answer2 = ui->Answer2;
+    Answer3 = ui->Answer3;
+    Answer4 = ui->Answer4;
+    getFrage = ui->getFrage;
 
+    // Verknüpfung des Start-Buttons mit dem Slot
+    connect(ui->SpielStartButton, &QPushButton::clicked, this, &MainWindow::on_SpielStartButton_clicked);*/
     input_nickname = ui->input_nickname;
 
+    connect(ui->Answer1_4, &QPushButton::clicked, this, &MainWindow::on_Answer1_4_clicked);
+    connect(ui->Answer2, &QPushButton::clicked, this, &MainWindow::on_Answer2_clicked);
+    connect(ui->Answer3, &QPushButton::clicked, this, &MainWindow::on_Answer3_clicked);
+    connect(ui->Answer4, &QPushButton::clicked, this, &MainWindow::on_Answer4_clicked);
+
+    /*comboBox_Kategorie = new QComboBox(this);
+    comboBox_Kategorie->addItem("allgemein");
+    comboBox_Kategorie->addItem("Sport");
+    comboBox_Kategorie->addItem("Wissenschaft");
+    comboBox_Kategorie->addItem("Kunst und Kultur");
+    comboBox_Kategorie->addItem("Geschichte");
+
+    comboBox_Schwierigkeitsgrad = new QComboBox(this);
+    comboBox_Schwierigkeitsgrad->addItem("einfach");
+    comboBox_Schwierigkeitsgrad->addItem("mittelschwer");
+    comboBox_Schwierigkeitsgrad->addItem("schwer");*/
     connect(ui->comboBox_Kategorie, SIGNAL(currentIndexChanged(QString)), this, SLOT(onCategoryChanged(QString)));
+
+
     connect(ui->comboBox_Schwierigkeitsgrad, SIGNAL(currentIndexChanged(QString)), this, SLOT(onDifficultyChanged(QString)));
     // Connect the answer buttons to handleAnswerClick
     connect(ui->Answer1_4, &QPushButton::clicked, this, [=]() { handleAnswerClick('A'); });
@@ -158,7 +173,6 @@ MainWindow::~MainWindow()
     delete ui;
     playerModel = new QStandardItemModel(this);
 
-
 }
 
 void MainWindow::on_StartButton_clicked()
@@ -168,6 +182,7 @@ void MainWindow::on_StartButton_clicked()
 }
 void MainWindow::on_BestenlisteButton_clicked()
 {
+    cout<<" ya nimmmm";
     // Switch to BestenlisteSeite
     ui->stackedWidget->setCurrentWidget(ui->BestenlisteSeite);
 
@@ -237,8 +252,12 @@ void MainWindow::on_SpielStartButton_clicked()
     //Spiel.vorbereiteteFragen(difficulty.toStdString(),category.toStdString());
     fragen = Spiel.vorbereiteteFragen(difficulty.toStdString(),category.toStdString());
 
+    // Spiel.vorbereiteteFragen("einfach","Geschichte");
+
+
 
     // Store the index of the current question
+    //aktuelleFrageIndex = 0;
     currentscore=player.getCurrentScore();
     switch (currentscore){
     case 0:
@@ -298,25 +317,28 @@ void MainWindow::on_SpielStartButton_clicked()
     ui->Answer4->setText(QString::fromStdString(antworten[3]));
 
 
+
     ui->stackedWidget->setCurrentWidget(ui->SpielSeite);
 }
 
 void MainWindow::handleAnswerClick(char selectedAnswer)
 {
-    int Fragenanzahl=fragen.size();
+    gewinnstufen = {50, 100, 200, 300, 500, 1000, 2000, 4000, 8000, 16000, 32000, 64000, 125000, 500000, 1000000};
+    int Fragenanzahl = fragen.size();
 
     const Frage& aktuelleFrage = fragen[aktuelleFrageIndex];
 
-
     if (aktuelleFrage.istAntwortKorrekt(selectedAnswer)) {
         // User's answer is correct
-        //
-        aktuelleFrageIndex+=1;
-        cout<<aktuelleFrageIndex <<endl;
-        cout<<fragen[aktuelleFrageIndex].getFrage()<<endl;
-        cout<<fragen[aktuelleFrageIndex].getRichtigeAntwort()<<endl;
-        cout<<fragen.size()<<endl;
 
+        int gewinn = gewinnstufen[aktuelleFrageIndex]; // Gewinnstufe für die aktuelle Frage
+        cout << "Richtig! Du erhältst " << gewinn << " Punkte.\n";
+        //spieler.updateScore(GameSession.spieler.getCurrentScore() + gewinn);
+        aktuelleFrageIndex += 1;
+        cout << aktuelleFrageIndex << endl;
+        cout << fragen[aktuelleFrageIndex].getFrage() << endl;
+        cout << fragen[aktuelleFrageIndex].getRichtigeAntwort() << endl;
+        cout << fragen.size() << endl;
 
         if (aktuelleFrageIndex < Fragenanzahl) {
             vector<string> antworten = fragen[aktuelleFrageIndex].getAntworten();
@@ -325,19 +347,16 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
             ui->Answer2->setText(QString::fromStdString(antworten[1]));
             ui->Answer3->setText(QString::fromStdString(antworten[2]));
             ui->Answer4->setText(QString::fromStdString(antworten[3]));
-        }
-        else if (aktuelleFrageIndex==Fragenanzahl) {
+        } else if (aktuelleFrageIndex == Fragenanzahl) {
             // End of the game
             // Handle accordingly, e.g., show final score
             ui->getFrage->setText("Herzlichen Glückwunsch! Du hast alle Fragen beantwortet.");
-            ui->Answer1_4->setText("");
+                ui->Answer1_4->setText("");
             ui->Answer2->setText("");
             ui->Answer3->setText("");
             ui->Answer4->setText("");
         }
-    }
-
-     else {
+    } else {
         // User's answer is incorrect
         // Handle accordingly, e.g., show incorrect message
         ui->getFrage->setText("Leider falsch. Das Spiel ist vorbei.");
@@ -346,53 +365,31 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
         ui->Answer3->setText("");
         ui->Answer4->setText("");
     }
-    if(aktuelleFrageIndex == 1) {
-        e100Label->setStyleSheet("background-color: #90EE90");
-    }
-    if(aktuelleFrageIndex == 2) {
-        e200Label->setStyleSheet("background-color: #90EE90");
-    }
-    if(aktuelleFrageIndex == 3) {
-        e300Label->setStyleSheet("background-color: #90EE90");
-    }
-    if(aktuelleFrageIndex == 4) {
-        e500Label->setStyleSheet("background-color: #90EE90");
-    }
-    if(aktuelleFrageIndex == 5) {
-        e1000Label->setStyleSheet("background-color: #FFFF00");
-    }
-    if(aktuelleFrageIndex == 6) {
-        e2000Label->setStyleSheet("background-color: #FFFF00");
-    }
-    if(aktuelleFrageIndex == 7) {
-        e4000Label->setStyleSheet("background-color: #FFFF00");
-    }
-    if(aktuelleFrageIndex == 8) {
-        e8000Label->setStyleSheet("background-color: #FFFF00");
-    }
-    if(aktuelleFrageIndex == 9) {
-        e16000Label->setStyleSheet("background-color: #FFFF00");
-    }
-    if(aktuelleFrageIndex == 10) {
-        e32000Label->setStyleSheet("background-color: #FFA500");
-    }
-    if(aktuelleFrageIndex == 11) {
-        e64000Label->setStyleSheet("background-color: #FFA500");
-    }
-    if(aktuelleFrageIndex == 12) {
-        e125000Label->setStyleSheet("background-color: #FFA500");
-    }
-    if(aktuelleFrageIndex == 13) {
-        e250000Label->setStyleSheet("background-color: #FFA500");
-    }
-    if(aktuelleFrageIndex == 14) {
-        e500000Label->setStyleSheet("background-color: #FFA500");
-    }
-    if(aktuelleFrageIndex == 15) {
-        e1000000Label->setStyleSheet("background-color: #FF0000");
-    }
 }
 
+void MainWindow::on_Answer1_4_clicked()
+{
+
+
+}
+
+
+void MainWindow::on_Answer2_clicked()
+{
+
+}
+
+
+void MainWindow::on_Answer3_clicked()
+{
+
+}
+
+
+void MainWindow::on_Answer4_clicked()
+{
+
+}
 
 
 
@@ -405,23 +402,5 @@ void MainWindow::on_Zurueckstartseite_2_clicked()
 void MainWindow::on_spielanleitungButton_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->SpielanleitungPage);
-}
-
-
-void MainWindow::on_pushButton_clicked()
-{
-    settings settings;
-    settings.setModal(true);
-    settings.exec();
-}
-
-
-void MainWindow::on_pushButton_7_clicked()
-{
-    ui->pushButton_7->setStyleSheet("border-image: url(:/img/notpeople.png);"
-                                    "border: none;"
-                                    "background-repeat: none;"
-                                    "width: 20px;"
-                                    "height: 50px;");
 }
 
