@@ -26,18 +26,6 @@ Player::Player(const std::string& nickname1) {
 }
 
 
-/*int Player::generateID() {
-    QSqlQuery query;
-    query.prepare("SELECT MAX(id) FROM benutzer");
-    if (query.exec() && query.next()) {
-        int maxID = query.value(0).toInt();
-        return maxID + 1;
-    }
-    // Falls keine ID gefunden wurde oder ein Fehler aufgetreten ist,
-    // könnte alternativ eine Standard-ID zurückgegeben werden, z. B. -1.
-    // Dies hängt von Ihren Anforderungen ab.
-    return 1;
-}*/
 string Player::getNickname() const {
     QSqlQuery query;
     query.prepare("SELECT nickname FROM benutzer WHERE nickname = :nickname");
@@ -74,6 +62,10 @@ void Player::updateScore(int newScore) {
     if (newScore > bestScore) {
         bestScore = newScore;
     }
+    if(bestScore==1000000)
+    {
+        currentScore=0;
+    }
     QSqlQuery query;
     query.prepare("UPDATE benutzer SET Highscore = :bestScore WHERE nickname = :nickname");
     query.bindValue(":bestScore", bestScore); // Hier wird der Platzhalter :bestScore mit dem Wert von bestScore ersetzt
@@ -81,7 +73,7 @@ void Player::updateScore(int newScore) {
     query.bindValue(":nickname",  QString::fromStdString(nickname)); // Hier wird der Platzhalter :currentScore mit dem Wert von currentScore ersetzt
     query.exec();
     query.prepare("UPDATE benutzer SET currentScore = :newScore WHERE nickname = :nickname");
-    query.bindValue(":newScore", newScore);
+    query.bindValue(":newScore", currentScore);
     query.bindValue(":nickname",  QString::fromStdString(nickname)); // Hier wird der Platzhalter :currentScore mit dem Wert von currentScore ersetzt
     query.exec();
 }

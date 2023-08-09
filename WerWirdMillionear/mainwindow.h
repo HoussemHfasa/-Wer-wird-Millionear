@@ -20,7 +20,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-void handleAnswerClick(char selectedAnswer);
+    void handleAnswerClick(char selectedAnswer);
 
 
 private slots:
@@ -28,22 +28,16 @@ private slots:
     void on_BestenlisteButton_clicked();
     void on_SpielStartButton_clicked();
     void on_spielanleitungButton_clicked();
-    void on_Zurueckstartseite_clicked();
-    void on_Answer1_4_clicked();
-    void Combobox();
     void onCategoryChanged(QString category);
     void onDifficultyChanged(QString difficulty);
-    void on_Answer2_clicked();
-    void on_Answer3_clicked();
-    void on_Answer4_clicked();
     void on_fiftyFifty_clicked();
     void on_audience_clicked();
     void on_phone_clicked();
-
-
     void on_Zurueckstartseite_2_clicked();
+    void highlightReachedQuestion();
 
-    void on_StartseiteBtn_clicked();
+
+    void on_Neustart_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -61,5 +55,23 @@ private:
     vector<Frage> fragen;
     int aktuelleFrageIndex;
     int currentscore;
-    vector<int> gewinnstufen;
+    QLabel *e100Label;
+    QLabel *e200Label;
+    QLabel *e300Label;
+    QLabel *e500Label ;
+    QLabel *e1000Label;
+    QLabel *e2000Label ;
+    QLabel *e4000Label ;
+    QLabel *e8000Label ;
+    QLabel *e16000Label ;
+    QLabel *e32000Label ;
+    QLabel *e64000Label ;
+    QLabel *e125000Label;
+    QLabel *e250000Label ;
+    QLabel *e500000Label ;
+    QLabel *e1000000Label ;
+    Player* player;
+    vector<int> Scores;
+    string nickname;
+
 };
