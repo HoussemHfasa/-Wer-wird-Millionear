@@ -34,6 +34,8 @@ private slots:
     void on_audience_clicked();
     void on_phone_clicked();
     void on_Zurueckstartseite_2_clicked();
+    void highlightReachedQuestion();
+
 
 private:
     Ui::MainWindow *ui;
@@ -66,4 +68,7 @@ private:
     QLabel *e250000Label ;
     QLabel *e500000Label ;
     QLabel *e1000000Label ;
+    Player* player;
+    vector<int> Scores;
+
 };

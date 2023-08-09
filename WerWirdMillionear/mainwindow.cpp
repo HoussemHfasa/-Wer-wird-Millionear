@@ -11,6 +11,7 @@ Lifeline lifelines;
 // Wenn der "50:50" Button geklickt wird
 void MainWindow::on_fiftyFifty_clicked()
 {
+
     if (!lifelines.fiftyFiftyUsed) {
     // Rufe die fiftyFifty-Funktion der Lifeline auf
     lifelines.fiftyFifty(fragen[aktuelleFrageIndex].getAntworten(), fragen[aktuelleFrageIndex].getRichtigeAntwort());
@@ -102,6 +103,8 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    Scores={0,100,200,300,500,1000,2000,4000,8000,16000,32000,64000,125000,250000,500000,1000000};
+
     ui->setupUi(this);
     e100Label = findChild<QLabel*>("E100");
     e200Label = findChild<QLabel*>("E200");
@@ -139,6 +142,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->Answer2, &QPushButton::clicked, this, [=]() { handleAnswerClick('B'); });
     connect(ui->Answer3, &QPushButton::clicked, this, [=]() { handleAnswerClick('C'); });
     connect(ui->Answer4, &QPushButton::clicked, this, [=]() { handleAnswerClick('D'); });
+
 
 }
 
@@ -214,7 +218,8 @@ void MainWindow::on_SpielStartButton_clicked()
     std::string nickname = input_nickname->text().toStdString();
 
     // Create a Player object with the entered nickname
-    Player player(nickname);
+    player=new Player(nickname);
+    //Player player(nickname);
 
     QString category = ui->comboBox_Kategorie->currentText();
     onCategoryChanged(category);
@@ -222,63 +227,21 @@ void MainWindow::on_SpielStartButton_clicked()
     QString difficulty = ui->comboBox_Schwierigkeitsgrad->currentText();
     onDifficultyChanged(difficulty);
 
-    GameSession Spiel(player);
+    GameSession Spiel(*player);
     //Spiel.vorbereiteteFragen(difficulty.toStdString(),category.toStdString());
     fragen = Spiel.vorbereiteteFragen(difficulty.toStdString(),category.toStdString());
 
 
     // Store the index of the current question
-    currentscore=player.getCurrentScore();
-    switch (currentscore){
-    case 0:
-        aktuelleFrageIndex=0;
-        break;
-    case 100:
-        aktuelleFrageIndex=1;
-        break;
-    case 200:
-        aktuelleFrageIndex=2;
-        break;
-    case 300:
-        aktuelleFrageIndex=3;
-        break;
-    case 500:
-        aktuelleFrageIndex=4;
-        break;
-    case 1000:
-        aktuelleFrageIndex=5;
-        break;
-    case 2000:
-        aktuelleFrageIndex=6;
-        break;
-    case 4000:
-        aktuelleFrageIndex=7;
-        break;
-    case 8000:
-        aktuelleFrageIndex=8;
-        break;
-    case 16000:
-        aktuelleFrageIndex=9;
-        break;
-    case 32000:
-        aktuelleFrageIndex=10;
-        break;
-    case 64000:
-        aktuelleFrageIndex=11;
-        break;
-    case 125000:
-        aktuelleFrageIndex=12;
-        break;
-    case 250000:
-        aktuelleFrageIndex=13;
-        break;
-    case 500000:
-        aktuelleFrageIndex=14;
-        break;
-    case 1000000:
-        aktuelleFrageIndex=15;
-        break;
+    currentscore=player->getCurrentScore();
+    cout<<currentscore<<endl;
+    for(int i = 0; i < 16; i++) {
+        if(Scores[i] == currentscore) {
+            aktuelleFrageIndex=i;
+            break ;
+        }
     }
+    highlightReachedQuestion();
     vector<string> antworten = fragen[aktuelleFrageIndex].getAntworten();
     ui->getFrage->setText(QString::fromStdString(fragen[aktuelleFrageIndex].getFrage()));
     ui->Answer1_4->setText(QString::fromStdString(antworten[0]));
@@ -298,22 +261,20 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
 
 
     if (aktuelleFrage.istAntwortKorrekt(selectedAnswer)) {
-        // User's answer is correct
-        //
         aktuelleFrageIndex+=1;
         cout<<aktuelleFrageIndex <<endl;
-        cout<<fragen[aktuelleFrageIndex].getFrage()<<endl;
-        cout<<fragen[aktuelleFrageIndex].getRichtigeAntwort()<<endl;
-        cout<<fragen.size()<<endl;
 
-
+        cout<<Fragenanzahl<<endl;
         if (aktuelleFrageIndex < Fragenanzahl) {
+            cout<<fragen[aktuelleFrageIndex].getFrage()<<endl;
+            cout<<fragen[aktuelleFrageIndex].getRichtigeAntwort()<<endl;
             vector<string> antworten = fragen[aktuelleFrageIndex].getAntworten();
             ui->getFrage->setText(QString::fromStdString(fragen[aktuelleFrageIndex].getFrage()));
             ui->Answer1_4->setText(QString::fromStdString(antworten[0]));
             ui->Answer2->setText(QString::fromStdString(antworten[1]));
             ui->Answer3->setText(QString::fromStdString(antworten[2]));
             ui->Answer4->setText(QString::fromStdString(antworten[3]));
+            player->updateScore(Scores[aktuelleFrageIndex]);
         }
         else if (aktuelleFrageIndex==Fragenanzahl) {
             // End of the game
@@ -323,7 +284,9 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
             ui->Answer2->setText("");
             ui->Answer3->setText("");
             ui->Answer4->setText("");
+            player->updateScore(Scores[0]);
         }
+
     }
 
      else {
@@ -334,57 +297,14 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
         ui->Answer2->setText("");
         ui->Answer3->setText("");
         ui->Answer4->setText("");
+        player->updateScore(Scores[0]);
     }
-    if(aktuelleFrageIndex == 1) {
-        e100Label->setStyleSheet("background-color: #90EE90");
-    }
-    if(aktuelleFrageIndex == 2) {
-        e200Label->setStyleSheet("background-color: #90EE90");
-    }
-    if(aktuelleFrageIndex == 3) {
-        e300Label->setStyleSheet("background-color: #90EE90");
-    }
-    if(aktuelleFrageIndex == 4) {
-        e500Label->setStyleSheet("background-color: #90EE90");
-    }
-    if(aktuelleFrageIndex == 5) {
-        e1000Label->setStyleSheet("background-color: #FFFF00");
-    }
-    if(aktuelleFrageIndex == 6) {
-        e2000Label->setStyleSheet("background-color: #FFFF00");
-    }
-    if(aktuelleFrageIndex == 7) {
-        e4000Label->setStyleSheet("background-color: #FFFF00");
-    }
-    if(aktuelleFrageIndex == 8) {
-        e8000Label->setStyleSheet("background-color: #FFFF00");
-    }
-    if(aktuelleFrageIndex == 9) {
-        e16000Label->setStyleSheet("background-color: #FFFF00");
-    }
-    if(aktuelleFrageIndex == 10) {
-        e32000Label->setStyleSheet("background-color: #FFA500");
-    }
-    if(aktuelleFrageIndex == 11) {
-        e64000Label->setStyleSheet("background-color: #FFA500");
-    }
-    if(aktuelleFrageIndex == 12) {
-        e125000Label->setStyleSheet("background-color: #FFA500");
-    }
-    if(aktuelleFrageIndex == 13) {
-        e250000Label->setStyleSheet("background-color: #FFA500");
-    }
-    if(aktuelleFrageIndex == 14) {
-        e500000Label->setStyleSheet("background-color: #FFA500");
-    }
-    if(aktuelleFrageIndex == 15) {
-        e1000000Label->setStyleSheet("background-color: #FF0000");
-    }
+    highlightReachedQuestion();
+
+
+
+
 }
-
-
-
-
 void MainWindow::on_Zurueckstartseite_2_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->Startseite);
@@ -395,4 +315,28 @@ void MainWindow::on_spielanleitungButton_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->SpielanleitungPage);
 }
+
+void MainWindow::highlightReachedQuestion() {
+    QLabel* labels[] = {
+        e100Label, e200Label, e300Label, e500Label,
+        e1000Label, e2000Label, e4000Label, e8000Label,
+        e16000Label, e32000Label, e64000Label, e125000Label,
+        e250000Label, e500000Label, e1000000Label
+    };
+
+    for (int i = 0; i < aktuelleFrageIndex && i < static_cast<int>(sizeof(labels) / sizeof(labels[0])); ++i) {
+        if (i < 4) {
+            labels[i]->setStyleSheet("background-color: #90EE90");
+        } else if (i < 10) {
+            labels[i]->setStyleSheet("background-color: #FFFF00");
+        } else if (i < 13) {
+            labels[i]->setStyleSheet("background-color: #FFA500");
+        } else {
+            labels[i]->setStyleSheet("background-color: #FF0000");
+        }
+    }
+}
+
+
+
 
