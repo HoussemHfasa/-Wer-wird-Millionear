@@ -11,6 +11,7 @@ Lifeline lifelines;
 // Wenn der "50:50" Button geklickt wird
 void MainWindow::on_fiftyFifty_clicked()
 {
+    if (!lifelines.fiftyFiftyUsed) {
     // Rufe die fiftyFifty-Funktion der Lifeline auf
     lifelines.fiftyFifty(fragen[aktuelleFrageIndex].getAntworten(), fragen[aktuelleFrageIndex].getRichtigeAntwort());
 
@@ -41,11 +42,14 @@ void MainWindow::on_fiftyFifty_clicked()
     if (falscheAntwortIndizes.size() > 1) {
         ui->Answer2->setText(QString::fromStdString(antworten[falscheAntwortIndizes[1]]));
     }
+    }
+    lifelines.isFiftyFiftyUsed();
 }
 
 // Wenn der "Publikum" Button geklickt wird
 void MainWindow::on_audience_clicked()
 {
+     if (!lifelines.audienceUsed) {
     // Rufe die audience-Funktion der Lifeline auf
     lifelines.audience(fragen[aktuelleFrageIndex].getAntworten(), fragen[aktuelleFrageIndex].getRichtigeAntwort());
 
@@ -63,6 +67,8 @@ void MainWindow::on_audience_clicked()
 
     // Deaktiviere den Button für den Publikumsjoker
     //ui->audience->setEnabled(false);
+     }
+    lifelines.isAudienceUsed();
 }
 
 
@@ -71,23 +77,24 @@ void MainWindow::on_audience_clicked()
 // Wenn der "Telefon" Button geklickt wird
 void MainWindow::on_phone_clicked()
 {
+    if (!lifelines.phoneUsed) {
     // Rufe die phone-Funktion der Lifeline auf
     lifelines.phone(fragen[aktuelleFrageIndex].getAntworten(), fragen[aktuelleFrageIndex].getRichtigeAntwort());
 
     // Markiere die Antwort des Freundes auf den Buttons visuell
     string freundRat = lifelines.getPhoneAntwort();
-    cout <<freundRat<<endl;
 
     if (freundRat == "A") {
-        ui->Answer1_4->setStyleSheet("color: green;");
+        ui->Answer1_4->setText(ui->Answer1_4->text() + "   Freundrat");
     } else if (freundRat == "B") {
-        ui->Answer2->setStyleSheet("color: green;");
+        ui->Answer2->setText(ui->Answer2->text() + "   Freundrat");
     } else if (freundRat == "C") {
-        ui->Answer3->setStyleSheet("color: green;");
+        ui->Answer3->setText(ui->Answer3->text() + "   Freundrat");
     } else if (freundRat == "D") {
-        ui->Answer4->setStyleSheet("color: green;");
+        ui->Answer4->setText(ui->Answer4->text() + "   Freundrat");
     }
-    // Hier könntest du die Anzeige für den Telefonjoker aktualisieren, z.B. den Button deaktivieren
+    }
+    lifelines.isPhoneUsed();
 }
 
 MainWindow::MainWindow(QWidget *parent)
