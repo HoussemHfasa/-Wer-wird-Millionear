@@ -59,7 +59,7 @@ Frage Frage::erstelleZufaelligeFrage(const std::string& kategorie, const std::st
         // Fehlerfall: Leeres Frage-Objekt zurückgeben
         return Frage(0, "", "", "", "", "", ' ', "");
     }
-    query.prepare("SELECT frage, antwort1, antwort2, antwort3, antwort4, richtigeAntwort FROM " + tableName + " WHERE FrageID = :id AND kategorie = :kategorie");
+    query.prepare("SELECT frage, antwort1, antwort2, antwort3, antwort4, richtigeAntwort FROM " + tableName + " WHERE FrageID = :id");
     query.bindValue(":id", randomId);
     query.bindValue(":kategorie", QString::fromStdString(kategorie));
 
