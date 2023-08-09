@@ -1,5 +1,7 @@
 #include "lose.h"
 #include "ui_lose.h"
+#include <QProcess>
+
 
 lose::lose(QWidget *parent) :
     QDialog(parent),
@@ -16,5 +18,9 @@ lose::~lose()
 void lose::on_pushButton_clicked()
 {
     close();
+
+    QProcess::startDetached(QCoreApplication::applicationFilePath());
+
+    QCoreApplication::quit();
 }
 

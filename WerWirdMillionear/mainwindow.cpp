@@ -5,7 +5,12 @@
 #include <QSqlQuery>
 #include"settings.h"
 #include"win.h"
-#include"lose.h"
+#include <QGraphicsColorizeEffect>
+#include <lose.h>
+
+
+
+
 using namespace std ;
 
 
@@ -13,12 +18,21 @@ using namespace std ;
 
 Lifeline lifelines;
 
+void MainWindow::on_StartButton_clicked()
+{
+    // Switch to AnmeldenSeite
+    ui->stackedWidget->setCurrentWidget(ui->AnmeldenSeite);
+
+
+}
 
 // Wenn der "50:50" Button geklickt wird
 void MainWindow::on_fiftyFifty_clicked()
 {
-    ui->fiftyFifty->hide();
-
+    QGraphicsColorizeEffect *effect = new QGraphicsColorizeEffect;
+    effect->setColor(QColor(128, 128, 128));
+    effect->setStrength(0.7);
+    ui->fiftyFifty->setGraphicsEffect(effect);
     if (!lifelines.fiftyFiftyUsed) {
         // Rufe die fiftyFifty-Funktion der Lifeline auf
         lifelines.fiftyFifty(fragen[aktuelleFrageIndex].getAntworten(), fragen[aktuelleFrageIndex].getRichtigeAntwort());
@@ -58,7 +72,10 @@ void MainWindow::on_fiftyFifty_clicked()
 // Wenn der "Publikum" Button geklickt wird
 void MainWindow::on_audience_clicked()
 {
-    ui->audience->hide();
+    QGraphicsColorizeEffect *effect = new QGraphicsColorizeEffect;
+    effect->setColor(QColor(128, 128, 128));
+    effect->setStrength(0.7);
+    ui->audience->setGraphicsEffect(effect);
 
     if (!lifelines.audienceUsed) {
         // Rufe die audience-Funktion der Lifeline auf
@@ -88,7 +105,10 @@ void MainWindow::on_audience_clicked()
 // Wenn der "Telefon" Button geklickt wird
 void MainWindow::on_phone_clicked()
 {
-    ui->phone->hide();
+    QGraphicsColorizeEffect *effect = new QGraphicsColorizeEffect;
+    effect->setColor(QColor(128, 128, 128));
+    effect->setStrength(0.7);
+    ui->phone->setGraphicsEffect(effect);
 
     if (!lifelines.phoneUsed) {
         // Rufe die phone-Funktion der Lifeline auf
@@ -166,11 +186,7 @@ MainWindow::~MainWindow()
 
 }
 
-void MainWindow::on_StartButton_clicked()
-{
-    // Switch to AnmeldenSeite
-    ui->stackedWidget->setCurrentWidget(ui->AnmeldenSeite);
-}
+
 void MainWindow::on_BestenlisteButton_clicked()
 {
     // Switch to BestenlisteSeite
@@ -297,9 +313,6 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
 
     if (aktuelleFrage.istAntwortKorrekt(selectedAnswer)) {
         aktuelleFrageIndex+=1;
-        cout<<aktuelleFrageIndex <<endl;
-
-        cout<<Fragenanzahl<<endl;
         if (aktuelleFrageIndex < Fragenanzahl) {
             cout<<fragen[aktuelleFrageIndex].getFrage()<<endl;
             cout<<fragen[aktuelleFrageIndex].getRichtigeAntwort()<<endl;
@@ -318,6 +331,7 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
             ui->Answer2->setText("");
             ui->Answer3->setText("");
             ui->Answer4->setText("");
+            highlightReachedQuestion();
             win win;
             win.setModal(true);
             win.exec();
@@ -334,6 +348,7 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
         ui->Answer3->setText("");
         ui->Answer4->setText("");
         player->updateScore(Scores[0]);
+        highlightReachedQuestion();
         lose lose;
         lose.setModal(true);
         lose.exec();
@@ -344,6 +359,15 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
 
 }
 void MainWindow::on_Zurueckstartseite_2_clicked()
+{
+    QProcess::startDetached(QCoreApplication::applicationFilePath());
+
+    QCoreApplication::quit();
+
+
+    ui->stackedWidget->setCurrentWidget(ui->Startseite);
+}
+void MainWindow::switchToStartseitePage()
 {
     ui->stackedWidget->setCurrentWidget(ui->Startseite);
 }

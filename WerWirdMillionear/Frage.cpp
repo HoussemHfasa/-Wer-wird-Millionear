@@ -2,21 +2,29 @@
 #include <QSqlQuery>
 #include <QString>
 
+// Konstruktor für Frage-Objekte
 Frage::Frage(int frageID, const std::string& frage, const std::string& antwort1,
              const std::string& antwort2, const std::string& antwort3, const std::string& antwort4,
              char richtigeAntwort, const std::string& kategorie)
     : frageID(frageID), frage(frage), antwort1(antwort1), antwort2(antwort2),
     antwort3(antwort3), antwort4(antwort4), richtigeAntwort(richtigeAntwort), kategorie(kategorie) {}
 
-Frage Frage::erstelleZufaelligeFrage(const std::string& kategorie, const std::string& schwierigkeit) {
+
+// Methode zum Erstellen einer zufälligen Frage basierend auf Kategorie und Schwierigkeitsgrad
+
+Frage Frage::erstelleZufaelligeFrage(const string& kategorie, const string& schwierigkeit) {
+
+    // SQL-Abfrage und Tabellenname initialisieren
     QSqlQuery query;
     QString tableName;
 
     int randomId = 0;
 
+    // Auswahl der Tabelle und der Zufalls-ID basierend auf Kategorie und Schwierigkeitsgrad
+
     if (schwierigkeit == "einfach") {
         if (kategorie == "Sport") {
-            randomId = rand() % 25 + 1; // Zufällige Zahl zwischen 1 und 25
+            randomId = rand() % 25 + 1; // Zufällige Zahl zwischen 1 und 25 (ID der Kategorie in DB)
         } else if (kategorie == "Wissenschaft") {
             randomId = rand() % 29 + 26; // Zufällige Zahl zwischen 26 und 54
         } else if (kategorie == "Kunst und Kultur") {
@@ -59,8 +67,12 @@ Frage Frage::erstelleZufaelligeFrage(const std::string& kategorie, const std::st
         // Fehlerfall: Leeres Frage-Objekt zurückgeben
         return Frage(0, "", "", "", "", "", ' ', "");
     }
+
+    // SQL-Abfrage vorbereiten und ausführen, um Frage-Daten abzurufen
     query.prepare("SELECT frage, antwort1, antwort2, antwort3, antwort4, richtigeAntwort FROM " + tableName + " WHERE FrageID = :id");
     query.bindValue(":id", randomId);
+
+    // Frage-Daten abrufen und in Frage-Objekt speichern
     query.bindValue(":kategorie", QString::fromStdString(kategorie));
 
     if (query.exec() && query.next()) {
@@ -78,30 +90,36 @@ Frage Frage::erstelleZufaelligeFrage(const std::string& kategorie, const std::st
     return Frage(0, "", "", "", "", "", ' ', "");
 }
 
-std::string Frage::getFrage() const {
+// Getter-Methode für die Frage
+string Frage::getFrage() const {
     return frage;
 }
 
-std::vector<std::string> Frage::getAntworten() const {
+// Getter-Methode für die Antworten
+vector<std::string> Frage::getAntworten() const {
     std::vector<std::string> antworten = {antwort1, antwort2, antwort3, antwort4};
     return antworten;
 }
 
+// Getter-Methode für die richtige Antwort
 char Frage::getRichtigeAntwort() const {
     return richtigeAntwort;
 }
 
+// Getter-Methode für die Kategorie
 std::string Frage::getKategorie() const {
     return kategorie;
 }
 
+// Methode zum Überprüfen, ob die vom Benutzer gewählte Antwort korrekt ist
 bool Frage::istAntwortKorrekt(char benutzerAntwort) const {
     return benutzerAntwort == richtigeAntwort;
 }
+
+
+// Operatorüberladung für den Vergleich von zwei Frage-Objekten
 bool operator==(const Frage& frage1, const Frage& frage2) {
-    // Hier vergleichen Sie die Attribute, die für die Frageeinzigartigkeit relevant sind.
-    // Wenn diese gleich sind, geben Sie true zurück, sonst false.
-    // Beispiel:
+    // Hier wird der Vergleich der Attribute für Frage-Einzigartigkeit durchgeführt
     return frage1.getFrage() == frage2.getFrage() &&
            frage1.getAntworten() == frage2.getAntworten() &&
            frage1.getRichtigeAntwort() == frage2.getRichtigeAntwort();
