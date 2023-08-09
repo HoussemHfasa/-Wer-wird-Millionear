@@ -2,7 +2,6 @@ QT       += core gui
 QT +=sql
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 QT += multimedia
-QT += core gui multimedia
 
 
 CONFIG += c++17
