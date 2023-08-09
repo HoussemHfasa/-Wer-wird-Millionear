@@ -8,6 +8,9 @@ class Lifeline {
 public:
     // Konstruktor
     Lifeline();
+    bool fiftyFiftyUsed;
+    bool audienceUsed;
+    bool phoneUsed;
 
     // 50:50-Joker
     void fiftyFifty(const vector<string>& antworten, char richtigeAntwort);
@@ -31,9 +34,6 @@ public:
 
 
 private:
-    bool fiftyFiftyUsed;
-    bool audienceUsed;
-    bool phoneUsed;
     vector<int> stimmenProzent;
     string freundRat;
 };

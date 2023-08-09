@@ -5,13 +5,17 @@
 using namespace std;
 #include <cstdlib>   // Für rand() und srand()
 #include <numeric>
+#include <QtWidgets/QPushButton>
+#include <QString>
+#include <QWidget>
+
 
 Lifeline::Lifeline() : fiftyFiftyUsed(false), audienceUsed(false), phoneUsed(false) {
     // Konstruktor
 }
 
 
-void Lifeline::fiftyFifty(const vector<string>& antworten, char richtigeAntwort) {
+void Lifeline::fiftyFifty([[maybe_unused]] const vector<string>& antworten, char richtigeAntwort) {
     if (!fiftyFiftyUsed) {
         vector<char> moeglicheAntworten = {'A', 'B', 'C', 'D'};
         moeglicheAntworten.erase(remove(moeglicheAntworten.begin(), moeglicheAntworten.end(), richtigeAntwort), moeglicheAntworten.end());
@@ -19,7 +23,7 @@ void Lifeline::fiftyFifty(const vector<string>& antworten, char richtigeAntwort)
         // Zwei zufällige Antworten auswählen (eine richtige und eine falsche)
 //random_shuffle(moeglicheAntworten.begin(), moeglicheAntworten.end());
         char antwort1 = moeglicheAntworten[0];
-        char antwort2 = moeglicheAntworten[1];
+       [[maybe_unused]] char antwort2 = moeglicheAntworten[1];
 
         cout << "Der 50:50-Joker reduziert die Antwortmöglichkeiten auf '" << richtigeAntwort << "' und '" << antwort1 << "'.\n";
             fiftyFiftyUsed = true;
@@ -33,25 +37,25 @@ void Lifeline::audience(const std::vector<std::string>& antworten, char richtige
     if (!audienceUsed) {
         int richtigeAntwortIndex = richtigeAntwort - 'A';
         vector<int> stimmen(antworten.size(), 0);
-
+         stimmenProzent.resize(antworten.size());
         // Zufällige Stimmen simulieren (die richtige Antwort erhält mehr Stimmen)
-        for (int i = 0; i < 100; i++) {
-            int stimme = rand() % antworten.size();
-            if (stimme == richtigeAntwortIndex) {
-                stimmen[stimme] += 70;
+        int summeStimmen = 0;
+         int antwortsize=antworten.size();
+        for (int i = 0; i < antwortsize; i++) {
+            if (i == richtigeAntwortIndex) {
+                stimmen[i] = rand() % 70 + 31; // Bereich 31-100 für die richtige Antwort
             } else {
-                stimmen[stimme] += 30;
+                stimmen[i] = rand() % 30 + 1;  // Bereich 1-30 für falsche Antworten
             }
+            summeStimmen += stimmen[i];
+        }
+        int antwortseize=antworten.size();
+
+        // Prozentsätze berechnen
+        for (int i = 0; i < antwortseize; i++) {
+            stimmenProzent[i] = (stimmen[i] * 100) / summeStimmen;
         }
 
-        // Summe der Stimmen berechnen
-        int summeStimmen = accumulate(stimmen.begin(), stimmen.end(), 0);
-
-        // Prozentuale Anteile berechnen und die UI aktualisieren
-        for (int i = 0; i < antworten.size(); i++) {
-            int stimmenProzent = (stimmen[i] * 100) / summeStimmen;
-            // Die UI aktualisieren, um den berechneten Prozentsatz neben dem entsprechenden QPushButton anzuzeigen
-        }
 
         audienceUsed = true;
     } else {
@@ -64,8 +68,7 @@ std::vector<int> Lifeline::getAudienceStimmenProzent() const {
 }
 
 
-
-void Lifeline::phone(const std::vector<std::string>& antworten, char richtigeAntwort) {
+void Lifeline::phone([[maybe_unused]] const std::vector<std::string>& antworten, char richtigeAntwort) {
     if (!phoneUsed) {
         freundRat = string(1, richtigeAntwort);
         cout << "Ein Freund am Telefon sagt: " << freundRat << "\n";
