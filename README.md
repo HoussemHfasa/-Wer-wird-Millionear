@@ -31,25 +31,54 @@ Wer wird Millionear" ist ein Quizspiel, bei dem Spieler ihr Wissen in verschiede
 
 ## Installation
 
-1. Repository klonen: Klone das Repository auf deinen Computer.
+1. To clone the repository, open your command line interface and navigate to the desired directory where you want to clone the repository. Then use the following command:
 
-2. MySQL installieren und Datenbank importieren: Installiere MySQL auf deinem System und importiere die Datenbank "werwirdmillionaer.sql" aus dem Ordner "Datenbank".
+   ```
+   git clone <repository_url>
+   ```
 
-3. Qt installieren: Installiere das Qt-Framework. Wähle bei der Komponentenauswahl Folgendes aus:
+   Replace `<repository_url>` with the actual URL of the repository.
 
-- In "Qt 6.6.0-beta2": Wähle "MSVC 2019 64-bit" und "MinGW 11.2.0 64-bit".
-- Unter "Zusätzliche Komponenten": Wähle "Qt 5-Kompatibilitätsmodul", "Qt Shader Tools" und "Qt Multimedia".
-- In "Entwicklungs- und Designwerkzeuge": Wähle "Qt Creator 11.0.1", "Qt Creator 11.0.1 CDB Debugger Support", "MinGW 11.2.0 64-bit", "QT Installer Framework 4.6", "CMake 3.42.2" und "Ninja 1.10.2".
+2. Install MySQL on your system by downloading the appropriate installer for your operating system from the official MySQL website. Follow the installation instructions provided by the installer.
 
-4. MySQL Connector/C installieren: Lade den "MySQL Connector/C" von folgendem Link herunter: https://downloads.mysql.com/archives/c-c/.
+   Once MySQL is installed, open a command line interface and navigate to the directory where MySQL is installed. Locate the `mysql` command-line tool and execute it.
 
-5. MySQL Connector/ODBC installieren: Lade "Connector/ODBC 8.1.0" von folgendem Link herunter: https://dev.mysql.com/downloads/connector/odbc/.
+   To import the "werwirdmillionaer.sql" database, use the following command:
 
-6. ODBC-Datenquelle einrichten: Öffne die "ODBC-Datenquelle (64-Bit)" und füge den "MySQL ODBC 8.1 Unicode Driver" hinzu. Gib deinen Host, Benutzernamen, Passwort und die Datenbank "werwirdmillionaer" ein.
+   ```
+   mysql -u <username> -p <database_name> < <path_to_sql_file>
+   ```
 
-7. Projekt ausführen: Jetzt kannst du das Projekt einfach ausführen und das Spiel genießen!
+   Replace `<username>` with your MySQL username, `<database_name>` with the desired name for the database, and `<path_to_sql_file>` with the path to the "werwirdmillionaer.sql" file.
 
-- Hinweis: Bitte stelle sicher, dass du alle Abhängigkeiten und Einstellungen gemäß den Anweisungen korrekt installierst, um das Spiel reibungslos nutzen zu können. Viel Spaß beim Spielen von "Wer wird Millionär"!
+3. To install the Qt framework, visit the Qt website and download the installer for your operating system. Run the installer and follow the on-screen instructions.
+
+   During the installation, make sure to select the following components:
+
+   - In "Qt 6.6.0-beta2": Choose "MSVC 2019 64-bit" and "MinGW 11.2.0 64-bit".
+   - Under "Additional Components": Select "Qt 5 Compatibility Module", "Qt Shader Tools", and "Qt Multimedia".
+   - In "Development and Design Tools": Choose "Qt Creator 11.0.1", "Qt Creator 11.0.1 CDB Debugger Support", "MinGW 11.2.0 64-bit", "QT Installer Framework 4.6", "CMake 3.42.2", and "Ninja 1.10.2".
+
+4. To install MySQL Connector/C, visit the following link: [MySQL Connector/C Archives](https://downloads.mysql.com/archives/c-c/). Download the desired version of MySQL Connector/C based on your operating system.
+
+5. To install MySQL Connector/ODBC, visit the following link: [MySQL Connector/ODBC Downloads](https://dev.mysql.com/downloads/connector/odbc/). Download the "Connector/ODBC 8.1.0" version.
+
+6. To set up the ODBC data source, open the "ODBC Data Source Administrator" application on your system. Add a new data source using the "MySQL ODBC 8.1 Unicode Driver". Provide the necessary details such as the host, username, password, and database name ("werwirdmillionaer").
+
+7. After completing the previous steps, you can run the project and enjoy playing "Wer wird Millionär"! Make sure to create an `.env` file in each folder of the project and include the following content:
+
+   ```
+   DB_TYPE=QODBC
+   DB_DRIVER={MySQL ODBC 8.1 Unicode Driver}
+   DB_HOST=localhost
+   DB_NAME=werwirdmillionaer
+   DB_USER=Dein Benutzername
+   DB_PASS=Dein Passwort.
+   ```
+
+   Adjust the values accordingly based on your MySQL configuration.
+
+Note: Make sure to install all the dependencies and configure the settings correctly according to the instructions provided for a smooth experience with the game. Have fun playing "Wer wird Millionär"!
 
 ## Verwendung
 
