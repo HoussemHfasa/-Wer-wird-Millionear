@@ -30,6 +30,7 @@ void MainWindow::on_StartButton_clicked()
 // Wenn der "50:50" Button geklickt wird
 void MainWindow::on_fiftyFifty_clicked()
 {
+    ui->fiftyFifty->hide();
 
     if (!lifelines.fiftyFiftyUsed) {
         // Rufe die fiftyFifty-Funktion der Lifeline auf
@@ -70,6 +71,8 @@ void MainWindow::on_fiftyFifty_clicked()
 // Wenn der "Publikum" Button geklickt wird
 void MainWindow::on_audience_clicked()
 {
+    ui->audience->hide();
+
     if (!lifelines.audienceUsed) {
         // Rufe die audience-Funktion der Lifeline auf
         lifelines.audience(fragen[aktuelleFrageIndex].getAntworten(), fragen[aktuelleFrageIndex].getRichtigeAntwort());
@@ -98,6 +101,8 @@ void MainWindow::on_audience_clicked()
 // Wenn der "Telefon" Button geklickt wird
 void MainWindow::on_phone_clicked()
 {
+    ui->phone->hide();
+
     if (!lifelines.phoneUsed) {
         // Rufe die phone-Funktion der Lifeline auf
         lifelines.phone(fragen[aktuelleFrageIndex].getAntworten(), fragen[aktuelleFrageIndex].getRichtigeAntwort());

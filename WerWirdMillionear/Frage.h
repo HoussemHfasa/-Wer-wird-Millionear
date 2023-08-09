@@ -3,29 +3,30 @@
 
 #include <string>
 #include <vector>
+using namespace std;
 
 class Frage {
 private:
     int frageID;
-    std::string frage;
-    std::string antwort1;
-    std::string antwort2;
-    std::string antwort3;
-    std::string antwort4;
+    string frage;
+    string antwort1;
+    string antwort2;
+    string antwort3;
+    string antwort4;
     char richtigeAntwort;
-    std::string kategorie;
+    string kategorie;
 
 public:
-    Frage(int frageID, const std::string& frage, const std::string& antwort1,
-          const std::string& antwort2, const std::string& antwort3, const std::string& antwort4,
-          char richtigeAntwort, const std::string& kategorie);
+    Frage(int frageID, const string& frage, const string& antwort1,
+          const string& antwort2, const string& antwort3, const string& antwort4,
+          char richtigeAntwort, const string& kategorie);
 
-    static Frage erstelleZufaelligeFrage(const std::string& kategorie, const std::string& schwierigkeit);
+    static Frage erstelleZufaelligeFrage(const string& kategorie, const string& schwierigkeit);
 
-    std::string getFrage() const;
-    std::vector<std::string> getAntworten() const;
+    string getFrage() const;
+    vector<string> getAntworten() const;
     char getRichtigeAntwort() const;
-    std::string getKategorie() const;
+    string getKategorie() const;
     bool istAntwortKorrekt(char benutzerAntwort) const;
     friend bool operator==(const Frage& frage1, const Frage& frage2);
 };
