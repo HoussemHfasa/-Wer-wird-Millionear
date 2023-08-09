@@ -74,13 +74,10 @@ int Player::getCurrentScore() const {
 void Player::updateScore(int newScore) {
     currentScore = newScore;
     // Aktualisiere den besten Punktestand, falls der neue Punktestand höher ist
-
     if (newScore > bestScore) {
         bestScore = newScore;
     }
-
     // Setze den aktuellen Punktestand auf 0, wenn der Spieler den Hauptpreis von 1.000.000 erreicht hat
-
     if(newScore==1000000)
     {
         currentScore=0;
