@@ -82,16 +82,17 @@ void MainWindow::on_phone_clicked()
     lifelines.phone(fragen[aktuelleFrageIndex].getAntworten(), fragen[aktuelleFrageIndex].getRichtigeAntwort());
 
     // Markiere die Antwort des Freundes auf den Buttons visuell
-    string freundRat = lifelines.getPhoneAntwort();
+    //string freundRat = lifelines.getPhoneAntwort();
+    string freundRat ="A";
 
     if (freundRat == "A") {
-        ui->Answer1_4->setText(ui->Answer1_4->text() + "   Freundrat");
+        ui->Answer1_4->setText(ui->Answer1_4->text() + "   (Freundrat)");
     } else if (freundRat == "B") {
-        ui->Answer2->setText(ui->Answer2->text() + "   Freundrat");
+        ui->Answer2->setText(ui->Answer2->text() + "   (Freundrat)");
     } else if (freundRat == "C") {
-        ui->Answer3->setText(ui->Answer3->text() + "   Freundrat");
+        ui->Answer3->setText(ui->Answer3->text() + "   (Freundrat)");
     } else if (freundRat == "D") {
-        ui->Answer4->setText(ui->Answer4->text() + "   Freundrat");
+        ui->Answer4->setText(ui->Answer4->text() + "   (Freundrat)");
     }
     }
     lifelines.isPhoneUsed();
