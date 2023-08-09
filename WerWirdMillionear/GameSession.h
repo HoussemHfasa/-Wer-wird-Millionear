@@ -11,7 +11,7 @@ class GameSession {
 public:
     GameSession(Player& spieler);
 
-    void starteSpiel(const std::string& schwierigkeitsgrad, const std::string& kategorie);
+    void starteSpiel(const string& schwierigkeitsgrad, const string& kategorie);
     void beendeSpiel();
     void naechsteFrage();
     void waehleAntwort(int antwortIndex);
@@ -22,7 +22,7 @@ public:
     string gewaehlterSchwierigkeitsgrad;
     string gewaehlteKategorie;
     char benutzerAntwort;
-    vector<Frage> vorbereiteteFragen(const std::string& schwierigkeitsgrad, const std::string& kategorie);
+    vector<Frage> vorbereiteteFragen(const string& schwierigkeitsgrad, const string& kategorie);
 
 private:
 

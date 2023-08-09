@@ -7,22 +7,20 @@ using namespace std ;
 
 Lifeline lifelines;
 
-
 // Wenn der "50:50" Button geklickt wird
 void MainWindow::on_fiftyFifty_clicked()
 {
-
     if (!lifelines.fiftyFiftyUsed) {
-        // Rufe die fiftyFifty-Funktion der Lifeline auf
+        // Lifeline "50:50" wird verwendet
         lifelines.fiftyFifty(fragen[aktuelleFrageIndex].getAntworten(), fragen[aktuelleFrageIndex].getRichtigeAntwort());
 
-        // Leere zwei Buttons mit falschen Antworten
+        // Sammle Informationen über Antworten und richtige Antwort
         vector<string> antworten = fragen[aktuelleFrageIndex].getAntworten();
-
-        // Zufällige Auswahl von zwei falschen Antworten
         int richtigeAntwortIndex = fragen[aktuelleFrageIndex].getRichtigeAntwort() - 'A';
         vector<int> falscheAntwortIndizes;
-        int antwortsize=antworten.size();
+
+        // Wähle zufällig zwei falsche Antwortindizes aus
+        int antwortsize = antworten.size();
         for (int i = 0; i < antwortsize; i++) {
             if (i != richtigeAntwortIndex) {
                 falscheAntwortIndizes.push_back(i);
@@ -31,12 +29,13 @@ void MainWindow::on_fiftyFifty_clicked()
 
         random_shuffle(falscheAntwortIndizes.begin(), falscheAntwortIndizes.end());
 
-        // Leere die Texte der ausgewählten falschen Antworten
+        // Setze Texte der ausgewählten falschen Antworten zurück
         ui->Answer1_4->setText("");
         ui->Answer2->setText("");
         ui->Answer3->setText("");
         ui->Answer4->setText("");
 
+        // Fülle die Texte mit den neuen Antwortmöglichkeiten
         if (!falscheAntwortIndizes.empty()) {
             ui->Answer1_4->setText(QString::fromStdString(antworten[falscheAntwortIndizes[0]]));
         }
@@ -45,47 +44,37 @@ void MainWindow::on_fiftyFifty_clicked()
         }
     }
     lifelines.isFiftyFiftyUsed();
-
 }
 
 // Wenn der "Publikum" Button geklickt wird
 void MainWindow::on_audience_clicked()
 {
     if (!lifelines.audienceUsed) {
-        // Rufe die audience-Funktion der Lifeline auf
+        // Lifeline "Publikum" wird verwendet
         lifelines.audience(fragen[aktuelleFrageIndex].getAntworten(), fragen[aktuelleFrageIndex].getRichtigeAntwort());
 
+        // Sammle Informationen über Antworten und Stimmenprozentsätze
         vector<string> antworten = fragen[aktuelleFrageIndex].getAntworten();
-        // Aktualisiere die Anzeige für den Publikumsjoker
         vector<int> stimmenProzent = lifelines.getAudienceStimmenProzent();
-        ui->Answer1_4->setText(QString::fromStdString(fragen[aktuelleFrageIndex].getAntworten()[0]) +
-                               " (" + QString::number(stimmenProzent[0]) + "%)");
-        ui->Answer2->setText(QString::fromStdString(fragen[aktuelleFrageIndex].getAntworten()[1]) +
-                             " (" + QString::number(stimmenProzent[1]) + "%)");
-        ui->Answer3->setText(QString::fromStdString(fragen[aktuelleFrageIndex].getAntworten()[2]) +
-                             " (" + QString::number(stimmenProzent[2]) + "%)");
-        ui->Answer4->setText(QString::fromStdString(fragen[aktuelleFrageIndex].getAntworten()[3]) +
-                             " (" + QString::number(stimmenProzent[3]) + "%)");
 
-        // Deaktiviere den Button für den Publikumsjoker
-        //ui->audience->setEnabled(false);
+        // Aktualisiere die Anzeige für den Publikumsjoker
+        ui->Answer1_4->setText(QString::fromStdString(antworten[0]) + " (" + QString::number(stimmenProzent[0]) + "%)");
+        ui->Answer2->setText(QString::fromStdString(antworten[1]) + " (" + QString::number(stimmenProzent[1]) + "%)");
+        ui->Answer3->setText(QString::fromStdString(antworten[2]) + " (" + QString::number(stimmenProzent[2]) + "%)");
+        ui->Answer4->setText(QString::fromStdString(antworten[3]) + " (" + QString::number(stimmenProzent[3]) + "%)");
     }
     lifelines.isAudienceUsed();
 }
-
-
-
 
 // Wenn der "Telefon" Button geklickt wird
 void MainWindow::on_phone_clicked()
 {
     if (!lifelines.phoneUsed) {
-        // Rufe die phone-Funktion der Lifeline auf
+        // Lifeline "Telefon" wird verwendet
         lifelines.phone(fragen[aktuelleFrageIndex].getAntworten(), fragen[aktuelleFrageIndex].getRichtigeAntwort());
 
-        // Markiere die Antwort des Freundes auf den Buttons visuell
+        // Zeige die Antwort des Freundes visuell auf den Buttons an
         string freundRat = lifelines.getPhoneAntwort();
-
         if (freundRat == "A") {
             ui->Answer1_4->setText(ui->Answer1_4->text() + "   (Freundrat)");
         } else if (freundRat == "B") {
@@ -207,11 +196,11 @@ void MainWindow::on_BestenlisteButton_clicked()
 }
 
 void MainWindow::onCategoryChanged(QString category) {
-    std::cout << category.toStdString() << std::endl;
+    cout << category.toStdString() << endl;
 }
 
 void MainWindow::onDifficultyChanged(QString difficulty) {
-    std::cout << difficulty.toStdString() << std::endl;
+    cout << difficulty.toStdString() << endl;
 }
 void MainWindow::on_Neustart_clicked()
 {
@@ -241,57 +230,63 @@ void MainWindow::on_Neustart_clicked()
 
 
 }
+// Wenn der "Spiel Start" Button geklickt wird
 void MainWindow::on_SpielStartButton_clicked()
 {
+    // Holen des eingegebenen Nicknamens
     nickname = input_nickname->text().toStdString();
-    // Create a Player object with the entered nickname
-    player=new Player(nickname);
-    //Player player(nickname);
 
+    // Erstellen eines Spielerobjekts mit dem eingegebenen Nicknamen
+    player = new Player(nickname);
+
+    // Ausgewählte Kategorie und Schwierigkeitsgrad abrufen
     QString category = ui->comboBox_Kategorie->currentText();
     onCategoryChanged(category);
-
     QString difficulty = ui->comboBox_Schwierigkeitsgrad->currentText();
     onDifficultyChanged(difficulty);
 
+    // Neue Spielsitzung erstellen
     GameSession Spiel(*player);
-    //Spiel.vorbereiteteFragen(difficulty.toStdString(),category.toStdString());
-    fragen = Spiel.vorbereiteteFragen(difficulty.toStdString(),category.toStdString());
 
-    // Store the index of the current question
-    currentscore=player->getCurrentScore();
-    cout<<currentscore<<endl;
-    for(int i = 0; i < 16; i++) {
-        if(Scores[i] == currentscore) {
-            aktuelleFrageIndex=i;
-            break ;
+    // Vorbereitete Fragen abrufen und speichern
+    fragen = Spiel.vorbereiteteFragen(difficulty.toStdString(), category.toStdString());
+
+    // Index der aktuellen Frage speichern und hervorheben
+    currentscore = player->getCurrentScore();
+    for (int i = 0; i < 16; i++) {
+        if (Scores[i] == currentscore) {
+            aktuelleFrageIndex = i;
+            break;
         }
     }
     highlightReachedQuestion();
+
+    // Fragen und Antworten in der Benutzeroberfläche anzeigen
     vector<string> antworten = fragen[aktuelleFrageIndex].getAntworten();
     ui->getFrage->setText(QString::fromStdString(fragen[aktuelleFrageIndex].getFrage()));
     ui->Answer1_4->setText(QString::fromStdString(antworten[0]));
     ui->Answer2->setText(QString::fromStdString(antworten[1]));
     ui->Answer3->setText(QString::fromStdString(antworten[2]));
     ui->Answer4->setText(QString::fromStdString(antworten[3]));
+
+    // Zeige die Spiel-Seite in der Benutzeroberfläche an
     ui->stackedWidget->setCurrentWidget(ui->SpielSeite);
 }
 
+// Behandlung von Antwort-Klicks
 void MainWindow::handleAnswerClick(char selectedAnswer)
 {
-    int Fragenanzahl=fragen.size();
-
+    int Fragenanzahl = fragen.size();
     const Frage& aktuelleFrage = fragen[aktuelleFrageIndex];
 
-
+    // Überprüfe, ob die ausgewählte Antwort korrekt ist
     if (aktuelleFrage.istAntwortKorrekt(selectedAnswer)) {
-        aktuelleFrageIndex+=1;
-        cout<<aktuelleFrageIndex <<endl;
+        // Aktualisiere den Index der aktuellen Frage
+        aktuelleFrageIndex += 1;
 
-        cout<<Fragenanzahl<<endl;
+        // Überprüfe, ob weitere Fragen vorhanden sind
         if (aktuelleFrageIndex < Fragenanzahl) {
-            cout<<fragen[aktuelleFrageIndex].getFrage()<<endl;
-            cout<<fragen[aktuelleFrageIndex].getRichtigeAntwort()<<endl;
+            // Zeige die nächste Frage und Antworten an
             vector<string> antworten = fragen[aktuelleFrageIndex].getAntworten();
             ui->getFrage->setText(QString::fromStdString(fragen[aktuelleFrageIndex].getFrage()));
             ui->Answer1_4->setText(QString::fromStdString(antworten[0]));
@@ -299,33 +294,34 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
             ui->Answer3->setText(QString::fromStdString(antworten[2]));
             ui->Answer4->setText(QString::fromStdString(antworten[3]));
         }
-        else if (aktuelleFrageIndex==Fragenanzahl) {
-            // End of the game
-            // Handle accordingly, e.g., show final score
+        else if (aktuelleFrageIndex == Fragenanzahl) {
+            // Ende des Spiels: Zeige den Abschlusstext an
             ui->getFrage->setText("Herzlichen Glückwunsch! Du hast alle Fragen beantwortet.");
                 ui->Answer1_4->setText("");
             ui->Answer2->setText("");
             ui->Answer3->setText("");
             ui->Answer4->setText("");
-
         }
+
+        // Aktualisiere den Spielerpunktestand
         player->updateScore(Scores[aktuelleFrageIndex]);
     }
     else {
-        // User's answer is incorrect
-        // Handle accordingly, e.g., show incorrect message
+        // Die ausgewählte Antwort ist falsch: Zeige entsprechende Nachricht an
         ui->getFrage->setText("Leider falsch. Das Spiel ist vorbei.");
         ui->Answer1_4->setText("");
         ui->Answer2->setText("");
         ui->Answer3->setText("");
         ui->Answer4->setText("");
-        player->updateScore(Scores[0]);
 
+        // Setze Spielerpunktestand zurück auf den Startwert
+        player->updateScore(Scores[0]);
     }
 
+    // Hervorhebung der erreichten Frage im Spielverlauf
     highlightReachedQuestion();
-
 }
+
 void MainWindow::on_Zurueckstartseite_2_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->Startseite);

@@ -38,14 +38,14 @@ void testPlayerClass() {
     Player spieler("Houssam");
 
     // Überprüfe, ob der Spieler erfolgreich erstellt wurde
-    std::cout << "Spielername: " << spieler.getNickname() << std::endl;
-    std::cout << "Highscore: " << spieler.getBestScore() << std::endl;
-    std::cout << "Aktueller Score: " << spieler.getCurrentScore() << std::endl;
+    cout << "Spielername: " << spieler.getNickname() << endl;
+    cout << "Highscore: " << spieler.getBestScore() << endl;
+    cout << "Aktueller Score: " << spieler.getCurrentScore() <<endl;
 
     // Aktualisiere den Score des Spielers
     spieler.updateScore(1000);
-    std::cout << "Aktualisierter Highscore: " << spieler.getBestScore() << std::endl;
-    std::cout << "Aktualisierter Score: " << spieler.getCurrentScore() << std::endl;
+    cout << "Aktualisierter Highscore: " << spieler.getBestScore() << endl;
+    cout << "Aktualisierter Score: " << spieler.getCurrentScore() << endl;
 
     // Verwende eine Lifeline
 
@@ -62,28 +62,28 @@ void testFrageClass() {
 
 
     // Teste die getFrage-Methode
-    std::string frageText = frage1.getFrage();
-    std::cout << "Frage: " << frageText << std::endl;
+    string frageText = frage1.getFrage();
+    cout << "Frage: " << frageText << endl;
 
     // Teste die getAntworten-Methode
-    std::vector<std::string> antworten = frage1.getAntworten();
-    std::cout << "Antworten:" << std::endl;
-    for (const std::string& antwort : antworten) {
-        std::cout << antwort << std::endl;
+    vector<string> antworten = frage1.getAntworten();
+    cout << "Antworten:" << endl;
+    for (const string& antwort : antworten) {
+        cout << antwort <<endl;
     }
 
     // Teste die getRichtigeAntwort-Methode
     char richtigeAntwort = frage1.getRichtigeAntwort();
-    std::cout << "Richtige Antwort: " << richtigeAntwort << std::endl;
+    cout << "Richtige Antwort: " << richtigeAntwort <<endl;
 
     // Teste die getKategorie-Methode
-    std::string frageKategorie = frage1.getKategorie();
-    std::cout << "Frage Kategorie: " << frageKategorie << std::endl;
+    string frageKategorie = frage1.getKategorie();
+    cout << "Frage Kategorie: " << frageKategorie << endl;
 
     // Teste die istAntwortKorrekt-Methode
     char benutzerAntwort = 'A'; // Annahme: Der Benutzer wählt Antwort A
     bool istKorrekt = frage1.istAntwortKorrekt(benutzerAntwort);
-    std::cout << "Ist Antwort korrekt? " << (istKorrekt ? "Ja" : "Nein") << std::endl;
+    cout << "Ist Antwort korrekt? " << (istKorrekt ? "Ja" : "Nein") << endl;
 }
 
 int main(int argc, char *argv[])
