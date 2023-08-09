@@ -3,6 +3,10 @@
 #include <iostream>
 #include <QtSql>
 #include <QSqlQuery>
+#include"settings.h"
+#include "win.h"
+
+
 using namespace std ;
 
 Lifeline lifelines;
@@ -102,6 +106,12 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+
+
+
+
+
+
     ui->setupUi(this);
     e100Label = findChild<QLabel*>("E100");
     e200Label = findChild<QLabel*>("E200");
@@ -147,6 +157,7 @@ MainWindow::~MainWindow()
 {
     delete ui;
     playerModel = new QStandardItemModel(this);
+
 
 }
 
@@ -394,5 +405,23 @@ void MainWindow::on_Zurueckstartseite_2_clicked()
 void MainWindow::on_spielanleitungButton_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->SpielanleitungPage);
+}
+
+
+void MainWindow::on_pushButton_clicked()
+{
+    settings settings;
+    settings.setModal(true);
+    settings.exec();
+}
+
+
+void MainWindow::on_pushButton_7_clicked()
+{
+    ui->pushButton_7->setStyleSheet("border-image: url(:/img/notpeople.png);"
+                                    "border: none;"
+                                    "background-repeat: none;"
+                                    "width: 20px;"
+                                    "height: 50px;");
 }
 

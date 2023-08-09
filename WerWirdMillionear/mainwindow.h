@@ -35,6 +35,10 @@ private slots:
     void on_phone_clicked();
     void on_Zurueckstartseite_2_clicked();
 
+    void on_pushButton_clicked();
+
+    void on_pushButton_7_clicked();
+
 private:
     Ui::MainWindow *ui;
     QLabel *imageLabel;

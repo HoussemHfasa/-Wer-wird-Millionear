@@ -11,5 +11,7 @@
         <file>img/notcall.png</file>
         <file>img/nothalf.png</file>
         <file>img/notpeople.png</file>
+        <file>img/lose.png</file>
+        <file>img/win.png</file>
     </qresource>
 </RCC>

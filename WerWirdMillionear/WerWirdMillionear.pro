@@ -17,10 +17,12 @@ SOURCES += \
     anmeldenseite.cpp \
     bestenlisteseite.cpp \
     lifelines.cpp \
+    lose.cpp \
     main.cpp \
     mainwindow.cpp \
     player.cpp \
-    settings.cpp
+    settings.cpp \
+    win.cpp
 
 HEADERS += \
     Frage.h \
@@ -28,13 +30,17 @@ HEADERS += \
     anmeldenseite.h \
     bestenlisteseite.h \
     lifelines.h \
+    lose.h \
     mainwindow.h \
     player.h \
-    settings.h
+    settings.h \
+    win.h
 
 FORMS += \
+    lose.ui \
     mainwindow.ui \
-    settings.ui
+    settings.ui \
+    win.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
