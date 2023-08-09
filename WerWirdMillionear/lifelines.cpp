@@ -15,7 +15,7 @@ Lifeline::Lifeline() : fiftyFiftyUsed(false), audienceUsed(false), phoneUsed(fal
 }
 
 
-void Lifeline::fiftyFifty(const vector<string>& antworten, char richtigeAntwort) {
+void Lifeline::fiftyFifty([[maybe_unused]] const vector<string>& antworten, char richtigeAntwort) {
     if (!fiftyFiftyUsed) {
         vector<char> moeglicheAntworten = {'A', 'B', 'C', 'D'};
         moeglicheAntworten.erase(remove(moeglicheAntworten.begin(), moeglicheAntworten.end(), richtigeAntwort), moeglicheAntworten.end());
@@ -23,7 +23,7 @@ void Lifeline::fiftyFifty(const vector<string>& antworten, char richtigeAntwort)
         // Zwei zufällige Antworten auswählen (eine richtige und eine falsche)
 //random_shuffle(moeglicheAntworten.begin(), moeglicheAntworten.end());
         char antwort1 = moeglicheAntworten[0];
-        char antwort2 = moeglicheAntworten[1];
+       [[maybe_unused]] char antwort2 = moeglicheAntworten[1];
 
         cout << "Der 50:50-Joker reduziert die Antwortmöglichkeiten auf '" << richtigeAntwort << "' und '" << antwort1 << "'.\n";
             fiftyFiftyUsed = true;
@@ -40,7 +40,8 @@ void Lifeline::audience(const std::vector<std::string>& antworten, char richtige
          stimmenProzent.resize(antworten.size());
         // Zufällige Stimmen simulieren (die richtige Antwort erhält mehr Stimmen)
         int summeStimmen = 0;
-        for (int i = 0; i < antworten.size(); i++) {
+         int antwortsize=antworten.size();
+        for (int i = 0; i < antwortsize; i++) {
             if (i == richtigeAntwortIndex) {
                 stimmen[i] = rand() % 70 + 31; // Bereich 31-100 für die richtige Antwort
             } else {
@@ -48,9 +49,10 @@ void Lifeline::audience(const std::vector<std::string>& antworten, char richtige
             }
             summeStimmen += stimmen[i];
         }
+        int antwortseize=antworten.size();
 
         // Prozentsätze berechnen
-        for (int i = 0; i < antworten.size(); i++) {
+        for (int i = 0; i < antwortseize; i++) {
             stimmenProzent[i] = (stimmen[i] * 100) / summeStimmen;
         }
 
@@ -66,7 +68,7 @@ std::vector<int> Lifeline::getAudienceStimmenProzent() const {
 }
 
 
-void Lifeline::phone(const std::vector<std::string>& antworten, char richtigeAntwort) {
+void Lifeline::phone([[maybe_unused]] const std::vector<std::string>& antworten, char richtigeAntwort) {
     if (!phoneUsed) {
         freundRat = string(1, richtigeAntwort);
         cout << "Ein Freund am Telefon sagt: " << freundRat << "\n";

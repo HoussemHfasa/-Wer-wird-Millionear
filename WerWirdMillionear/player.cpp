@@ -3,8 +3,9 @@
 #include <QtSql/QSqlError>
 #include <iostream>
 using namespace std;
-Player::Player(const std::string& nickname) {
+Player::Player(const std::string& nickname1) {
     QSqlQuery query;
+    nickname=nickname1;
     query.prepare("SELECT * FROM benutzer WHERE nickname = :nickname");
     query.bindValue(":nickname", QString::fromStdString(nickname));
     query.exec();
@@ -74,11 +75,13 @@ void Player::updateScore(int newScore) {
         bestScore = newScore;
     }
     QSqlQuery query;
-    query.prepare("UPDATE benutzer "
-                  "SET Highscore = :bestScore "
-                  "WHERE nickname = :nickname");
-
+    query.prepare("UPDATE benutzer SET Highscore = :bestScore WHERE nickname = :nickname");
     query.bindValue(":bestScore", bestScore); // Hier wird der Platzhalter :bestScore mit dem Wert von bestScore ersetzt
+    query.bindValue(":newScore", newScore);
+    query.bindValue(":nickname",  QString::fromStdString(nickname)); // Hier wird der Platzhalter :currentScore mit dem Wert von currentScore ersetzt
+    query.exec();
+    query.prepare("UPDATE benutzer SET currentScore = :newScore WHERE nickname = :nickname");
+    query.bindValue(":newScore", newScore);
     query.bindValue(":nickname",  QString::fromStdString(nickname)); // Hier wird der Platzhalter :currentScore mit dem Wert von currentScore ersetzt
     query.exec();
 }

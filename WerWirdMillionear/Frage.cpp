@@ -24,7 +24,7 @@ Frage Frage::erstelleZufaelligeFrage(const std::string& kategorie, const std::st
         } else if (kategorie == "Geschichte") {
             randomId = rand() % 30 + 83; // Zufällige Zahl zwischen 83 und 112
         }else if (kategorie == "allgemein") {
-            randomId = rand() % 112 + 1; // Zufällige Zahl zwischen 83 und 112
+            randomId = rand() % 112 + 1; // Zufällige Zahl zwischen 1 und 112
         }
         tableName = "fragenkatalog_einfach";
     } else if (schwierigkeit == "mittelschwer") {
@@ -37,7 +37,7 @@ Frage Frage::erstelleZufaelligeFrage(const std::string& kategorie, const std::st
         } else if (kategorie == "Geschichte") {
             randomId = rand() % 23 + 91; // Zufällige Zahl zwischen 91 und 113
         }else if (kategorie == "allgemein") {
-            randomId = rand() % 113 + 1;
+            randomId = rand() % 113 + 1; // Zufällige Zahl zwischen 1 und 113
         }
         tableName = "fragenkatalog_mittelschwer";
     } else if (schwierigkeit == "schwer") {
@@ -50,7 +50,7 @@ Frage Frage::erstelleZufaelligeFrage(const std::string& kategorie, const std::st
         } else if (kategorie == "Geschichte") {
             randomId = rand() % 30 + 1; // Zufällige Zahl zwischen 1 und 30
         }else if (kategorie == "allgemein") {
-            randomId = rand() % 120 + 1;
+            randomId = rand() % 120 + 1; // Zufällige Zahl zwischen 1 und 120
         }
         tableName="fragenkatalog_schwer";
     }
@@ -59,7 +59,7 @@ Frage Frage::erstelleZufaelligeFrage(const std::string& kategorie, const std::st
         // Fehlerfall: Leeres Frage-Objekt zurückgeben
         return Frage(0, "", "", "", "", "", ' ', "");
     }
-    query.prepare("SELECT frage, antwort1, antwort2, antwort3, antwort4, richtigeAntwort FROM " + tableName + " WHERE FrageID = :id AND kategorie = :kategorie");
+    query.prepare("SELECT frage, antwort1, antwort2, antwort3, antwort4, richtigeAntwort FROM " + tableName + " WHERE FrageID = :id");
     query.bindValue(":id", randomId);
     query.bindValue(":kategorie", QString::fromStdString(kategorie));
 

@@ -55,7 +55,7 @@ border-radius: 10px;</string>
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>2</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="Startseite">
              <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -212,7 +212,7 @@ border-radius: 16px;</string>
                 <item>
                  <layout class="QVBoxLayout" name="verticalLayout_8">
                   <item>
-                   <layout class="QVBoxLayout" name="verticalLayout_5">
+                   <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,1">
                     <item>
                      <widget class="QLabel" name="label">
                       <property name="font">
@@ -400,6 +400,12 @@ border-radius: 10px;</string>
                 </item>
                 <item>
                  <widget class="QPushButton" name="SpielStartButton">
+                  <property name="minimumSize">
+                   <size>
+                    <width>1067</width>
+                    <height>0</height>
+                   </size>
+                  </property>
                   <property name="cursor">
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
@@ -413,7 +419,23 @@ font-weight: bold;
 border-radius: 10px;</string>
                   </property>
                   <property name="text">
-                   <string>Beginne zu spielen</string>
+                   <string>Fortsetzen</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="Neustart">
+                  <property name="styleSheet">
+                   <string notr="true">background-color: #4B8A90;
+border: none;
+color: white;
+padding: 10px 20px;
+font-size: 16px;
+font-weight: bold;
+border-radius: 10px;</string>
+                  </property>
+                  <property name="text">
+                   <string>Neustart</string>
                   </property>
                  </widget>
                 </item>
@@ -548,7 +570,7 @@ border-radius: 25px;
                   <item>
                    <layout class="QHBoxLayout" name="horizontalLayout_4">
                     <item>
-                     <widget class="QPushButton" name="audience">
+                     <widget class="QPushButton" name="pushButton_7">
                       <property name="cursor">
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
@@ -561,7 +583,11 @@ border-image: url(:/img/img/people.png);
 border: none;
 background-repeat: none;
 width: 20px;
-height: 50px;</string>
+height: 50px;
+
+pushButton_7.newBackground{
+border-image: url(:/img/img/notpeople.png);
+}</string>
                       </property>
                       <property name="text">
                        <string/>
@@ -569,7 +595,7 @@ height: 50px;</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QPushButton" name="fiftyFifty">
+                     <widget class="QPushButton" name="pushButton_5">
                       <property name="cursor">
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
@@ -590,7 +616,7 @@ height: 50px;</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QPushButton" name="phone">
+                     <widget class="QPushButton" name="pushButton_6">
                       <property name="cursor">
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
@@ -614,7 +640,7 @@ height: 50px;
                    </layout>
                   </item>
                   <item>
-                   <widget class="QLabel" name="label_21">
+                   <widget class="QLabel" name="E1000000">
                     <property name="styleSheet">
                      <string notr="true">background-color: #473662;
 border: none;
@@ -633,7 +659,7 @@ font-weight: bold;
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="label_20">
+                   <widget class="QLabel" name="E500000">
                     <property name="styleSheet">
                      <string notr="true">background-color: #473662;
 border: none;
@@ -652,7 +678,7 @@ font-weight: bold;
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="label_19">
+                   <widget class="QLabel" name="E250000">
                     <property name="styleSheet">
                      <string notr="true">background-color: #473662;
 border: none;
@@ -671,7 +697,7 @@ font-weight: bold;
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="label_18">
+                   <widget class="QLabel" name="E125000">
                     <property name="styleSheet">
                      <string notr="true">background-color: #473662;
 border: none;
@@ -690,7 +716,7 @@ font-weight: bold;
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="label_17">
+                   <widget class="QLabel" name="E64000">
                     <property name="styleSheet">
                      <string notr="true">background-color: #473662;
 border: none;
@@ -709,7 +735,7 @@ font-weight: bold;
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="label_16">
+                   <widget class="QLabel" name="E32000">
                     <property name="styleSheet">
                      <string notr="true">background-color: #473662;
 border: none;
@@ -728,7 +754,7 @@ font-weight: bold;
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="label_15">
+                   <widget class="QLabel" name="E16000">
                     <property name="styleSheet">
                      <string notr="true">background-color: #473662;
 border: none;
@@ -747,7 +773,7 @@ font-weight: bold;
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="label_14">
+                   <widget class="QLabel" name="E8000">
                     <property name="styleSheet">
                      <string notr="true">background-color: #473662;
 border: none;
@@ -766,7 +792,7 @@ font-weight: bold;
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="label_13">
+                   <widget class="QLabel" name="E4000">
                     <property name="styleSheet">
                      <string notr="true">background-color: #473662;
 border: none;
@@ -785,7 +811,7 @@ font-weight: bold;
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="label_12">
+                   <widget class="QLabel" name="E2000">
                     <property name="styleSheet">
                      <string notr="true">background-color: #473662;
 border: none;
@@ -804,7 +830,7 @@ font-weight: bold;
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="label_11">
+                   <widget class="QLabel" name="E1000">
                     <property name="styleSheet">
                      <string notr="true">background-color: #473662;
 border: none;
@@ -823,7 +849,7 @@ font-weight: bold;
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="label_10">
+                   <widget class="QLabel" name="E500">
                     <property name="styleSheet">
                      <string notr="true">background-color: #473662;
 border: none;

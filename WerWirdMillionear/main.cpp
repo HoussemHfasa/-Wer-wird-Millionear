@@ -8,7 +8,7 @@
 #include <QProcessEnvironment>
 #include <iostream>
 using namespace  std;
-
+#include <QMediaPlayer>
 #include <iostream>
 #include "player.h"
 #include "Frage.h"
@@ -106,43 +106,6 @@ int main(int argc, char *argv[])
         cout << db.lastError().text().toStdString() << endl;
     }
 
-   /* QSqlQuery query;
-    query.prepare("SELECT nickname, highscore FROM benutzer");
-
-    if (query.exec()) {
-         while (query.next()) {
-            qDebug() << query.value(0).toString() << ":"
-                     << query.value(1).toInt() << ","
-                     << query.value(2).toInt() ;
-        }
-    } else {
-        qDebug() << "Error: " << query.lastError();
-    }
-    cout <<query.value(0).toInt()<<endl;
-    testPlayerClass();*/
-    //cout<<"testtttt";
-    Player spieler("Rama");
-    // Create a GameSession object
-    GameSession newgame(spieler);
-    // Set the desired difficulty level and category using the public member functions
-    newgame.waehleSchwierigkeitsgrad("einfach");
-    newgame.waehleKategorie("Geschichte");
-    newgame.AntwortSpieler('A');
-    vector<Frage> fragen = newgame.vorbereiteteFragen("einfach","Geschichte");
-
-    // Check the number of prepared questions
-   // cout << "Anzahl der vorbereiteten Fragen: " << fragen.size() << endl;
-
-   /* // Display the questions (for testing purposes)
-    for (const Frage& frage : fragen) {
-        cout << "Frage: " << frage.getFrage() << endl;
-        vector<string> antworten = frage.getAntworten();
-        for (int i = 0; i < antworten.size(); i++) {
-            cout << char('A' + i) << ": " << antworten[i] << endl;
-        }
-        cout << endl;
-    }*/
-    cout << fragen[0].getFrage()<<endl;
 
 
     return a.exec();
