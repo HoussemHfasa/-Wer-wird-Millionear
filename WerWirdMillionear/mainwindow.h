@@ -35,12 +35,7 @@ private slots:
     void on_phone_clicked();
     void on_Zurueckstartseite_2_clicked();
     void highlightReachedQuestion();
-
-
     void on_Neustart_clicked();
-
-    void on_pushButton_clicked();
-
     void on_Einstellung_clicked();
 
 private:
