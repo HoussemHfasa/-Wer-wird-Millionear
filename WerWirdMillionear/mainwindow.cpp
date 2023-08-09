@@ -3,7 +3,13 @@
 #include <iostream>
 #include <QtSql>
 #include <QSqlQuery>
+#include"settings.h"
+#include"win.h"
+#include"lose.h"
 using namespace std ;
+
+
+
 
 Lifeline lifelines;
 
@@ -307,6 +313,9 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
             ui->Answer2->setText("");
             ui->Answer3->setText("");
             ui->Answer4->setText("");
+            win win;
+            win.setModal(true);
+            win.exec();
 
         }
         player->updateScore(Scores[aktuelleFrageIndex]);
@@ -320,6 +329,9 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
         ui->Answer3->setText("");
         ui->Answer4->setText("");
         player->updateScore(Scores[0]);
+        lose lose;
+        lose.setModal(true);
+        lose.exec();
 
     }
 
@@ -357,3 +369,11 @@ void MainWindow::highlightReachedQuestion() {
         }
     }
 }
+
+void MainWindow::on_Einstellung_clicked()
+{
+    settings settings;
+    settings.setModal(true);
+    settings.exec();
+}
+
