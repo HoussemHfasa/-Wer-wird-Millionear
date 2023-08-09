@@ -1,29 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QLabel>
-#include <QPixmap>
-#include <player.h>
-#include <QSqlQuery>
-#include <QtSql/QSqlError>
-#include <QMessageBox>
-#include<QProgressDialog>
-#include <QLineEdit>
-#include <QtSql>
-#include <QListView>
-#include <QTableView>
-#include <QStandardItemModel>
-#include <QHeaderView>
-#include <QFont>
-#include <QBrush>
-#include <Frage.h>
-#include <GameSession.h>
-#include <lifelines.h>
 #include <iostream>
+#include <QtSql>
+#include <QSqlQuery>
 using namespace std ;
 
 Lifeline lifelines;
 
-// ...
 
 // Wenn der "50:50" Button geklickt wird
 void MainWindow::on_fiftyFifty_clicked()
@@ -37,7 +20,8 @@ void MainWindow::on_fiftyFifty_clicked()
     // Zufällige Auswahl von zwei falschen Antworten
     int richtigeAntwortIndex = fragen[aktuelleFrageIndex].getRichtigeAntwort() - 'A';
     vector<int> falscheAntwortIndizes;
-    for (int i = 0; i < antworten.size(); i++) {
+    int antwortsize=antworten.size();
+    for (int i = 0; i < antwortsize; i++) {
         if (i != richtigeAntwortIndex) {
             falscheAntwortIndizes.push_back(i);
         }
@@ -122,35 +106,10 @@ MainWindow::MainWindow(QWidget *parent)
     // Create the playerModel and set it as the model for "Bestenliste" QListView
     playerModel = new QStandardItemModel(this); // Assuming you have playerModel as a member variable of MainWindow
     ui->Bestenliste->setModel(playerModel); // Assuming "Bestenliste" is the name of your QListView in the UI
-   /* Answer1 = ui->Answer1_4;
-    Answer2 = ui->Answer2;
-    Answer3 = ui->Answer3;
-    Answer4 = ui->Answer4;
-    getFrage = ui->getFrage;
 
-    // Verknüpfung des Start-Buttons mit dem Slot
-    connect(ui->SpielStartButton, &QPushButton::clicked, this, &MainWindow::on_SpielStartButton_clicked);*/
     input_nickname = ui->input_nickname;
 
-    connect(ui->Answer1_4, &QPushButton::clicked, this, &MainWindow::on_Answer1_4_clicked);
-    connect(ui->Answer2, &QPushButton::clicked, this, &MainWindow::on_Answer2_clicked);
-    connect(ui->Answer3, &QPushButton::clicked, this, &MainWindow::on_Answer3_clicked);
-    connect(ui->Answer4, &QPushButton::clicked, this, &MainWindow::on_Answer4_clicked);
-
-    /*comboBox_Kategorie = new QComboBox(this);
-    comboBox_Kategorie->addItem("allgemein");
-    comboBox_Kategorie->addItem("Sport");
-    comboBox_Kategorie->addItem("Wissenschaft");
-    comboBox_Kategorie->addItem("Kunst und Kultur");
-    comboBox_Kategorie->addItem("Geschichte");
-
-    comboBox_Schwierigkeitsgrad = new QComboBox(this);
-    comboBox_Schwierigkeitsgrad->addItem("einfach");
-    comboBox_Schwierigkeitsgrad->addItem("mittelschwer");
-    comboBox_Schwierigkeitsgrad->addItem("schwer");*/
     connect(ui->comboBox_Kategorie, SIGNAL(currentIndexChanged(QString)), this, SLOT(onCategoryChanged(QString)));
-
-
     connect(ui->comboBox_Schwierigkeitsgrad, SIGNAL(currentIndexChanged(QString)), this, SLOT(onDifficultyChanged(QString)));
     // Connect the answer buttons to handleAnswerClick
     connect(ui->Answer1_4, &QPushButton::clicked, this, [=]() { handleAnswerClick('A'); });
@@ -175,7 +134,6 @@ void MainWindow::on_StartButton_clicked()
 }
 void MainWindow::on_BestenlisteButton_clicked()
 {
-    cout<<" ya nimmmm";
     // Switch to BestenlisteSeite
     ui->stackedWidget->setCurrentWidget(ui->BestenlisteSeite);
 
@@ -245,12 +203,8 @@ void MainWindow::on_SpielStartButton_clicked()
     //Spiel.vorbereiteteFragen(difficulty.toStdString(),category.toStdString());
     fragen = Spiel.vorbereiteteFragen(difficulty.toStdString(),category.toStdString());
 
-    // Spiel.vorbereiteteFragen("einfach","Geschichte");
-
-
 
     // Store the index of the current question
-    //aktuelleFrageIndex = 0;
     currentscore=player.getCurrentScore();
     switch (currentscore){
     case 0:
@@ -360,29 +314,6 @@ void MainWindow::handleAnswerClick(char selectedAnswer)
     }
 }
 
-void MainWindow::on_Answer1_4_clicked()
-{
-
-
-}
-
-
-void MainWindow::on_Answer2_clicked()
-{
-
-}
-
-
-void MainWindow::on_Answer3_clicked()
-{
-
-}
-
-
-void MainWindow::on_Answer4_clicked()
-{
-
-}
 
 
 
